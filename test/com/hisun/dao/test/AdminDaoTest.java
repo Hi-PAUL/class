@@ -6,9 +6,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.hisun.common.bean.User;
 import com.hisun.common.test.AbstractJUnitTest;
-import com.hisun.dao.UserDao;
+import com.hisun.dao.AdminDao;
 
 /**
  * 
@@ -18,11 +17,11 @@ import com.hisun.dao.UserDao;
  * @修改日期： 2016年3月20日
  *
  */
-public class UserDaoTest extends AbstractJUnitTest
+public class AdminDaoTest extends AbstractJUnitTest
 {
 
     @Resource
-    private UserDao userDao;
+    private AdminDao adminDao;
 
 
     @Before
@@ -33,11 +32,10 @@ public class UserDaoTest extends AbstractJUnitTest
 
 
     @Test
-    public void testUserDao()
+    public void testAdminDao()
     {
         System.out.println("hello world test...");
-        User user = userDao.selectByPrimaryKey(1L);
-        System.out.println(user);
+        System.out.println(adminDao.selectByPrimaryKey(1L));
     }
 
 

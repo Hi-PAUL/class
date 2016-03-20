@@ -1,104 +1,235 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.hisun.dao.UserDao" >
-  <resultMap id="BaseResultMap" type="com.hisun.common.bean.User" >
-    <id column="id" property="id" jdbcType="BIGINT" />
-    <result column="password" property="password" jdbcType="VARCHAR" />
-    <result column="username" property="username" jdbcType="VARCHAR" />
-    <result column="address" property="address" jdbcType="VARCHAR" />
-    <result column="phone" property="phone" jdbcType="VARCHAR" />
-    <result column="email" property="email" jdbcType="VARCHAR" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hisun.dao.UserDao">
+  <resultMap id="BaseResultMap" type="com.hisun.common.bean.User">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="userName" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="qq" jdbcType="VARCHAR" property="qq" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="registerDate" jdbcType="DATE" property="registerdate" />
+    <result column="laterDate" jdbcType="DATE" property="laterdate" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="isonline" jdbcType="INTEGER" property="isonline" />
+    <result column="point" jdbcType="BIGINT" property="point" />
+    <result column="isagree" jdbcType="INTEGER" property="isagree" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="studentId" jdbcType="VARCHAR" property="studentid" />
+    <result column="classId" jdbcType="BIGINT" property="classid" />
+    <result column="cdKey" jdbcType="VARCHAR" property="cdkey" />
   </resultMap>
-  <sql id="Base_Column_List" >
-    id, password, username, address, phone, email
+  <sql id="Base_Column_List">
+    id, userName, password, sex, qq, phone, email, registerDate, laterDate, status, isonline, 
+    point, isagree, name, studentId, classId, cdKey
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from t_user
+    from users
     where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
-    delete from t_user
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from users
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.hisun.common.bean.User" >
-    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+  <insert id="insert" parameterType="com.hisun.common.bean.User">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT @@IDENTITY as column_name
     </selectKey>
-    insert into t_user (password, username, address, 
-      phone, email)
-    values (#{password,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
-      #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR})
+    insert into users (userName, password, sex, 
+      qq, phone, email, registerDate, 
+      laterDate, status, isonline, 
+      point, isagree, name, 
+      studentId, classId, cdKey
+      )
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
+      #{qq,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{registerdate,jdbcType=DATE}, 
+      #{laterdate,jdbcType=DATE}, #{status,jdbcType=INTEGER}, #{isonline,jdbcType=INTEGER}, 
+      #{point,jdbcType=BIGINT}, #{isagree,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{studentid,jdbcType=VARCHAR}, #{classid,jdbcType=BIGINT}, #{cdkey,jdbcType=VARCHAR}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="com.hisun.common.bean.User" >
-    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+  <insert id="insertSelective" parameterType="com.hisun.common.bean.User">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT @@IDENTITY as column_name
     </selectKey>
-    insert into t_user
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="password != null" >
+    insert into users
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="username != null">
+        userName,
+      </if>
+      <if test="password != null">
         password,
       </if>
-      <if test="username != null" >
-        username,
+      <if test="sex != null">
+        sex,
       </if>
-      <if test="address != null" >
-        address,
+      <if test="qq != null">
+        qq,
       </if>
-      <if test="phone != null" >
+      <if test="phone != null">
         phone,
       </if>
-      <if test="email != null" >
+      <if test="email != null">
         email,
       </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="password != null" >
-        #{password,jdbcType=VARCHAR},
+      <if test="registerdate != null">
+        registerDate,
       </if>
-      <if test="username != null" >
+      <if test="laterdate != null">
+        laterDate,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="isonline != null">
+        isonline,
+      </if>
+      <if test="point != null">
+        point,
+      </if>
+      <if test="isagree != null">
+        isagree,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="studentid != null">
+        studentId,
+      </if>
+      <if test="classid != null">
+        classId,
+      </if>
+      <if test="cdkey != null">
+        cdKey,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="username != null">
         #{username,jdbcType=VARCHAR},
       </if>
-      <if test="address != null" >
-        #{address,jdbcType=VARCHAR},
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
       </if>
-      <if test="phone != null" >
+      <if test="sex != null">
+        #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="qq != null">
+        #{qq,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
         #{phone,jdbcType=VARCHAR},
       </if>
-      <if test="email != null" >
+      <if test="email != null">
         #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="registerdate != null">
+        #{registerdate,jdbcType=DATE},
+      </if>
+      <if test="laterdate != null">
+        #{laterdate,jdbcType=DATE},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="isonline != null">
+        #{isonline,jdbcType=INTEGER},
+      </if>
+      <if test="point != null">
+        #{point,jdbcType=BIGINT},
+      </if>
+      <if test="isagree != null">
+        #{isagree,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="studentid != null">
+        #{studentid,jdbcType=VARCHAR},
+      </if>
+      <if test="classid != null">
+        #{classid,jdbcType=BIGINT},
+      </if>
+      <if test="cdkey != null">
+        #{cdkey,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.hisun.common.bean.User" >
-    update t_user
-    <set >
-      <if test="password != null" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.hisun.common.bean.User">
+    update users
+    <set>
+      <if test="username != null">
+        userName = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
         password = #{password,jdbcType=VARCHAR},
       </if>
-      <if test="username != null" >
-        username = #{username,jdbcType=VARCHAR},
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
       </if>
-      <if test="address != null" >
-        address = #{address,jdbcType=VARCHAR},
+      <if test="qq != null">
+        qq = #{qq,jdbcType=VARCHAR},
       </if>
-      <if test="phone != null" >
+      <if test="phone != null">
         phone = #{phone,jdbcType=VARCHAR},
       </if>
-      <if test="email != null" >
+      <if test="email != null">
         email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="registerdate != null">
+        registerDate = #{registerdate,jdbcType=DATE},
+      </if>
+      <if test="laterdate != null">
+        laterDate = #{laterdate,jdbcType=DATE},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="isonline != null">
+        isonline = #{isonline,jdbcType=INTEGER},
+      </if>
+      <if test="point != null">
+        point = #{point,jdbcType=BIGINT},
+      </if>
+      <if test="isagree != null">
+        isagree = #{isagree,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="studentid != null">
+        studentId = #{studentid,jdbcType=VARCHAR},
+      </if>
+      <if test="classid != null">
+        classId = #{classid,jdbcType=BIGINT},
+      </if>
+      <if test="cdkey != null">
+        cdKey = #{cdkey,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.hisun.common.bean.User" >
-    update t_user
-    set password = #{password,jdbcType=VARCHAR},
-      username = #{username,jdbcType=VARCHAR},
-      address = #{address,jdbcType=VARCHAR},
+  <update id="updateByPrimaryKey" parameterType="com.hisun.common.bean.User">
+    update users
+    set userName = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      qq = #{qq,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
-      email = #{email,jdbcType=VARCHAR}
+      email = #{email,jdbcType=VARCHAR},
+      registerDate = #{registerdate,jdbcType=DATE},
+      laterDate = #{laterdate,jdbcType=DATE},
+      status = #{status,jdbcType=INTEGER},
+      isonline = #{isonline,jdbcType=INTEGER},
+      point = #{point,jdbcType=BIGINT},
+      isagree = #{isagree,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      studentId = #{studentid,jdbcType=VARCHAR},
+      classId = #{classid,jdbcType=BIGINT},
+      cdKey = #{cdkey,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
+   
 </mapper>
