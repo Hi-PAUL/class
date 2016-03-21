@@ -9,20 +9,28 @@
     <result column="classId" property="classid" jdbcType="BIGINT" />
     <result column="createDate" property="createdate" jdbcType="DATE" />
   </resultMap>
+  
+  
   <sql id="Base_Column_List" >
     id, albumName, albumDesc, imageFM, classId, createDate
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+  
+  
+  <select id="getAlbumById" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from album
     where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+  
+  
+  <delete id="deleteById" parameterType="java.lang.Long" >
     delete from album
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.hisun.common.bean.Album" >
+  
+  
+  <insert id="insertAlbum" parameterType="com.hisun.common.bean.Album" >
     <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
       SELECT @@IDENTITY as column_name
     </selectKey>
@@ -31,68 +39,9 @@
     values (#{albumname,jdbcType=VARCHAR}, #{albumdesc,jdbcType=VARCHAR}, #{imagefm,jdbcType=VARCHAR}, 
       #{classid,jdbcType=BIGINT}, #{createdate,jdbcType=DATE})
   </insert>
-  <insert id="insertSelective" parameterType="com.hisun.common.bean.Album" >
-    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
-      SELECT @@IDENTITY as column_name
-    </selectKey>
-    insert into album
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="albumname != null" >
-        albumName,
-      </if>
-      <if test="albumdesc != null" >
-        albumDesc,
-      </if>
-      <if test="imagefm != null" >
-        imageFM,
-      </if>
-      <if test="classid != null" >
-        classId,
-      </if>
-      <if test="createdate != null" >
-        createDate,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="albumname != null" >
-        #{albumname,jdbcType=VARCHAR},
-      </if>
-      <if test="albumdesc != null" >
-        #{albumdesc,jdbcType=VARCHAR},
-      </if>
-      <if test="imagefm != null" >
-        #{imagefm,jdbcType=VARCHAR},
-      </if>
-      <if test="classid != null" >
-        #{classid,jdbcType=BIGINT},
-      </if>
-      <if test="createdate != null" >
-        #{createdate,jdbcType=DATE},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.hisun.common.bean.Album" >
-    update album
-    <set >
-      <if test="albumname != null" >
-        albumName = #{albumname,jdbcType=VARCHAR},
-      </if>
-      <if test="albumdesc != null" >
-        albumDesc = #{albumdesc,jdbcType=VARCHAR},
-      </if>
-      <if test="imagefm != null" >
-        imageFM = #{imagefm,jdbcType=VARCHAR},
-      </if>
-      <if test="classid != null" >
-        classId = #{classid,jdbcType=BIGINT},
-      </if>
-      <if test="createdate != null" >
-        createDate = #{createdate,jdbcType=DATE},
-      </if>
-    </set>
-    where id = #{id,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.hisun.common.bean.Album" >
+  
+ 
+  <update id="updateAlbum" parameterType="com.hisun.common.bean.Album" >
     update album
     set albumName = #{albumname,jdbcType=VARCHAR},
       albumDesc = #{albumdesc,jdbcType=VARCHAR},
@@ -101,4 +50,6 @@
       createDate = #{createdate,jdbcType=DATE}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  
+  
 </mapper>

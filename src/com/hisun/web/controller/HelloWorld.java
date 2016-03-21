@@ -27,7 +27,7 @@ public class HelloWorld
     public ModelAndView hello(@RequestParam(value = "id", required = false) Long id)
     {
         System.out.println("hello world");
-        User user=userService.selectByPrimaryKey(id);
+        User user=userService.getUserById(id);
         System.out.println(user);
         //成功后跳转到success.jsp页面，并带user数据
         ModelAndView model = new ModelAndView("success").addObject("user", user);

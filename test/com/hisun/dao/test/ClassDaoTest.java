@@ -35,7 +35,7 @@ public class ClassDaoTest extends AbstractJUnitTest
     public void testClassDao()
     {
         System.out.println("hello world test...");
-        System.out.println(classDao.selectByPrimaryKey(1L));
+        System.out.println(classDao.getClassById(1L));
     }
 
 

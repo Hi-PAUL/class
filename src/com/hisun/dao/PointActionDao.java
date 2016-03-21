@@ -1,26 +1,37 @@
 package com.hisun.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.stereotype.Repository;
 
 import com.hisun.common.bean.PointAction;
 
+/**
+ * 
+ * @类名： PointActionDao.java
+ * @描述：PointActionDao
+ * @作者： PAUL
+ * @修改日期： 2016年3月20日
+ *
+ */
 @Repository
 public interface PointActionDao
 {
-    int deleteByPrimaryKey(Long id);
+    void insertPointAction(PointAction PointAction);
 
 
-    int insert(PointAction record);
+    void deletePointActionById(Long id);
 
 
-    int insertSelective(PointAction record);
+    void updatePointAction(PointAction PointAction);
 
 
-    PointAction selectByPrimaryKey(Long id);
+    PointAction getPointActionById(Long id);
 
 
-    int updateByPrimaryKeySelective(PointAction record);
+    List<PointAction> getAllPointAction();
 
 
-    int updateByPrimaryKey(PointAction record);
+    List<PointAction> getPointActionByParams(Map<String, Object> params);
 }

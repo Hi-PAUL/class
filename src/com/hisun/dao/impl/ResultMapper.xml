@@ -14,21 +14,29 @@
     <result column="scores" property="scores" jdbcType="DOUBLE" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
   </resultMap>
+  
+  
   <sql id="Base_Column_List" >
     id, studentId, banBie, name, session, courseName, courseCode, period, credit, scores, 
     remark
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+  
+  
+  <select id="getResultById" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from result
     where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+  
+  
+  <delete id="deleteById" parameterType="java.lang.Long" >
     delete from result
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.hisun.common.bean.Result" >
+  
+  
+  <insert id="insertResult" parameterType="com.hisun.common.bean.Result" >
     <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
       SELECT @@IDENTITY as column_name
     </selectKey>
@@ -41,113 +49,9 @@
       #{period,jdbcType=INTEGER}, #{credit,jdbcType=INTEGER}, #{scores,jdbcType=DOUBLE}, 
       #{remark,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.hisun.common.bean.Result" >
-    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
-      SELECT @@IDENTITY as column_name
-    </selectKey>
-    insert into result
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="studentid != null" >
-        studentId,
-      </if>
-      <if test="banbie != null" >
-        banBie,
-      </if>
-      <if test="name != null" >
-        name,
-      </if>
-      <if test="session != null" >
-        session,
-      </if>
-      <if test="coursename != null" >
-        courseName,
-      </if>
-      <if test="coursecode != null" >
-        courseCode,
-      </if>
-      <if test="period != null" >
-        period,
-      </if>
-      <if test="credit != null" >
-        credit,
-      </if>
-      <if test="scores != null" >
-        scores,
-      </if>
-      <if test="remark != null" >
-        remark,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="studentid != null" >
-        #{studentid,jdbcType=VARCHAR},
-      </if>
-      <if test="banbie != null" >
-        #{banbie,jdbcType=VARCHAR},
-      </if>
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="session != null" >
-        #{session,jdbcType=VARCHAR},
-      </if>
-      <if test="coursename != null" >
-        #{coursename,jdbcType=VARCHAR},
-      </if>
-      <if test="coursecode != null" >
-        #{coursecode,jdbcType=VARCHAR},
-      </if>
-      <if test="period != null" >
-        #{period,jdbcType=INTEGER},
-      </if>
-      <if test="credit != null" >
-        #{credit,jdbcType=INTEGER},
-      </if>
-      <if test="scores != null" >
-        #{scores,jdbcType=DOUBLE},
-      </if>
-      <if test="remark != null" >
-        #{remark,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.hisun.common.bean.Result" >
-    update result
-    <set >
-      <if test="studentid != null" >
-        studentId = #{studentid,jdbcType=VARCHAR},
-      </if>
-      <if test="banbie != null" >
-        banBie = #{banbie,jdbcType=VARCHAR},
-      </if>
-      <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
-      </if>
-      <if test="session != null" >
-        session = #{session,jdbcType=VARCHAR},
-      </if>
-      <if test="coursename != null" >
-        courseName = #{coursename,jdbcType=VARCHAR},
-      </if>
-      <if test="coursecode != null" >
-        courseCode = #{coursecode,jdbcType=VARCHAR},
-      </if>
-      <if test="period != null" >
-        period = #{period,jdbcType=INTEGER},
-      </if>
-      <if test="credit != null" >
-        credit = #{credit,jdbcType=INTEGER},
-      </if>
-      <if test="scores != null" >
-        scores = #{scores,jdbcType=DOUBLE},
-      </if>
-      <if test="remark != null" >
-        remark = #{remark,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.hisun.common.bean.Result" >
+  
+  
+  <update id="updateResult" parameterType="com.hisun.common.bean.Result" >
     update result
     set studentId = #{studentid,jdbcType=VARCHAR},
       banBie = #{banbie,jdbcType=VARCHAR},
@@ -161,4 +65,6 @@
       remark = #{remark,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  
+  
 </mapper>

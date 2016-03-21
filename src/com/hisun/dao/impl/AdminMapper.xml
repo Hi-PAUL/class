@@ -14,21 +14,29 @@
     <result column="status" property="status" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
   </resultMap>
+  
+  
   <sql id="Base_Column_List" >
     id, adminName, password, sex, phone, email, level, registerDate, laterDate, status, 
     name
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+  
+  
+  <select id="getAdminById" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from admin
     where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+  
+  
+  <delete id="deleteById" parameterType="java.lang.Long" >
     delete from admin
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.hisun.common.bean.Admin" >
+  
+  
+  <insert id="insertAdmin" parameterType="com.hisun.common.bean.Admin" >
     <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
       SELECT @@IDENTITY as column_name
     </selectKey>
@@ -41,113 +49,9 @@
       #{registerdate,jdbcType=DATE}, #{laterdate,jdbcType=DATE}, #{status,jdbcType=INTEGER}, 
       #{name,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.hisun.common.bean.Admin" >
-    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
-      SELECT @@IDENTITY as column_name
-    </selectKey>
-    insert into admin
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="adminname != null" >
-        adminName,
-      </if>
-      <if test="password != null" >
-        password,
-      </if>
-      <if test="sex != null" >
-        sex,
-      </if>
-      <if test="phone != null" >
-        phone,
-      </if>
-      <if test="email != null" >
-        email,
-      </if>
-      <if test="level != null" >
-        level,
-      </if>
-      <if test="registerdate != null" >
-        registerDate,
-      </if>
-      <if test="laterdate != null" >
-        laterDate,
-      </if>
-      <if test="status != null" >
-        status,
-      </if>
-      <if test="name != null" >
-        name,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="adminname != null" >
-        #{adminname,jdbcType=VARCHAR},
-      </if>
-      <if test="password != null" >
-        #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="sex != null" >
-        #{sex,jdbcType=VARCHAR},
-      </if>
-      <if test="phone != null" >
-        #{phone,jdbcType=VARCHAR},
-      </if>
-      <if test="email != null" >
-        #{email,jdbcType=VARCHAR},
-      </if>
-      <if test="level != null" >
-        #{level,jdbcType=INTEGER},
-      </if>
-      <if test="registerdate != null" >
-        #{registerdate,jdbcType=DATE},
-      </if>
-      <if test="laterdate != null" >
-        #{laterdate,jdbcType=DATE},
-      </if>
-      <if test="status != null" >
-        #{status,jdbcType=INTEGER},
-      </if>
-      <if test="name != null" >
-        #{name,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.hisun.common.bean.Admin" >
-    update admin
-    <set >
-      <if test="adminname != null" >
-        adminName = #{adminname,jdbcType=VARCHAR},
-      </if>
-      <if test="password != null" >
-        password = #{password,jdbcType=VARCHAR},
-      </if>
-      <if test="sex != null" >
-        sex = #{sex,jdbcType=VARCHAR},
-      </if>
-      <if test="phone != null" >
-        phone = #{phone,jdbcType=VARCHAR},
-      </if>
-      <if test="email != null" >
-        email = #{email,jdbcType=VARCHAR},
-      </if>
-      <if test="level != null" >
-        level = #{level,jdbcType=INTEGER},
-      </if>
-      <if test="registerdate != null" >
-        registerDate = #{registerdate,jdbcType=DATE},
-      </if>
-      <if test="laterdate != null" >
-        laterDate = #{laterdate,jdbcType=DATE},
-      </if>
-      <if test="status != null" >
-        status = #{status,jdbcType=INTEGER},
-      </if>
-      <if test="name != null" >
-        name = #{name,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.hisun.common.bean.Admin" >
+  
+  
+  <update id="updateAdmin" parameterType="com.hisun.common.bean.Admin" >
     update admin
     set adminName = #{adminname,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
@@ -161,4 +65,6 @@
       name = #{name,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  
+  
 </mapper>

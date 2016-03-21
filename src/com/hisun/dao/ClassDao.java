@@ -1,26 +1,37 @@
 package com.hisun.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.stereotype.Repository;
 
 import com.hisun.common.bean.Class;
 
+/**
+ * 
+ * @类名： ClassDao.java
+ * @描述：ClassDao
+ * @作者： PAUL
+ * @修改日期： 2016年3月20日
+ *
+ */
 @Repository
 public interface ClassDao
 {
-    int deleteByPrimaryKey(Long id);
+    void insertClass(Class Class);
 
 
-    int insert(Class record);
+    void deleteClassById(Long id);
 
 
-    int insertSelective(Class record);
+    void updateClass(Class Class);
 
 
-    Class selectByPrimaryKey(Long id);
+    Class getClassById(Long id);
 
 
-    int updateByPrimaryKeySelective(Class record);
+    List<Class> getAllClass();
 
 
-    int updateByPrimaryKey(Class record);
+    List<Class> getClassByParams(Map<String, Object> params);
 }

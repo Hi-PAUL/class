@@ -1,26 +1,37 @@
 package com.hisun.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.stereotype.Repository;
 
 import com.hisun.common.bean.Space;
 
+/**
+ * 
+ * @类名： SpaceDao.java
+ * @描述：SpaceDao
+ * @作者： PAUL
+ * @修改日期： 2016年3月20日
+ *
+ */
 @Repository
 public interface SpaceDao
 {
-    int deleteByPrimaryKey(Long id);
+    void insertSpace(Space Space);
 
 
-    int insert(Space record);
+    void deleteSpaceById(Long id);
 
 
-    int insertSelective(Space record);
+    void updateSpace(Space Space);
 
 
-    Space selectByPrimaryKey(Long id);
+    Space getSpaceById(Long id);
 
 
-    int updateByPrimaryKeySelective(Space record);
+    List<Space> getAllSpace();
 
 
-    int updateByPrimaryKey(Space record);
+    List<Space> getSpaceByParams(Map<String, Object> params);
 }

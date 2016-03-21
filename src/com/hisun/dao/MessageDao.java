@@ -1,26 +1,37 @@
 package com.hisun.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.stereotype.Repository;
 
 import com.hisun.common.bean.Message;
 
+/**
+ * 
+ * @类名： MessageDao.java
+ * @描述：MessageDao
+ * @作者： PAUL
+ * @修改日期： 2016年3月20日
+ *
+ */
 @Repository
 public interface MessageDao
 {
-    int deleteByPrimaryKey(Long id);
+    void insertMessage(Message Message);
 
 
-    int insert(Message record);
+    void deleteMessageById(Long id);
 
 
-    int insertSelective(Message record);
+    void updateMessage(Message Message);
 
 
-    Message selectByPrimaryKey(Long id);
+    Message getMessageById(Long id);
 
 
-    int updateByPrimaryKeySelective(Message record);
+    List<Message> getAllMessage();
 
 
-    int updateByPrimaryKey(Message record);
+    List<Message> getMessageByParams(Map<String, Object> params);
 }

@@ -4,8 +4,8 @@ import java.util.Date;
 
 /**
  * 
- * @类名： Album.java
- * @描述：Album
+ * @类名： Message.java
+ * @描述：Message
  * @作者： PAUL
  * @修改日期： 2016年3月20日
  *

@@ -35,7 +35,7 @@ public class PhotoDaoTest extends AbstractJUnitTest
     public void testPhotoDao()
     {
         System.out.println("hello world test...");
-        System.out.println(photoDao.selectByPrimaryKey(1L));
+        System.out.println(photoDao.getPhotoById(1L));
     }
 
 

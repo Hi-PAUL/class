@@ -1,26 +1,37 @@
 package com.hisun.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.stereotype.Repository;
 
 import com.hisun.common.bean.Notice;
 
+/**
+ * 
+ * @类名： NoticeDao.java
+ * @描述：NoticeDao
+ * @作者： PAUL
+ * @修改日期： 2016年3月20日
+ *
+ */
 @Repository
 public interface NoticeDao
 {
-    int deleteByPrimaryKey(Long id);
+    void insertNotice(Notice Notice);
 
 
-    int insert(Notice record);
+    void deleteNoticeById(Long id);
 
 
-    int insertSelective(Notice record);
+    void updateNotice(Notice Notice);
 
 
-    Notice selectByPrimaryKey(Long id);
+    Notice getNoticeById(Long id);
 
 
-    int updateByPrimaryKeySelective(Notice record);
+    List<Notice> getAllNotice();
 
 
-    int updateByPrimaryKey(Notice record);
+    List<Notice> getNoticeByParams(Map<String, Object> params);
 }

@@ -2,8 +2,8 @@ package com.hisun.common.bean;
 
 /**
  * 
- * @类名： Album.java
- * @描述：Album
+ * @类名： Result.java
+ * @描述：Result
  * @作者： PAUL
  * @修改日期： 2016年3月20日
  *

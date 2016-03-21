@@ -35,7 +35,7 @@ public class ResultDaoTest extends AbstractJUnitTest
     public void testUserDao()
     {
         System.out.println("hello world test...");
-        System.out.println(resultDao.selectByPrimaryKey(1L));
+        System.out.println(resultDao.getResultById(1L));
     }
 
 

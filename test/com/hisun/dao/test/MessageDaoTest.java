@@ -35,7 +35,7 @@ public class MessageDaoTest extends AbstractJUnitTest
     public void testMessageDao()
     {
         System.out.println("hello world test...");
-        System.out.println(messageDao.selectByPrimaryKey(1L));
+        System.out.println(messageDao.getMessageById(1L));
     }
 
 

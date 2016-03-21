@@ -10,20 +10,28 @@
     <result column="classId" property="classid" jdbcType="BIGINT" />
     <result column="dateline" property="dateline" jdbcType="DATE" />
   </resultMap>
+  
+  
   <sql id="Base_Column_List" >
     id, publisher, title, sex, content, classId, dateline
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+  
+  
+  <select id="getNoticeById" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from notice
     where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+  
+  
+  <delete id="deleteById" parameterType="java.lang.Long" >
     delete from notice
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.hisun.common.bean.Notice" >
+  
+  
+  <insert id="insertNotice" parameterType="com.hisun.common.bean.Notice" >
     <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
       SELECT @@IDENTITY as column_name
     </selectKey>
@@ -34,77 +42,9 @@
       #{content,jdbcType=VARCHAR}, #{classid,jdbcType=BIGINT}, #{dateline,jdbcType=DATE}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.hisun.common.bean.Notice" >
-    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
-      SELECT @@IDENTITY as column_name
-    </selectKey>
-    insert into notice
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="publisher != null" >
-        publisher,
-      </if>
-      <if test="title != null" >
-        title,
-      </if>
-      <if test="sex != null" >
-        sex,
-      </if>
-      <if test="content != null" >
-        content,
-      </if>
-      <if test="classid != null" >
-        classId,
-      </if>
-      <if test="dateline != null" >
-        dateline,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="publisher != null" >
-        #{publisher,jdbcType=VARCHAR},
-      </if>
-      <if test="title != null" >
-        #{title,jdbcType=VARCHAR},
-      </if>
-      <if test="sex != null" >
-        #{sex,jdbcType=VARCHAR},
-      </if>
-      <if test="content != null" >
-        #{content,jdbcType=VARCHAR},
-      </if>
-      <if test="classid != null" >
-        #{classid,jdbcType=BIGINT},
-      </if>
-      <if test="dateline != null" >
-        #{dateline,jdbcType=DATE},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.hisun.common.bean.Notice" >
-    update notice
-    <set >
-      <if test="publisher != null" >
-        publisher = #{publisher,jdbcType=VARCHAR},
-      </if>
-      <if test="title != null" >
-        title = #{title,jdbcType=VARCHAR},
-      </if>
-      <if test="sex != null" >
-        sex = #{sex,jdbcType=VARCHAR},
-      </if>
-      <if test="content != null" >
-        content = #{content,jdbcType=VARCHAR},
-      </if>
-      <if test="classid != null" >
-        classId = #{classid,jdbcType=BIGINT},
-      </if>
-      <if test="dateline != null" >
-        dateline = #{dateline,jdbcType=DATE},
-      </if>
-    </set>
-    where id = #{id,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.hisun.common.bean.Notice" >
+  
+ 
+  <update id="updateNotice" parameterType="com.hisun.common.bean.Notice" >
     update notice
     set publisher = #{publisher,jdbcType=VARCHAR},
       title = #{title,jdbcType=VARCHAR},
@@ -114,4 +54,6 @@
       dateline = #{dateline,jdbcType=DATE}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  
+  
 </mapper>

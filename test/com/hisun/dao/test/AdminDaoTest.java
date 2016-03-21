@@ -35,7 +35,7 @@ public class AdminDaoTest extends AbstractJUnitTest
     public void testAdminDao()
     {
         System.out.println("hello world test...");
-        System.out.println(adminDao.selectByPrimaryKey(1L));
+        System.out.println(adminDao.getAdminById(1L));
     }
 
 

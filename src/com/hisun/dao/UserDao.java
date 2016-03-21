@@ -1,26 +1,38 @@
 package com.hisun.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.stereotype.Repository;
 
 import com.hisun.common.bean.User;
 
+/**
+ * 
+ * @类名： UserDao.java
+ * @描述：UserDao
+ * @作者： PAUL
+ * @修改日期： 2016年3月20日
+ *
+ */
 @Repository
 public interface UserDao
 {
-    int deleteByPrimaryKey(Long id);
+    void insertUser(User user);
 
 
-    int insert(User record);
+    void deleteUserById(Long id);
 
 
-    int insertSelective(User record);
+    void updateUser(User User);
 
 
-    User selectByPrimaryKey(Long id);
+    User getUserById(Long id);
 
 
-    int updateByPrimaryKeySelective(User record);
+    List<User> getAllUser();
 
 
-    int updateByPrimaryKey(User record);
+    List<User> getUserByParams(Map<String, Object> params);
+
 }

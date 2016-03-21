@@ -35,7 +35,7 @@ public class AlbumDaoTest extends AbstractJUnitTest
     public void testAlbumDao()
     {
         System.out.println("hello world test...");
-        System.out.println(albumDao.selectByPrimaryKey(1L));
+        System.out.println(albumDao.getAlbumById(1L));
     }
 
 

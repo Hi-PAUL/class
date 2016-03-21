@@ -14,20 +14,28 @@
     <result column="classId" property="classid" jdbcType="BIGINT" />
     <result column="dateline" property="dateline" jdbcType="DATE" />
   </resultMap>
+  
+  
   <sql id="Base_Column_List" >
     id, userName, title, sex, url, qq, content, reply, faceUrl, classId, dateline
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+  
+  
+  <select id="getMessageById" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from message
     where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+  
+  
+  <delete id="deleteById" parameterType="java.lang.Long" >
     delete from message
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.hisun.common.bean.Message" >
+  
+  
+  <insert id="insertMessage" parameterType="com.hisun.common.bean.Message" >
     <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
       SELECT @@IDENTITY as column_name
     </selectKey>
@@ -40,113 +48,9 @@
       #{faceurl,jdbcType=VARCHAR}, #{classid,jdbcType=BIGINT}, #{dateline,jdbcType=DATE}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.hisun.common.bean.Message" >
-    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
-      SELECT @@IDENTITY as column_name
-    </selectKey>
-    insert into message
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="username != null" >
-        userName,
-      </if>
-      <if test="title != null" >
-        title,
-      </if>
-      <if test="sex != null" >
-        sex,
-      </if>
-      <if test="url != null" >
-        url,
-      </if>
-      <if test="qq != null" >
-        qq,
-      </if>
-      <if test="content != null" >
-        content,
-      </if>
-      <if test="reply != null" >
-        reply,
-      </if>
-      <if test="faceurl != null" >
-        faceUrl,
-      </if>
-      <if test="classid != null" >
-        classId,
-      </if>
-      <if test="dateline != null" >
-        dateline,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="username != null" >
-        #{username,jdbcType=VARCHAR},
-      </if>
-      <if test="title != null" >
-        #{title,jdbcType=VARCHAR},
-      </if>
-      <if test="sex != null" >
-        #{sex,jdbcType=VARCHAR},
-      </if>
-      <if test="url != null" >
-        #{url,jdbcType=VARCHAR},
-      </if>
-      <if test="qq != null" >
-        #{qq,jdbcType=VARCHAR},
-      </if>
-      <if test="content != null" >
-        #{content,jdbcType=VARCHAR},
-      </if>
-      <if test="reply != null" >
-        #{reply,jdbcType=VARCHAR},
-      </if>
-      <if test="faceurl != null" >
-        #{faceurl,jdbcType=VARCHAR},
-      </if>
-      <if test="classid != null" >
-        #{classid,jdbcType=BIGINT},
-      </if>
-      <if test="dateline != null" >
-        #{dateline,jdbcType=DATE},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.hisun.common.bean.Message" >
-    update message
-    <set >
-      <if test="username != null" >
-        userName = #{username,jdbcType=VARCHAR},
-      </if>
-      <if test="title != null" >
-        title = #{title,jdbcType=VARCHAR},
-      </if>
-      <if test="sex != null" >
-        sex = #{sex,jdbcType=VARCHAR},
-      </if>
-      <if test="url != null" >
-        url = #{url,jdbcType=VARCHAR},
-      </if>
-      <if test="qq != null" >
-        qq = #{qq,jdbcType=VARCHAR},
-      </if>
-      <if test="content != null" >
-        content = #{content,jdbcType=VARCHAR},
-      </if>
-      <if test="reply != null" >
-        reply = #{reply,jdbcType=VARCHAR},
-      </if>
-      <if test="faceurl != null" >
-        faceUrl = #{faceurl,jdbcType=VARCHAR},
-      </if>
-      <if test="classid != null" >
-        classId = #{classid,jdbcType=BIGINT},
-      </if>
-      <if test="dateline != null" >
-        dateline = #{dateline,jdbcType=DATE},
-      </if>
-    </set>
-    where id = #{id,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.hisun.common.bean.Message" >
+  
+  
+  <update id="updateMessage" parameterType="com.hisun.common.bean.Message" >
     update message
     set userName = #{username,jdbcType=VARCHAR},
       title = #{title,jdbcType=VARCHAR},
@@ -160,4 +64,6 @@
       dateline = #{dateline,jdbcType=DATE}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  
+  
 </mapper>

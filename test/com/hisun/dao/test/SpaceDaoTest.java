@@ -35,7 +35,7 @@ public class SpaceDaoTest extends AbstractJUnitTest
     public void testSpaceDao()
     {
         System.out.println("hello world test...");
-        System.out.println(spaceDao.selectByPrimaryKey(1L));
+        System.out.println(spaceDao.getSpaceById(1L));
     }
 
 

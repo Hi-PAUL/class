@@ -1,26 +1,37 @@
 package com.hisun.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.stereotype.Repository;
 
 import com.hisun.common.bean.Result;
 
+/**
+ * 
+ * @类名： ResultDao.java
+ * @描述：ResultDao
+ * @作者： PAUL
+ * @修改日期： 2016年3月20日
+ *
+ */
 @Repository
 public interface ResultDao
 {
-    int deleteByPrimaryKey(Long id);
+    void insertResult(Result Result);
 
 
-    int insert(Result record);
+    void deleteResultById(Long id);
 
 
-    int insertSelective(Result record);
+    void updateResult(Result Result);
 
 
-    Result selectByPrimaryKey(Long id);
+    Result getResultById(Long id);
 
 
-    int updateByPrimaryKeySelective(Result record);
+    List<Result> getAllResult();
 
 
-    int updateByPrimaryKey(Result record);
+    List<Result> getResultByParams(Map<String, Object> params);
 }

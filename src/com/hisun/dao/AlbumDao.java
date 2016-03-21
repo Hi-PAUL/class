@@ -1,26 +1,37 @@
 package com.hisun.dao;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.stereotype.Repository;
 
 import com.hisun.common.bean.Album;
 
+/**
+ * 
+ * @类名： AlbumDao.java
+ * @描述：AlbumDao
+ * @作者： PAUL
+ * @修改日期： 2016年3月20日
+ *
+ */
 @Repository
 public interface AlbumDao
 {
-    int deleteByPrimaryKey(Long id);
+    void insertAlbum(Album Album);
 
 
-    int insert(Album record);
+    void deleteAlbumById(Long id);
 
 
-    int insertSelective(Album record);
+    void updateAlbum(Album Album);
 
 
-    Album selectByPrimaryKey(Long id);
+    Album getAlbumById(Long id);
 
 
-    int updateByPrimaryKeySelective(Album record);
+    List<Album> getAllAlbum();
 
 
-    int updateByPrimaryKey(Album record);
+    List<Album> getAlbumByParams(Map<String, Object> params);
 }

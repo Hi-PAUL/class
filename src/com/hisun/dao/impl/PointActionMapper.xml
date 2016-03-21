@@ -7,20 +7,28 @@
     <result column="point" property="point" jdbcType="INTEGER" />
     <result column="description" property="description" jdbcType="VARCHAR" />
   </resultMap>
+  
+  
   <sql id="Base_Column_List" >
     id, actionname, point, description
   </sql>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+  
+  
+  <select id="getPointActionById" resultMap="BaseResultMap" parameterType="java.lang.Long" >
     select 
     <include refid="Base_Column_List" />
     from pointaction
     where id = #{id,jdbcType=BIGINT}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+  
+  
+  <delete id="deleteById" parameterType="java.lang.Long" >
     delete from pointaction
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.hisun.common.bean.PointAction" >
+  
+  
+  <insert id="insertPointAction" parameterType="com.hisun.common.bean.PointAction" >
     <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
       SELECT @@IDENTITY as column_name
     </selectKey>
@@ -29,54 +37,15 @@
     values (#{actionname,jdbcType=VARCHAR}, #{point,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.hisun.common.bean.PointAction" >
-    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
-      SELECT @@IDENTITY as column_name
-    </selectKey>
-    insert into pointaction
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="actionname != null" >
-        actionname,
-      </if>
-      <if test="point != null" >
-        point,
-      </if>
-      <if test="description != null" >
-        description,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="actionname != null" >
-        #{actionname,jdbcType=VARCHAR},
-      </if>
-      <if test="point != null" >
-        #{point,jdbcType=INTEGER},
-      </if>
-      <if test="description != null" >
-        #{description,jdbcType=VARCHAR},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.hisun.common.bean.PointAction" >
-    update pointaction
-    <set >
-      <if test="actionname != null" >
-        actionname = #{actionname,jdbcType=VARCHAR},
-      </if>
-      <if test="point != null" >
-        point = #{point,jdbcType=INTEGER},
-      </if>
-      <if test="description != null" >
-        description = #{description,jdbcType=VARCHAR},
-      </if>
-    </set>
-    where id = #{id,jdbcType=BIGINT}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.hisun.common.bean.PointAction" >
+  
+  
+  <update id="updatePointAction" parameterType="com.hisun.common.bean.PointAction" >
     update pointaction
     set actionname = #{actionname,jdbcType=VARCHAR},
       point = #{point,jdbcType=INTEGER},
       description = #{description,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
   </update>
+  
+  
 </mapper>

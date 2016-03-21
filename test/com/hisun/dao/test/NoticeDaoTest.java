@@ -35,7 +35,7 @@ public class NoticeDaoTest extends AbstractJUnitTest
     public void testNoticeDao()
     {
         System.out.println("hello world test...");
-        System.out.println(noticeDao.selectByPrimaryKey(1L));
+        System.out.println(noticeDao.getNoticeById(1L));
     }
 
 
