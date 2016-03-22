@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hisun.dao.UserDao">
+  <resultMap id="BaseResultMap" type="com.hisun.common.bean.User">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="userName" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="qq" jdbcType="VARCHAR" property="qq" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="registerDate" jdbcType="DATE" property="registerdate" />
+    <result column="laterDate" jdbcType="DATE" property="laterdate" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="isonline" jdbcType="INTEGER" property="isonline" />
+    <result column="point" jdbcType="BIGINT" property="point" />
+    <result column="isagree" jdbcType="INTEGER" property="isagree" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="studentId" jdbcType="VARCHAR" property="studentid" />
+    <result column="classId" jdbcType="BIGINT" property="classid" />
+    <result column="cdKey" jdbcType="VARCHAR" property="cdkey" />
+  </resultMap>
+  
+  
+  <sql id="Base_Column_List">
+    id, userName, password, sex, qq, phone, email, registerDate, laterDate, status, isonline, 
+    point, isagree, name, studentId, classId, cdKey
+  </sql>
+  
+  
+  <select id="getUserById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from users
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  
+  
+  <delete id="deleteById" parameterType="java.lang.Long">
+    delete from users
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  
+  
+  <insert id="insertUser" parameterType="com.hisun.common.bean.User">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT @@IDENTITY as column_name
+    </selectKey>
+    insert into users (userName, password, sex, 
+      qq, phone, email, registerDate, 
+      laterDate, status, isonline, 
+      point, isagree, name, 
+      studentId, classId, cdKey
+      )
+    values (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
+      #{qq,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{registerdate,jdbcType=DATE}, 
+      #{laterdate,jdbcType=DATE}, #{status,jdbcType=INTEGER}, #{isonline,jdbcType=INTEGER}, 
+      #{point,jdbcType=BIGINT}, #{isagree,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{studentid,jdbcType=VARCHAR}, #{classid,jdbcType=BIGINT}, #{cdkey,jdbcType=VARCHAR}
+      )
+  </insert>
+  
+  
+  <update id="updateUser" parameterType="com.hisun.common.bean.User">
+    update users
+    set userName = #{username,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      qq = #{qq,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      registerDate = #{registerdate,jdbcType=DATE},
+      laterDate = #{laterdate,jdbcType=DATE},
+      status = #{status,jdbcType=INTEGER},
+      isonline = #{isonline,jdbcType=INTEGER},
+      point = #{point,jdbcType=BIGINT},
+      isagree = #{isagree,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      studentId = #{studentid,jdbcType=VARCHAR},
+      classId = #{classid,jdbcType=BIGINT},
+      cdKey = #{cdkey,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+   
+</mapper>

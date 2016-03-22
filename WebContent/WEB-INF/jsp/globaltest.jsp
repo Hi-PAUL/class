@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <html>
@@ -15,7 +14,7 @@
        下面展示的是视图中直接绑定的国际化信息：<br/><br/>
    
    username : <spring:message code="username"/><br/>
-   password : <fmt:message key="password"/><br/>
+   password : <spring:message code="password"/><br/>
     
 </body>
 </html>

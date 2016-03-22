@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hisun.dao.NoticeDao" >
+  <resultMap id="BaseResultMap" type="com.hisun.common.bean.Notice" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="publisher" property="publisher" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="classId" property="classid" jdbcType="BIGINT" />
+    <result column="dateline" property="dateline" jdbcType="DATE" />
+  </resultMap>
+  
+  
+  <sql id="Base_Column_List" >
+    id, publisher, title, sex, content, classId, dateline
+  </sql>
+  
+  
+  <select id="getNoticeById" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from notice
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  
+  
+  <delete id="deleteById" parameterType="java.lang.Long" >
+    delete from notice
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  
+  
+  <insert id="insertNotice" parameterType="com.hisun.common.bean.Notice" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT @@IDENTITY as column_name
+    </selectKey>
+    insert into notice (publisher, title, sex, 
+      content, classId, dateline
+      )
+    values (#{publisher,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
+      #{content,jdbcType=VARCHAR}, #{classid,jdbcType=BIGINT}, #{dateline,jdbcType=DATE}
+      )
+  </insert>
+  
+ 
+  <update id="updateNotice" parameterType="com.hisun.common.bean.Notice" >
+    update notice
+    set publisher = #{publisher,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      classId = #{classid,jdbcType=BIGINT},
+      dateline = #{dateline,jdbcType=DATE}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  
+</mapper>

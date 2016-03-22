@@ -11,7 +11,6 @@
 <h3> id : ${user.id}</h3>
 <h3> username : ${user.username}</h3>
 <h3> password : ${user.password}</h3>
-<h3> address : ${user.address}</h3>
 <h3> phone : ${user.phone}</h3>
 <h3> email : ${user.email}</h3>
 </body>

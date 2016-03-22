@@ -39,7 +39,17 @@ public class HelloWorld
     {
         System.out.println("hello world");
         
-        ModelAndView model = new ModelAndView("../globaltest");
+        ModelAndView model = new ModelAndView("globaltest");
+        return model;
+    }
+    
+    
+    @RequestMapping(value = "easyui", method = RequestMethod.GET)
+    public ModelAndView global2()
+    {
+        System.out.println("hello world");
+        
+        ModelAndView model = new ModelAndView("easyui");
         return model;
     }
     

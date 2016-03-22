@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hisun.dao.ClassDao" >
+  <resultMap id="BaseResultMap" type="com.hisun.common.bean.Class" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="college" property="college" jdbcType="VARCHAR" />
+    <result column="major" property="major" jdbcType="VARCHAR" />
+    <result column="className" property="classname" jdbcType="VARCHAR" />
+    <result column="classAdviser" property="classadviser" jdbcType="VARCHAR" />
+    <result column="number" property="number" jdbcType="INTEGER" />
+    <result column="slogan" property="slogan" jdbcType="VARCHAR" />
+    <result column="introduce" property="introduce" jdbcType="VARCHAR" />
+    <result column="honour" property="honour" jdbcType="VARCHAR" />
+    <result column="feature" property="feature" jdbcType="VARCHAR" />
+    <result column="createDate" property="createdate" jdbcType="DATE" />
+  </resultMap>
+  
+  
+  <sql id="Base_Column_List" >
+    id, college, major, className, classAdviser, number, slogan, introduce, honour, feature, 
+    createDate
+  </sql>
+  
+  
+  <select id="getClassById" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from class
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  
+  
+  <delete id="deleteById" parameterType="java.lang.Long" >
+    delete from class
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  
+  
+  <insert id="insertClass" parameterType="com.hisun.common.bean.Class" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT @@IDENTITY as column_name
+    </selectKey>
+    insert into class (college, major, className, 
+      classAdviser, number, slogan, 
+      introduce, honour, feature, 
+      createDate)
+    values (#{college,jdbcType=VARCHAR}, #{major,jdbcType=VARCHAR}, #{classname,jdbcType=VARCHAR}, 
+      #{classadviser,jdbcType=VARCHAR}, #{number,jdbcType=INTEGER}, #{slogan,jdbcType=VARCHAR}, 
+      #{introduce,jdbcType=VARCHAR}, #{honour,jdbcType=VARCHAR}, #{feature,jdbcType=VARCHAR}, 
+      #{createdate,jdbcType=DATE})
+  </insert>
+  
+  
+  <update id="updateClass" parameterType="com.hisun.common.bean.Class" >
+    update class
+    set college = #{college,jdbcType=VARCHAR},
+      major = #{major,jdbcType=VARCHAR},
+      className = #{classname,jdbcType=VARCHAR},
+      classAdviser = #{classadviser,jdbcType=VARCHAR},
+      number = #{number,jdbcType=INTEGER},
+      slogan = #{slogan,jdbcType=VARCHAR},
+      introduce = #{introduce,jdbcType=VARCHAR},
+      honour = #{honour,jdbcType=VARCHAR},
+      feature = #{feature,jdbcType=VARCHAR},
+      createDate = #{createdate,jdbcType=DATE}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  
+</mapper>

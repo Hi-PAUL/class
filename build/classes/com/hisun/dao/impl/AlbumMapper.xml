@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hisun.dao.AlbumDao" >
+  <resultMap id="BaseResultMap" type="com.hisun.common.bean.Album" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="albumName" property="albumname" jdbcType="VARCHAR" />
+    <result column="albumDesc" property="albumdesc" jdbcType="VARCHAR" />
+    <result column="imageFM" property="imagefm" jdbcType="VARCHAR" />
+    <result column="classId" property="classid" jdbcType="BIGINT" />
+    <result column="createDate" property="createdate" jdbcType="DATE" />
+  </resultMap>
+  
+  
+  <sql id="Base_Column_List" >
+    id, albumName, albumDesc, imageFM, classId, createDate
+  </sql>
+  
+  
+  <select id="getAlbumById" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from album
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  
+  
+  <delete id="deleteById" parameterType="java.lang.Long" >
+    delete from album
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  
+  
+  <insert id="insertAlbum" parameterType="com.hisun.common.bean.Album" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT @@IDENTITY as column_name
+    </selectKey>
+    insert into album (albumName, albumDesc, imageFM, 
+      classId, createDate)
+    values (#{albumname,jdbcType=VARCHAR}, #{albumdesc,jdbcType=VARCHAR}, #{imagefm,jdbcType=VARCHAR}, 
+      #{classid,jdbcType=BIGINT}, #{createdate,jdbcType=DATE})
+  </insert>
+  
+ 
+  <update id="updateAlbum" parameterType="com.hisun.common.bean.Album" >
+    update album
+    set albumName = #{albumname,jdbcType=VARCHAR},
+      albumDesc = #{albumdesc,jdbcType=VARCHAR},
+      imageFM = #{imagefm,jdbcType=VARCHAR},
+      classId = #{classid,jdbcType=BIGINT},
+      createDate = #{createdate,jdbcType=DATE}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  
+</mapper>

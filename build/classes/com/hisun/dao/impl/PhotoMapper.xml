@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hisun.dao.PhotoDao" >
+  <resultMap id="BaseResultMap" type="com.hisun.common.bean.Photo" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="author" property="author" jdbcType="VARCHAR" />
+    <result column="path" property="path" jdbcType="VARCHAR" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="contents" property="contents" jdbcType="VARCHAR" />
+    <result column="albumName" property="albumname" jdbcType="VARCHAR" />
+    <result column="albumId" property="albumid" jdbcType="BIGINT" />
+    <result column="hits" property="hits" jdbcType="BIGINT" />
+    <result column="praise" property="praise" jdbcType="BIGINT" />
+    <result column="pubDate" property="pubdate" jdbcType="DATE" />
+  </resultMap>
+  
+  
+  <sql id="Base_Column_List" >
+    id, author, path, title, contents, albumName, albumId, hits, praise, pubDate
+  </sql>
+  
+  
+  <select id="getPhotoById" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from photo
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  
+  
+  <delete id="deleteById" parameterType="java.lang.Long" >
+    delete from photo
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  
+  
+  <insert id="insertPhoto" parameterType="com.hisun.common.bean.Photo" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT @@IDENTITY as column_name
+    </selectKey>
+    insert into photo (author, path, title, 
+      contents, albumName, albumId, 
+      hits, praise, pubDate)
+    values (#{author,jdbcType=VARCHAR}, #{path,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
+      #{contents,jdbcType=VARCHAR}, #{albumname,jdbcType=VARCHAR}, #{albumid,jdbcType=BIGINT}, 
+      #{hits,jdbcType=BIGINT}, #{praise,jdbcType=BIGINT}, #{pubdate,jdbcType=DATE})
+  </insert>
+  
+  
+  <update id="updatePhoto" parameterType="com.hisun.common.bean.Photo" >
+    update photo
+    set author = #{author,jdbcType=VARCHAR},
+      path = #{path,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      contents = #{contents,jdbcType=VARCHAR},
+      albumName = #{albumname,jdbcType=VARCHAR},
+      albumId = #{albumid,jdbcType=BIGINT},
+      hits = #{hits,jdbcType=BIGINT},
+      praise = #{praise,jdbcType=BIGINT},
+      pubDate = #{pubdate,jdbcType=DATE}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  
+</mapper>

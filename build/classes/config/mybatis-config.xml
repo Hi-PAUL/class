@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration  
+  PUBLIC "-//mybatis.org//DTDConfig 3.0//EN"  
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<mappers>
+		
+		<mapper resource="com/hisun/dao/impl/AdminMapper.xml" />
+		<mapper resource="com/hisun/dao/impl/AlbumMapper.xml" />
+		<mapper resource="com/hisun/dao/impl/ClassMapper.xml" />
+		<mapper resource="com/hisun/dao/impl/MessageMapper.xml" />
+		<mapper resource="com/hisun/dao/impl/NoticeMapper.xml" />
+		<mapper resource="com/hisun/dao/impl/PhotoMapper.xml" />
+		<mapper resource="com/hisun/dao/impl/PointActionMapper.xml" />
+		<mapper resource="com/hisun/dao/impl/ResultMapper.xml" />
+		<mapper resource="com/hisun/dao/impl/SpaceMapper.xml" />
+		<mapper resource="com/hisun/dao/impl/UserMapper.xml" />
+	</mappers>
+</configuration> 

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hisun.dao.AdminDao" >
+  <resultMap id="BaseResultMap" type="com.hisun.common.bean.Admin" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="adminName" property="adminname" jdbcType="VARCHAR" />
+    <result column="password" property="password" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="level" property="level" jdbcType="INTEGER" />
+    <result column="registerDate" property="registerdate" jdbcType="DATE" />
+    <result column="laterDate" property="laterdate" jdbcType="DATE" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+  </resultMap>
+  
+  
+  <sql id="Base_Column_List" >
+    id, adminName, password, sex, phone, email, level, registerDate, laterDate, status, 
+    name
+  </sql>
+  
+  
+  <select id="getAdminById" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from admin
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  
+  
+  <delete id="deleteById" parameterType="java.lang.Long" >
+    delete from admin
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  
+  
+  <insert id="insertAdmin" parameterType="com.hisun.common.bean.Admin" >
+    <selectKey resultType="java.lang.Long" keyProperty="id" order="AFTER" >
+      SELECT @@IDENTITY as column_name
+    </selectKey>
+    insert into admin (adminName, password, sex, 
+      phone, email, level, 
+      registerDate, laterDate, status, 
+      name)
+    values (#{adminname,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{sex,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{level,jdbcType=INTEGER}, 
+      #{registerdate,jdbcType=DATE}, #{laterdate,jdbcType=DATE}, #{status,jdbcType=INTEGER}, 
+      #{name,jdbcType=VARCHAR})
+  </insert>
+  
+  
+  <update id="updateAdmin" parameterType="com.hisun.common.bean.Admin" >
+    update admin
+    set adminName = #{adminname,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      level = #{level,jdbcType=INTEGER},
+      registerDate = #{registerdate,jdbcType=DATE},
+      laterDate = #{laterdate,jdbcType=DATE},
+      status = #{status,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  
+  
+</mapper>

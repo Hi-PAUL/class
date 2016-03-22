@@ -29,7 +29,7 @@ public class GlobalController {
                 request.getSession().setAttribute(SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME,LocaleContextHolder.getLocale());
             }
         }
-        return "../globaltest";
+        return "globaltest";
     }
     
 }

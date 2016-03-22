@@ -13,5 +13,6 @@ Plase inpuot your id : <input type="text" name="id" value="">
 <input type="submit" value="Go">
 </form>
 <h5><a href="global">国际化</a></h5>
+<h5><a href="easyui">easyui</a></h5>
 </body>
 </html>
