@@ -11,25 +11,28 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
 @Controller
-public class GlobalController {
-    
-    @RequestMapping(value="test", method = RequestMethod.GET)
-    public String test(HttpServletRequest request,Model model, @RequestParam(value="langType", defaultValue="zh") String langType){
-        if(!model.containsAttribute("contentModel")){
-            
-            if(langType.equals("zh")){
-                Locale locale = new Locale("zh", "CN"); 
-                request.getSession().setAttribute(SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME,locale); 
+public class GlobalController
+{
+    @RequestMapping(value = "lang", method = RequestMethod.GET)
+    public String language(HttpServletRequest request, Model model, @RequestParam(value = "langType", defaultValue = "zh") String langType, @RequestParam(value = "path") String path)
+    {
+        if (!model.containsAttribute("contentModel"))
+        {
+            if (langType.equals("zh"))
+            {
+                Locale locale = new Locale("zh", "CN");
+                request.getSession().setAttribute(SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME, locale);
             }
-            else if(langType.equals("en")){
-                Locale locale = new Locale("en", "US"); 
-                request.getSession().setAttribute(SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME,locale);
+            else if (langType.equals("en"))
+            {
+                Locale locale = new Locale("en", "US");
+                request.getSession().setAttribute(SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME, locale);
             }
-            else {
-                request.getSession().setAttribute(SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME,LocaleContextHolder.getLocale());
+            else
+            {
+                request.getSession().setAttribute(SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME, LocaleContextHolder.getLocale());
             }
         }
-        return "globaltest";
+        return path;
     }
-    
 }

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,12 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>hello world !</h1>
-<form action="hello" method="post">
-Plase inpuot your id : <input type="text" name="id" value=""> 
-<input type="submit" value="Go">
-</form>
-<h5><a href="global">国际化</a></h5>
-<h5><a href="easyui">easyui</a></h5>
+
 </body>
+<script type="text/javascript">
+	//初始化   请求要经过Spring拦截,页面才可实现国际化
+	window.location.href = "index.xhtml";
+</script>
 </html>
