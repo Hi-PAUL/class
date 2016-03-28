@@ -36,6 +36,14 @@
   </select>
   
   
+    <select id="getUserByUsername" parameterType="String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from users
+    where userName = #{username,jdbcType=VARCHAR}
+  </select>
+  
+  
   <delete id="deleteById" parameterType="java.lang.Long">
     delete from users
     where id = #{id,jdbcType=BIGINT}

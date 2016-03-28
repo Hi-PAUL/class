@@ -56,6 +56,14 @@
 		<servlet-name>registServlet</servlet-name>
 		<url-pattern>/authImg.do</url-pattern>
 	</servlet-mapping>
+	<filter>
+		<filter-name>auothLoginFilter</filter-name>
+		<filter-class>com.hisun.web.filter.AuothLoginFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>auothLoginFilter</filter-name>
+		<url-pattern>/index.jsp</url-pattern>
+	</filter-mapping>
 	<welcome-file-list>
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>

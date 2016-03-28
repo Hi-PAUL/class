@@ -70,11 +70,11 @@
   <div style="float: right">
    <div style="margin-bottom:20px">
        <div>账号：</div>
-       <input id="username" name="username" class="easyui-textbox" data-options="prompt:'Enter a account...'" style="width:300px;height:32px">
+       <input id="username" name="username" class="easyui-textbox" data-options="prompt:'Enter a account...',iconCls:'icon-man',iconWidth:38" style="width:300px;height:32px">
    </div>
    <div style="margin-bottom:20px">
        <div>密码：</div>
-       <input id="password" name="password" class="easyui-textbox" data-options="prompt:'Enter a password...'" style="width:300px;height:32px">
+       <input id="password"  type="password" name="password" class="easyui-textbox" data-options="prompt:'Enter a password...',iconCls:'icon-lock',iconWidth:38" style="width:300px;height:32px">
    </div>
    <div style="margin-bottom:20px">
        <div>验证码：</div>
@@ -83,7 +83,7 @@
        <a href="javascript:location.reload();">看不清？</a>
    </div>
    <div style="margin-bottom:20px">
-       <input id="password" name=" " type="checkbox"  style="width:20px;height:20px">
+       <input class="autoLogin" name="autoLogin" type="checkbox" style="width:20px;height:20px">
        <span style="width:30px;height:22px">十天内自动登陆</span>
    </div>
    <div>
@@ -145,18 +145,18 @@
 		
 		
 	   $.ajax({
-			url : "save_user_info.json",
+			url : "user_login.json",
 			type : "POST",
 			data : {
 				username : $("#username").val(),
 				password : $("#password").val(),
-				eamil : $("#eamil").val(),
-				authCode : $("#authCode").val()
+				authCode : $("#authCode").val(),
+				autoLogin : $(".autoLogin:checked").length
 			},
 			dataType : "json",
 			success : function(result) {
 				if (!result.errorCode) {
-					alert("注册成功，请前往邮箱激活！");
+					window.location.href = "index.xhtml";
 				} else {
 					alert(result.errorMsg);
 				}
@@ -182,6 +182,10 @@
 				var password = $("#password").val();
 				if (!password) {
 					$.messager.alert("警告", "密码必须输入！");
+					return false;
+				}
+				if (password.length < 3) {
+					$.messager.alert("警告", "密码必须至少6位！");
 					return false;
 				}
 				

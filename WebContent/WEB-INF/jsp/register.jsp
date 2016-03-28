@@ -82,7 +82,7 @@
    </div>
    <div style="margin-bottom:20px">
        <div>电子邮箱：</div>
-       <input id="eamil" name="eamil" class="easyui-textbox" data-options="prompt:'Enter a email address...',validType:'email'" style="width:300px;height:32px">
+       <input id="email" name="email" class="easyui-textbox" data-options="prompt:'Enter a email address...',validType:'email'" style="width:300px;height:32px">
    </div>
    <div style="margin-bottom:20px">
        <div>验证码：</div>
@@ -155,13 +155,14 @@
 			data : {
 				username : $("#username").val(),
 				password : $("#password").val(),
-				eamil : $("#eamil").val(),
+				email : $("#email").val(),
 				authCode : $("#authCode").val()
 			},
 			dataType : "json",
 			success : function(result) {
 				if (!result.errorCode) {
 					alert("注册成功，请前往邮箱激活！");
+					window.location.href = "index.xhtml";
 				} else {
 					alert(result.errorMsg);
 				}
@@ -200,11 +201,17 @@
 					return false;
 				}
 
-				var eamil = $("#eamil").val();
-				if (!eamil) {
+				var email = $("#email").val();
+				if (!email) {
 					$.messager.alert("警告", "电子邮箱必须输入！");
 					return false;
 				}
+				
+				var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
+			    if (!reg.test(email)) {
+				    $.messager.alert("警告", "邮箱格式错误！");
+				    return false;
+			      }
 
 				var authCode = $("#authCode").val();
 				if (!authCode) {

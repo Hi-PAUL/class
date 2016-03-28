@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.stereotype.Repository;
 
 import com.hisun.common.bean.User;
+import com.hisun.common.exception.DataAccessException;
 
 /**
  * 
@@ -18,6 +19,7 @@ import com.hisun.common.bean.User;
 @Repository
 public interface UserDao
 {
+
     void insertUser(User user);
 
 
@@ -28,6 +30,9 @@ public interface UserDao
 
 
     User getUserById(Long id);
+
+
+    User getUserByUsername(String username) throws DataAccessException;
 
 
     List<User> getAllUser();
