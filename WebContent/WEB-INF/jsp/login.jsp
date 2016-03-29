@@ -44,11 +44,11 @@
       <div class="nav_mid_left">
         <ul>
           <li><a href="index.xhtml">首页</a></li>
-          <li><a href="list.html">我的班级</a></li>
-          <li><a href="list.html">新闻动态</a></li>
-          <li><a href="list.html">活动中心</a></li>
-          <li><a href="list.html">校园风景</a></li>
-          <li><a href="list.html">人才招聘</a></li>
+          <li><a href="#">我的班级</a></li>
+          <li><a href="#">新闻动态</a></li>
+          <li><a href="#">活动中心</a></li>
+          <li><a href="#">校园风景</a></li>
+          <li><a href="#">人才招聘</a></li>
         </ul>
       </div>
       <!--nav_mid_left结束-->
@@ -69,15 +69,15 @@
   <div style="float: left"><img alt="" src="./images/login.jpg"></div>
   <div style="float: right">
    <div style="margin-bottom:20px">
-       <div>账号：</div>
+       <div>账  号：</div>
        <input id="username" name="username" class="easyui-textbox" data-options="prompt:'Enter a account...',iconCls:'icon-man',iconWidth:38" style="width:300px;height:32px">
    </div>
    <div style="margin-bottom:20px">
-       <div>密码：</div>
+       <div>密  码：</div>
        <input id="password"  type="password" name="password" class="easyui-textbox" data-options="prompt:'Enter a password...',iconCls:'icon-lock',iconWidth:38" style="width:300px;height:32px">
    </div>
    <div style="margin-bottom:20px">
-       <div>验证码：</div>
+       <div>验 证 码：</div>
        <input id="authCode" name="authCode" class="easyui-textbox" data-options="prompt:'Enter auth code...'" style="width:120px;height:32px">
        <img src="authImg.do" style="width:60px;height:20px"/>
        <a href="javascript:location.reload();">看不清？</a>
@@ -139,11 +139,10 @@
 	$(document).ready(function(){
 		
 	  $("#register").click(function(){
-		if(!validateObj.validate()){
+		/* if(!validateObj.validate()){
 			return false;
-		}
-		
-		
+		} */
+			
 	   $.ajax({
 			url : "user_login.json",
 			type : "POST",
@@ -156,7 +155,8 @@
 			dataType : "json",
 			success : function(result) {
 				if (!result.errorCode) {
-					window.location.href = "index.xhtml";
+					window.location.href = "activity.xhtml";
+					//window.location.href = "space_add.xhtml";
 				} else {
 					alert(result.errorMsg);
 				}
@@ -184,7 +184,7 @@
 					$.messager.alert("警告", "密码必须输入！");
 					return false;
 				}
-				if (password.length < 3) {
+				if (password.length < 6) {
 					$.messager.alert("警告", "密码必须至少6位！");
 					return false;
 				}

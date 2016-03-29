@@ -44,11 +44,11 @@
       <div class="nav_mid_left">
         <ul>
           <li><a href="index.xhtml">首页</a></li>
-          <li><a href="list.html">我的班级</a></li>
-          <li><a href="list.html">新闻动态</a></li>
-          <li><a href="list.html">活动中心</a></li>
-          <li><a href="list.html">校园风景</a></li>
-          <li><a href="list.html">人才招聘</a></li>
+          <li><a href="#">我的班级</a></li>
+          <li><a href="#">新闻动态</a></li>
+          <li><a href="#">活动中心</a></li>
+          <li><a href="#">校园风景</a></li>
+          <li><a href="#">人才招聘</a></li>
         </ul>
       </div>
       <!--nav_mid_left结束-->
@@ -66,23 +66,23 @@
   <!--nav结束-->
   
   <div class="easyui-panel" title="当前位置  >> 注册" style="width:1000px;padding:30px 80px">
-  <div style="float: left"><img alt="" src="./images/register.jpg"></div>
-  <div style="float: right">
+  <div style="float:left"><img alt="" src="./images/register.jpg"></div>
+  <div style="float:right">
    <div style="margin-bottom:20px">
        <div>账号：</div>
-       <input id="username" name="username" class="easyui-textbox" data-options="prompt:'Enter a account...'" style="width:300px;height:32px">
+       <input id="username" name="username" class="easyui-textbox" data-options="prompt:'Enter a account...',iconCls:'icon-man',iconWidth:38" style="width:300px;height:32px">
    </div>
    <div style="margin-bottom:20px">
        <div>密码：</div>
-       <input id="password" name="password" class="easyui-textbox" data-options="prompt:'Enter a password...'" style="width:300px;height:32px">
+       <input id="password" name="password" class="easyui-textbox" data-options="prompt:'Enter a password...',iconCls:'icon-lock',iconWidth:38" style="width:300px;height:32px">
    </div>
    <div style="margin-bottom:20px">
        <div>确认密码：</div>
-       <input id="repeatPassword" name="repeatPassword" class="easyui-textbox" data-options="prompt:'Repeat enter a password...'" style="width:300px;height:32px">
+       <input id="repeatPassword" name="repeatPassword" class="easyui-textbox" data-options="prompt:'Repeat enter a password...',iconCls:'icon-lock',iconWidth:38" style="width:300px;height:32px">
    </div>
    <div style="margin-bottom:20px">
        <div>电子邮箱：</div>
-       <input id="email" name="email" class="easyui-textbox" data-options="prompt:'Enter a email address...',validType:'email'" style="width:300px;height:32px">
+       <input id="email" name="email" class="easyui-textbox" data-options="prompt:'Enter a email address...',validType:'email',iconCls:'icon-man',iconWidth:38" style="width:300px;height:32px">
    </div>
    <div style="margin-bottom:20px">
        <div>验证码：</div>
@@ -191,6 +191,11 @@
 					return false;
 				}
 
+				if (password.length < 6) {
+					$.messager.alert("警告", "密码必须至少6位！");
+					return false;
+				}
+				
 				var repeatPassword = $("#repeatPassword").val();
 				if (!repeatPassword) {
 					$.messager.alert("警告", "确认密码必须输入！");

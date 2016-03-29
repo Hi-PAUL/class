@@ -1,8 +1,5 @@
 package com.hisun.web.controller;
 
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
@@ -31,6 +28,15 @@ public class UserController
     private UserService userService;
 
 
+    @RequestMapping(value = "activity.xhtml", method = RequestMethod.GET)
+    public ModelAndView gotoActivity()
+    {
+        System.out.println("activity");
+        ModelAndView model = new ModelAndView("activity");
+        return model;
+    }
+
+
     @RequestMapping(value = "register.xhtml", method = RequestMethod.GET)
     public ModelAndView gotoRegister()
     {
@@ -53,18 +59,10 @@ public class UserController
         {
             return new ResultObject(110, "验证码不准确!");
         }
-        String LocalIP = null;
+
         try
         {
-            LocalIP = InetAddress.getLocalHost().getHostAddress();
-        }
-        catch (UnknownHostException e)
-        {
-            e.printStackTrace();
-        }
-        try
-        {
-            userService.register(username, password, email, LocalIP);
+            userService.register(username, password, email);
         }
         catch (UserServiceException e)
         {
@@ -88,7 +86,7 @@ public class UserController
             e.printStackTrace();
         }
         request.getSession().setAttribute("user", user);
-        ModelAndView model = new ModelAndView("index");
+        ModelAndView model = new ModelAndView("activity");
         return model;
 
     }

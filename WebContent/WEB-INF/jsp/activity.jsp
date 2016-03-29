@@ -28,12 +28,12 @@
 <div class="top">
   <div class="top_content">
     <ul>
-      <li><a href="lang?langType=en&path=index">English</a></li>
-      <li><a href="lang?langType=zh&path=index">中文</a></li>
+      <li><a href="lang?langType=en&path=activity">English</a></li>
+      <li><a href="lang?langType=zh&path=activity">中文</a></li>
       <li><a href="#"><spring:message code="help"/></a></li>
       <li><a onclick="AddFavorite(window.location,document.title)" href="javascript:void(0)"><spring:message code="StoreUp"/></a></li>
-      <li><a href="register.xhtml"><spring:message code="register"/></a></li>
-      <li><a href="login.xhtml"><spring:message code="login"/></a></li>
+      <li><a href="logout.xhtml"><spring:message code="logout"/></a></li>
+      <li><a href="#">${user.username}</a></li>
     </ul>
   </div>
 </div>
@@ -49,14 +49,16 @@
   <div class="nav">
     <div  class="nav_left"></div>
     <div class="nav_mid">
-      <div class="nav_mid_left">
+      <div class="nav_mida_left">
         <ul>
-          <li><a href="#">首页</a></li>
+          <li><a href="activity.xhtml" style="color:#FF0">首页</a></li>
           <li><a href="#">我的班级</a></li>
-          <li><a href="#">新闻动态</a></li>
-          <li><a href="#">活动中心</a></li>
-          <li><a href="#">校园风景</a></li>
-          <li><a href="#">人才招聘</a></li>
+          <li><a href="#">通讯录</a></li>
+          <li><a href="#">聊天室</a></li>
+          <li><a href="space_add.xhtml">唯空间</a></li>
+          <li><a href="#">留言板</a></li>
+          <li><a href="#">公告栏</a></li>
+          <li><a href="#">成绩表</a></li>
         </ul>
       </div>
       <!--nav_mid_left结束-->
@@ -106,10 +108,10 @@
       
       <div class="news_list">
         <ul>
-          <li><span>2014-06-01</span> <a href="#">【开学季】欢迎学校2万新成员</a></li>
-          <li><span>2014-06-01</span><a href="#">【领导风】校长看望退休教师</a></li>
-          <li><span>2014-05-30</span><a href="#">【教师美】汗流湿润他们的衣襟</a></li>
-          <li><span>2014-05-28</span><a href="#" title="aa">【新气象】我校综合教学楼下月将投入使用</a></li>
+          <li><span>2016-09-01</span> <a href="#">【开学季】欢迎学校2万新成员</a></li>
+          <li><span>2016-09-10</span><a href="#">【领导风】校长看望退休教师</a></li>
+          <li><span>2016-10-30</span><a href="#">【教师美】汗流湿润他们的衣襟</a></li>
+          <li><span>2016-12-12</span><a href="#" title="aa">【新气象】我校综合教学楼下月将投入使用</a></li>
         </ul>
       </div>
       <!--news_list结束--> 
@@ -133,9 +135,9 @@
       
       <div class="news_list">
         <ul>
-          <li><span>2016-04-08</span> <a href="#">【校园事件】“校园十大歌手”报名马上开始</a></li>
+          <li><span>2016-04-08</span> <a href="#">【校园动态】“校园十大歌手”报名马上开始</a></li>
           <li><span>2016-05-01</span><a href="#">【公益活动】“下乡支教”有你同行</a></li>
-          <li><span>2016-06-25</span><a href="#">【户外活动】“万里徒步”要你来参赛</a></li>
+          <li><span>2016-06-25</span><a href="#">【户外扩展】“万里徒步”要你来参赛</a></li>
           <li><span>2016-07-06</span><a href="#" title="aa">【社区关怀】“社区家电维修”让你一展身手</a></li>
         </ul>
       </div>

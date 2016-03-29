@@ -10,6 +10,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 
+/**
+ * 
+ * @类名： GlobalController.java
+ * 
+ * @描述：GlobalController @作者： PAUL @修改日期： 2016年3月29日
+ *
+ */
 @Controller
 public class GlobalController
 {

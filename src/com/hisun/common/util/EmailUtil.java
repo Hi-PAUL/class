@@ -19,7 +19,7 @@ import javax.mail.internet.MimeMessage;
 public class EmailUtil
 {
 
-    public static void sendEmail(String username, String email, String cdKey, String LocalIP) throws Exception
+    public static void sendEmail(String username, String email, String cdKey) throws Exception
     {
         Properties props = new Properties();
         props.setProperty("mail.smtp.auth", "true");
@@ -31,7 +31,6 @@ public class EmailUtil
         Message msg = new MimeMessage(session);
         msg.setSubject("班级网注册账号激活");
         msg.setText("http://paul:8088/class/activate.xhtml?name=" + username + "&cdKey=" + cdKey);
-        // msg.setText("http://"+LocalIP+":8088/class/activate.xhtml?name="+username+"&cdKey="+cdKey);
         msg.setFrom(new InternetAddress("liangliying132@163.com"));
 
         Transport transport = session.getTransport();

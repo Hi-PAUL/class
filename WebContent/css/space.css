@@ -1,0 +1,115 @@
+@charset "UTF-8";
+/* CSS Document */
+/* space_add.jsp */
+.username a {
+	margin-left: 15px;
+	text-decoration: none;
+}
+
+.message_list {
+	width: 160px;
+	height: 30px;
+	margin-left: -25px;
+}
+
+.message_list  li {
+	height: 30px;
+	list-style-type: none;
+	text-indent: 30px;
+	border-bottom: 1px solid #E8E8E8;
+}
+
+.message_list  li a {
+	height: 30px;
+	display: inline;
+	text-decoration: none;
+}
+
+.photo_frame {
+	float: left;
+	position: relative;
+	margin: 0 0.3em;
+	width: 300px;
+	height: 400px;
+	overflow: auto;
+	text-align: center;
+	vertical-align: middle;
+	background: #DDEAFD;
+	border: 1px solid #DDEAFD;
+}
+
+#avatar_preview {
+	margin-left: auto;
+	margin-right: auto;
+	width: 100px;
+	height: 100px;
+	overflow: hidden;
+	background: #DDEAFD;
+	border: 1px solid #DDEAFD;
+	margin-bottom: 30px;
+}
+
+#div_avatar_upload {
+	clear: both;
+}
+
+/* .btn1 {
+	cursor: pointer;
+	border: #ffe6e6 1px solid;
+	background: #5dbb5d;
+	color: #EFEFEF;
+	font-weight: bolder;
+	font-size: 12px;
+	padding: 5px 10px;
+	margin: 10px 0 0 0;
+} */
+
+/* .fileinput-button {
+	position: relative;
+	overflow: hidden;
+	float: left;
+	margin-right: 4px;
+	margin-left: 10px;
+} */
+
+/* .fileinput-button input {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    transform: translate(-300px, 0) scale(4);
+    font-size: 23px;
+    direction: ltr;
+    cursor: pointer;
+} */
+#avatar_file_upload {
+	width: 74px;
+	height: 25px;
+}
+
+.upload_submit {
+	width: 74px;
+	height: 25px;
+	float: none;
+	font-size: 14px;
+	font-family: "微软雅黑";
+	display: none;
+	margin-top: 20px;
+}
+
+.upload_type1 {
+	width: 103px;
+	height: 55px;
+	margin-top: 20px;
+	background-image: url("../images/space_6.jpg");
+}
+
+.upload_type2 {
+	width: 101px;
+	height: 40px;
+	margin-top: 20px;
+	display: none;
+	background-image: url("../images/space_2.jpg");
+}

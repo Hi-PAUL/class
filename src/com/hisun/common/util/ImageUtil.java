@@ -1,4 +1,4 @@
-package com.hisun.web.controller;
+package com.hisun.common.util;
 
 import java.awt.Graphics;
 import java.awt.Image;
@@ -11,7 +11,14 @@ import java.io.File;
 
 import javax.imageio.ImageIO;
 
-public class ImageCut
+/**
+ * 
+ * @类名： ImageUtil.java
+ * 
+ * @描述：ImageUtil @作者： PAUL @修改日期： 2016年3月29日
+ *
+ */
+public class ImageUtil
 {
     public static void imgCut(String srcImageFile, int x, int y, int desWidth, int desHeight)
     {
@@ -32,7 +39,7 @@ public class ImageCut
                 g.drawImage(img, 0, 0, null);
                 g.dispose();
                 // 输出文件
-                ImageIO.write(tag, "JPEG", new File(srcImageFile + "_cut.jpg"));
+                ImageIO.write(tag, "JPEG", new File(srcImageFile + ".jpg"));
             }
         }
         catch (Exception e)

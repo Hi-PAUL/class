@@ -68,7 +68,7 @@ public class UserServiceImpl implements UserService
 
 
     @Override
-    public void register(String username, String password, String email, String LocalIP) throws UserServiceException
+    public void register(String username, String password, String email) throws UserServiceException
     {
 
         User user = null;
@@ -96,15 +96,15 @@ public class UserServiceImpl implements UserService
         System.out.println(username);
         System.out.println(email);
         System.out.println(cdKey);
-        System.out.println(LocalIP);
         try
         {
-            EmailUtil.sendEmail(username, email, cdKey, LocalIP);
+            EmailUtil.sendEmail(username, email, cdKey);
         }
         catch (Exception e)
         {
             throw new UserServiceException(e.getMessage());
         }
+
         userDao.insertUser(user);
     }
 

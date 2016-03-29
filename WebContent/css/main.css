@@ -27,7 +27,7 @@ body {
 .top_content li {
 	float: right;
 	 list-style-image: url(../images/arrow.jpg); 
-	width: 75px;
+	width: 80px;
 }
 .top_content a:link, .top_content a:visited {
 	color: #8E8E8E;
@@ -88,6 +88,13 @@ body {
 	float: left;
 	list-style-type: none;
 	width: 100px;
+	font-family: "微软雅黑";
+	text-align: center;
+}
+.nav_mida_left li {
+	float: left;
+	list-style-type: none;
+	width: 83px;
 	font-family: "微软雅黑";
 	text-align: center;
 }

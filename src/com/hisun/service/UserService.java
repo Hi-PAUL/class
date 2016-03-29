@@ -21,7 +21,7 @@ public interface UserService
     User login(String username, String password) throws UserServiceException;
 
 
-    void register(String username, String password, String email, String LocalIP) throws UserServiceException;
+    void register(String username, String password, String email) throws UserServiceException;
 
 
     User activate(String username, String cdKey) throws UserServiceException;
