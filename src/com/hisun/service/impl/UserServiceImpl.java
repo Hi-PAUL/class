@@ -11,6 +11,7 @@ import com.hisun.common.bean.User;
 import com.hisun.common.exception.DataAccessException;
 import com.hisun.common.exception.UserServiceException;
 import com.hisun.common.util.EmailUtil;
+import com.hisun.common.util.MD5;
 import com.hisun.common.util.RandomChar;
 import com.hisun.dao.UserDao;
 import com.hisun.service.UserService;
@@ -46,7 +47,7 @@ public class UserServiceImpl implements UserService
         {
             throw new UserServiceException("该账号不存在!");
         }
-        if (!password.equals(user.getPassword()))
+        if (!MD5.jdkMD5(password).equals(user.getPassword()))
         {
             throw new UserServiceException("该密码不正确!");
         }
@@ -86,7 +87,7 @@ public class UserServiceImpl implements UserService
         }
         user = new User();
         user.setUsername(username);
-        user.setPassword(password);
+        user.setPassword(MD5.jdkMD5(password));
         user.setEmail(email);
         user.setRegisterdate(new Date());
         user.setIsonline(0);
@@ -104,7 +105,6 @@ public class UserServiceImpl implements UserService
         {
             throw new UserServiceException(e.getMessage());
         }
-
         userDao.insertUser(user);
     }
 

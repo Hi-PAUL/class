@@ -73,7 +73,7 @@
   <div class="easyui-layout" style="margin-top:18px; width:1000px;height:550px;">
        <div id="p" data-options="region:'west'" title="你现在的位置  : 唯空间 >> 修改头像" style="width:22%;padding:50px">
            <div style="margin-bottom:20px">
-             <a href="#"><img alt="点击上传头像" src="./images/icon/${user.cdkey}.jpg" style="width:100px;height:100px"></a>
+             <a href="#"><img alt="点击上传头像" src="./images/icons/${user.cdkey}.jpg" style="width:100px;height:100px"></a>
            </div>
            <div class="username" style="margin-bottom:10px">
              <a href="#">Hi,${user.username}</a>

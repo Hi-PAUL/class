@@ -142,12 +142,12 @@
 </body>
 <script type="text/javascript">
 	$(document).ready(function(){
-		
+	  var waitTime=5000;
+	  var isError=false;
 	  $("#register").click(function(){
 		if(!validateObj.validate()){
 			return false;
 		}
-		
 		
 	   $.ajax({
 			url : "save_user_info.json",
@@ -160,17 +160,34 @@
 			},
 			dataType : "json",
 			success : function(result) {
-				if (!result.errorCode) {
-					alert("注册成功，请前往邮箱激活！");
-					window.location.href = "index.xhtml";
-				} else {
+				if (result.errorCode) {
+					isError=true;
+					waitTime=0;
 					alert(result.errorMsg);
 				}
+				waitTime=0;
 			 }
 		 });
+	    progress();
+	 });
+	  
+	  
+	  function progress(){
+          var win = $.messager.progress({
+              title:'Please waiting',
+              msg:'Loading data...'
+          });
+          setTimeout(function(){
+              $.messager.progress('close');
+              if(!isError){
+                alert("注册成功，请前往邮箱激活！");
+                // $.messager.alert('提示','注册成功，请前往邮箱激活!','info');
+			    window.location.href = "index.xhtml";
+              }
+          }, waitTime)
+      }
 
-		});
-
+	  
 		//数据校验模块
 		var validateObj = {};
 		$.extend(validateObj, {

@@ -41,6 +41,14 @@
     <include refid="Base_Column_List" />
     from users
     where userName = #{username,jdbcType=VARCHAR}
+    </select>
+  
+  
+    <select id="getUserByParams" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from users
+    where isonline = #{isonline,jdbcType=INTEGER} and classId = #{classid,jdbcType=BIGINT}
   </select>
   
   

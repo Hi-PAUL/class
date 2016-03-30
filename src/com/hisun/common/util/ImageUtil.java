@@ -26,7 +26,7 @@ public class ImageUtil
         {
             Image img;
             ImageFilter cropFilter;
-            BufferedImage bi = ImageIO.read(new File(srcImageFile + "_src.jpg"));
+            BufferedImage bi = ImageIO.read(new File(srcImageFile+ "_src.jpg"));
             int srcWidth = bi.getWidth();
             int srcHeight = bi.getHeight();
             if (srcWidth >= desWidth && srcHeight >= desHeight)
@@ -38,7 +38,6 @@ public class ImageUtil
                 Graphics g = tag.getGraphics();
                 g.drawImage(img, 0, 0, null);
                 g.dispose();
-                // 输出文件
                 ImageIO.write(tag, "JPEG", new File(srcImageFile + ".jpg"));
             }
         }

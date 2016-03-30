@@ -1,0 +1,30 @@
+@charset "UTF-8";
+/* CSS Document */
+/* chat_room.jsp */
+.chat_easy_name p{
+	margin: 20px 0;
+}
+
+.chat_easy_name p a{
+	height: 30px;
+	display: inline;
+	font-size: 14px;
+	font-family: "微软雅黑";
+	color: #786F66;
+	text-decoration: none;
+}
+
+.chat_easy_name p a:hover, .chat_easy_name p a:active {
+	color: #C00;
+	text-decoration: none;
+}
+
+#onlion_list {
+	margin: 10px 20px;
+	
+}
+
+#onlion_list li{
+	height: 20px;
+	list-style-type: none;
+}

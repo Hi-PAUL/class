@@ -55,21 +55,21 @@ public class LoginController
     @ResponseBody
     public ResultObject userLogin(HttpServletRequest request, HttpServletResponse response, @RequestParam(value = "username", required = false) String username,
         @RequestParam(value = "password", required = false) String password, @RequestParam(value = "authCode", required = false) String authCode,
-        @RequestParam(value = "autoLogin", required = false) int autoLogin) throws Exception
+        @RequestParam(value = "autoLogin", required = false) String autoLogin) throws Exception
     {
         String code = (String) request.getSession().getAttribute("authCode");
         System.out.println(code);
-        System.err.println(authCode);
-        
+        System.out.println(autoLogin);
+
         /*
          * if (!authCode.equals(code)) { return new ResultObject(110, "验证码不准确!"); }
          */
 
         try
         {
-            //User user = userService.login(username, password);
+            // User user = userService.login(username, password);
             User user = userService.login("paul", "123456");
-            System.out.println("user : "+user);
+            System.out.println("user : " + user);
             request.getSession().setAttribute("user", user);
         }
         catch (UserServiceException e)
@@ -78,7 +78,7 @@ public class LoginController
         }
 
         // 如果用户选择自动登录
-        if (autoLogin > 0)
+        if (autoLogin.equals(autoLogin))
         {
             Cookie[] cookies = request.getCookies();
             if (cookies != null && cookies.length > 0)

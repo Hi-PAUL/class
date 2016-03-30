@@ -83,8 +83,8 @@
        <a href="javascript:location.reload();">看不清？</a>
    </div>
    <div style="margin-bottom:20px">
-       <input class="autoLogin" name="autoLogin" type="checkbox" style="width:20px;height:20px">
-       <span style="width:30px;height:22px">十天内自动登陆</span>
+       <input id="autoLogin" class="easyui-switchbutton" >
+       <span style="width:30px;height:22px;margin-left:5px">七天内自动登陆</span>
    </div>
    <div>
        <a  id="register" class="easyui-linkbutton" iconCls="icon-ok" style="width:300px;height:32px">登陆</a>
@@ -142,7 +142,7 @@
 		/* if(!validateObj.validate()){
 			return false;
 		} */
-			
+		
 	   $.ajax({
 			url : "user_login.json",
 			type : "POST",
@@ -150,7 +150,7 @@
 				username : $("#username").val(),
 				password : $("#password").val(),
 				authCode : $("#authCode").val(),
-				autoLogin : $(".autoLogin:checked").length
+				autoLogin : $("#autoLogin").switchbutton("options").checked
 			},
 			dataType : "json",
 			success : function(result) {

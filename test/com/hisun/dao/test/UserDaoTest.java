@@ -1,5 +1,8 @@
 package com.hisun.dao.test;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.junit.After;
@@ -38,6 +41,16 @@ public class UserDaoTest extends AbstractJUnitTest
         System.out.println("hello world test...");
         User user = userDao.getUserById(1L);
         System.out.println(user);
+    }
+    
+    @Test
+    public void testGetUserByParams()
+    {
+        System.out.println("hello world test...");
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("isonline", 1);
+        params.put("classid", 1);
+        System.out.println(userDao.getUserByParams(params));
     }
 
 

@@ -74,24 +74,22 @@ public class SpaceController
         @RequestParam(value = "w") int w, @RequestParam(value = "imgFile") MultipartFile imageFile) throws Exception
     {
         String realPath = request.getSession().getServletContext().getRealPath("/");
-        String resourcePath = "images/icon/";
+        String resourcePath = "images/icons/";
+        String path = realPath + resourcePath;
         User user = (User) request.getSession().getAttribute("user");
-        if (imageFile != null)
+        if (!imageFile.isEmpty())
         {
-            // if(FileUploadUtil.allowUpload(imageFile.getContentType())){
             String saveName = user.getCdkey();
-            File dir = new File(realPath + resourcePath);
+            File dir = new File(path, saveName + "_src.jpg");
             if (!dir.exists())
             {
                 dir.mkdirs();
             }
-            File file = new File(dir, saveName + "_src.jpg");
-            imageFile.transferTo(file);
-            String srcImagePath = realPath + resourcePath + saveName;
+            imageFile.transferTo(dir);
+            String srcImagePath = path + saveName;
             ImageUtil.imgCut(srcImagePath, x, y, w, h);
-            // }
         }
-        ModelAndView model = new ModelAndView("space_add");
+        ModelAndView model = new ModelAndView("space_icon");
         return model;
     }
 
