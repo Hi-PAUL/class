@@ -10,15 +10,15 @@ import org.junit.Before;
 import org.junit.Test;
 
 import com.hisun.common.bean.User;
+import com.hisun.common.exception.DataAccessException;
 import com.hisun.common.test.AbstractJUnitTest;
 import com.hisun.dao.UserDao;
 
 /**
  * 
  * @类名： Album.java
- * @描述：Album
- * @作者： PAUL
- * @修改日期： 2016年3月20日
+ * 
+ * @描述：Album @作者： PAUL @修改日期： 2016年3月20日
  *
  */
 public class UserDaoTest extends AbstractJUnitTest
@@ -42,7 +42,8 @@ public class UserDaoTest extends AbstractJUnitTest
         User user = userDao.getUserById(1L);
         System.out.println(user);
     }
-    
+
+
     @Test
     public void testGetUserByParams()
     {
@@ -50,7 +51,14 @@ public class UserDaoTest extends AbstractJUnitTest
         Map<String, Object> params = new HashMap<String, Object>();
         params.put("isonline", 1);
         params.put("classid", 1);
-        System.out.println(userDao.getUserByParams(params));
+        try
+        {
+            System.out.println(userDao.getUserByParams(params));
+        }
+        catch (DataAccessException e)
+        {
+            e.printStackTrace();
+        }
     }
 
 

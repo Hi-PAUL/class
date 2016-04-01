@@ -11,9 +11,8 @@ import com.hisun.common.exception.DataAccessException;
 /**
  * 
  * @类名： UserDao.java
- * @描述：UserDao
- * @作者： PAUL
- * @修改日期： 2016年3月20日
+ * 
+ * @描述：UserDao @作者： PAUL @修改日期： 2016年3月20日
  *
  */
 @Repository
@@ -38,6 +37,6 @@ public interface UserDao
     List<User> getAllUser();
 
 
-    List<User> getUserByParams(Map<String, Object> params);
+    List<User> getUserByParams(Map<String, Object> params) throws DataAccessException;
 
 }

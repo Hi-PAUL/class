@@ -1,11 +1,11 @@
 @charset "UTF-8";
 /* CSS Document */
 /* chat_room.jsp */
-.chat_easy_name p{
+.chat_easy_name p {
 	margin: 20px 0;
 }
 
-.chat_easy_name p a{
+.chat_easy_name p a {
 	height: 30px;
 	display: inline;
 	font-size: 14px;
@@ -19,12 +19,50 @@
 	text-decoration: none;
 }
 
-#onlion_list {
+#onlion_list, #notice_list, #Message_list {
 	margin: 10px 20px;
-	
 }
 
-#onlion_list li{
+#onlion_list li {
 	height: 20px;
+	position: relative;
 	list-style-type: none;
+}
+
+#notice_list li, #Message_list li {
+	height: 100px;
+	margin: 10px 0px;
+	list-style-type: none;
+	background-color: #F5F5F5;
+}
+
+#notice_list li img, #Message_list li img {
+	width: 100px;
+	height: 100px;
+	float: left;
+}
+
+#notice_list li i, #Message_list li i {
+	margin: 10px 10px;
+	float: left;
+	font-size: 16px;
+	font-family: "微软雅黑";
+}
+
+#notice_list li samp, #Message_list li samp {
+	float: right;
+	margin: 10px 15px;
+}
+
+#notice_list li p, #Message_list li p {
+	top: 34px;
+	left: 108px;
+	width: 510px;
+	height: 60px;
+	margin-top: 30px;
+	font-size: 2px;
+	text-indent: -120px;
+	position: relative;
+	font-size: 14px;
+	font-family: "微软雅黑";
 }

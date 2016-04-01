@@ -1,6 +1,7 @@
 package com.hisun.service.impl;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -193,10 +194,22 @@ public class UserServiceImpl implements UserService
 
 
     @Override
-    public List<User> getUserByParams(Map<String, Object> params)
+    public List<User> getUserByParams(int isonline, Long classid) throws UserServiceException
     {
-        // TODO Auto-generated method stub
-        return null;
+
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("isonline", isonline);
+        params.put("classid", classid);
+        List<User> list = null;
+        try
+        {
+            list = userDao.getUserByParams(params);
+        }
+        catch (DataAccessException e)
+        {
+            e.printStackTrace();
+        }
+        return list;
     }
 
 }

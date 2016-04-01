@@ -82,15 +82,24 @@
            <!-- bubbles4结束 -->
            
            <div title="留言板" data-options="iconCls:'icon-twitch'" style="padding:10px">
-             <div id="chat_main" style="width:100%;height:100%;background:red">
-              gggg
+             <div id="chat_main" style="width:100%;height:385px">
+               <div style="width:100%;height:380px;overflow-y:auto">
+                  <ul id="Message_list">
+                  </ul>
+                 </div>
+                 <div>
+                   <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add'" style="padding:5px 0px;width:100%;">
+                      <span style="font-size:14px;">新增</span>
+                   </a>
+                 </div>
               </div>
            </div>
            <!-- twitch结束 -->
            
            <div title="公告栏" data-options="iconCls:'icon-bullhorn'" style="padding:10px">
-             <div id="chat_main" style="width:100%;height:100%; background: red">
-              gggg
+             <div id="chat_main" style="width:100%;height:100%">
+                <ul id="notice_list">
+                </ul>
               </div>
            </div>
             <!-- bullhorn结束 -->
@@ -114,8 +123,6 @@
         <div class="easyui-accordion" style="width:100%;height:300px;">
          <div title="在线人数" data-options="iconCls:'icon-ok'" style="overflow:auto;padding:10px;">
              <ul id="onlion_list">
-                <li>ffffffffff</li>
-                <li>ffffffffff</li>
              </ul>
         </div>
         </div>
@@ -167,4 +174,60 @@
   <!--copyright_content结束--> 
 </div>
 </body>
+
+<script type="text/javascript">
+   $(document).ready(function(){
+	   
+	   getOnlionList();
+	   window.setInterval(function(){
+		   getOnlionList(); 
+	   }, 10000);
+	   function getOnlionList(){
+		   $.ajax({
+				url : "get_userOnlion_list.json",
+				type : "POST",
+				success : function(result) {
+					if (!result.errorCode) {
+					    $("#onlion_list").empty();
+						$.each(result.data, function(i, r){
+						  $("#onlion_list").append("<li>"+result.data[i].username+"   ("+result.data[i].email+")"+"</li>");
+							
+						 }); 
+					} else {
+						alert(result.errorMsg);
+					}
+				 }
+			 });
+	     }
+	   
+	   getNoticeList();
+	   window.setInterval(function(){
+		   getNoticeList(); 
+	   }, 30000);
+	   function getNoticeList(){
+		   $.ajax({
+				url : "get_notice_list.json",
+				type : "POST",
+				success : function(result) {
+					if (!result.errorCode) {
+					    $("#notice_list").empty();
+						$.each(result.data, function(i, r){
+						  $("#notice_list,#Message_list").append("<li><img src='./images/icons/"+result.data[i].publisher+".jpg'>"+
+								                   "<i>"+result.data[i].title+"</i>"+
+								                   "<samp>"+result.data[i].dateline+"</samp>"+
+								                   "<samp>"+result.data[i].publisher+"</samp>"+
+								                   "<p>"+result.data[i].content+"</p>"+"</li>");
+							
+						  }); 
+					} else {
+						alert(result.errorMsg);
+					}
+				 }
+			 });
+	     }
+	   
+
+   })
+</script>
+
 </html>

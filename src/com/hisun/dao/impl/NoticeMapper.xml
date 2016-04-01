@@ -24,6 +24,13 @@
     where id = #{id,jdbcType=BIGINT}
   </select>
   
+    <select id="getNoticeByClassId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from notice
+    where classId = #{classid,jdbcType=BIGINT}
+  </select>
+  
   
   <delete id="deleteById" parameterType="java.lang.Long" >
     delete from notice

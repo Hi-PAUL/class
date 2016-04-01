@@ -6,6 +6,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.hisun.common.exception.DataAccessException;
 import com.hisun.common.test.AbstractJUnitTest;
 import com.hisun.dao.NoticeDao;
 
@@ -35,7 +36,15 @@ public class NoticeDaoTest extends AbstractJUnitTest
     public void testNoticeDao()
     {
         System.out.println("hello world test...");
-        System.out.println(noticeDao.getNoticeById(1L));
+        try
+        {
+            System.out.println(noticeDao.getNoticeById(1L));
+        }
+        catch (DataAccessException e)
+        {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
 
