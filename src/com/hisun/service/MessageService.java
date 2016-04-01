@@ -6,32 +6,41 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 
 import com.hisun.common.bean.Message;
+import com.hisun.common.bean.User;
+import com.hisun.common.exception.MessageServiceException;
 
 /**
  * 
  * @类名： MessageService.java
- * @描述：MessageService
- * @作者： PAUL
- * @修改日期： 2016年3月22日
+ * 
+ * @描述：MessageService @作者： PAUL @修改日期： 2016年3月22日
  *
  */
+
 @Service
 public interface MessageService
 {
-    void insertMessage(Message message);
+
+    void saveMessage(User uer, String title, String content) throws MessageServiceException;
 
 
-    void deleteMessageById(Long id);
+    void insertMessage(Message message) throws MessageServiceException;
 
 
-    void updateMessage(Message message);
+    void deleteMessageById(Long id) throws MessageServiceException;
 
 
-    Message getMessageById(Long id);
+    void updateMessage(Message message) throws MessageServiceException;
 
 
-    List<Message> getAllMessage();
+    Message getMessageById(Long id) throws MessageServiceException;
 
 
-    List<Message> getMessageByParams(Map<String, Object> params);
+    List<Message> getMessageByClassId(Long classId) throws MessageServiceException;
+
+
+    List<Message> getAllMessage() throws MessageServiceException;
+
+
+    List<Message> getMessageByParams(Map<String, Object> params) throws MessageServiceException;
 }

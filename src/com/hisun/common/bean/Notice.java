@@ -2,12 +2,13 @@ package com.hisun.common.bean;
 
 import java.util.Date;
 
+import com.hisun.common.util.HisunUtil;
+
 /**
  * 
  * @类名： Notice.java
- * @描述：Notice
- * @作者： PAUL
- * @修改日期： 2016年3月20日
+ * 
+ * @描述：Notice @作者： PAUL @修改日期： 2016年3月20日
  *
  */
 public class Notice
@@ -99,9 +100,9 @@ public class Notice
     }
 
 
-    public Date getDateline()
+    public String getDateline()
     {
-        return dateline;
+        return HisunUtil.formatDate(dateline, "yyyy-MM-dd HH:mm:ss");
     }
 
 

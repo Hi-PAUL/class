@@ -28,7 +28,7 @@
     select 
     <include refid="Base_Column_List" />
     from notice
-    where classId = #{classid,jdbcType=BIGINT}
+    where classId = #{classid,jdbcType=BIGINT} ORDER BY id DESC
   </select>
   
   

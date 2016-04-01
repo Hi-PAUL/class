@@ -84,10 +84,10 @@
    </div>
    <div style="margin-bottom:20px">
        <input id="autoLogin" class="easyui-switchbutton" >
-       <span style="width:30px;height:22px;margin-left:5px">七天内自动登陆</span>
+       <span style="width:30px;height:22px;margin-left:5px">自动登陆</span>
    </div>
    <div>
-       <a  id="register" class="easyui-linkbutton" iconCls="icon-ok" style="width:300px;height:32px">登陆</a>
+       <a  id="login" class="easyui-linkbutton" iconCls="icon-ok" style="width:300px;height:32px">登陆</a>
     </div>
   </div> 
  </div>
@@ -138,10 +138,10 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		
-	  $("#register").click(function(){
-		/* if(!validateObj.validate()){
+	  $("#login").click(function(){
+		 if(!validateObj.validate()){
 			return false;
-		} */
+		} 
 		
 	   $.ajax({
 			url : "user_login.json",
@@ -171,27 +171,27 @@
 			validate : function() {
 				var username = $("#username").val();
 				if (!username) {
-					$.messager.alert("警告", "账号必须输入！");
+					$.messager.alert('警告','账号必须输入!','warning');
 					return false;
 				}
 				if (username.length < 3) {
-					$.messager.alert("警告", "账号必须至少3位！");
+					$.messager.alert('警告','账号必须至少3位!','warning');
 					return false;
 				}
 
 				var password = $("#password").val();
 				if (!password) {
-					$.messager.alert("警告", "密码必须输入！");
+					$.messager.alert('警告','密码必须输入!','warning');
 					return false;
 				}
 				if (password.length < 6) {
-					$.messager.alert("警告", "密码必须至少6位！");
+					$.messager.alert('警告','密码必须至少6位!','warning');
 					return false;
 				}
 				
 				var authCode = $("#authCode").val();
 				if (!authCode) {
-					$.messager.alert("警告", "验证码必须输入！");
+					$.messager.alert('警告','验证码必须输入!','warning');
 					return false;
 				}
 				return true;

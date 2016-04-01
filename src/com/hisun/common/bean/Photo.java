@@ -2,12 +2,13 @@ package com.hisun.common.bean;
 
 import java.util.Date;
 
+import com.hisun.common.util.HisunUtil;
+
 /**
  * 
  * @类名： Photo.java
- * @描述：Photo
- * @作者： PAUL
- * @修改日期： 2016年3月20日
+ * 
+ * @描述：Photo @作者： PAUL @修改日期： 2016年3月20日
  *
  */
 public class Photo
@@ -141,9 +142,9 @@ public class Photo
     }
 
 
-    public Date getPubdate()
+    public String getPubdate()
     {
-        return pubdate;
+        return HisunUtil.formatDate(pubdate, "yyyy-MM-dd HH:mm:ss");
     }
 
 

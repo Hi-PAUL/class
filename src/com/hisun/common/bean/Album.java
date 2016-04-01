@@ -2,12 +2,13 @@ package com.hisun.common.bean;
 
 import java.util.Date;
 
+import com.hisun.common.util.HisunUtil;
+
 /**
  * 
  * @类名： Album.java
- * @描述：Album
- * @作者： PAUL
- * @修改日期： 2016年3月20日
+ * 
+ * @描述：Album @作者： PAUL @修改日期： 2016年3月20日
  *
  */
 public class Album
@@ -85,9 +86,9 @@ public class Album
     }
 
 
-    public Date getCreatedate()
+    public String getCreatedate()
     {
-        return createdate;
+        return HisunUtil.formatDate(createdate, "yyyy-MM-dd HH:mm:ss");
     }
 
 

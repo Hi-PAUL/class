@@ -2,12 +2,13 @@ package com.hisun.common.bean;
 
 import java.util.Date;
 
+import com.hisun.common.util.HisunUtil;
+
 /**
  * 
  * @类名： Space.java
- * @描述：Space
- * @作者： PAUL
- * @修改日期： 2016年3月20日
+ * 
+ * @描述：Space @作者： PAUL @修改日期： 2016年3月20日
  *
  */
 public class Space
@@ -97,9 +98,9 @@ public class Space
     }
 
 
-    public Date getAdmissiondate()
+    public String getAdmissiondate()
     {
-        return admissiondate;
+        return HisunUtil.formatDate(admissiondate, "yyyy-MM-dd HH:mm:ss");
     }
 
 
@@ -109,9 +110,9 @@ public class Space
     }
 
 
-    public Date getBirthday()
+    public String getBirthday()
     {
-        return birthday;
+        return HisunUtil.formatDate(birthday, "yyyy-MM-dd HH:mm:ss");
     }
 
 
@@ -169,9 +170,9 @@ public class Space
     }
 
 
-    public Date getCreatedate()
+    public String getCreatedate()
     {
-        return createdate;
+        return HisunUtil.formatDate(createdate, "yyyy-MM-dd HH:mm:ss");
     }
 
 

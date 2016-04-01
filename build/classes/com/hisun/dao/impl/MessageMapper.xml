@@ -29,6 +29,14 @@
   </select>
   
   
+  <select id="getMessageByClassId" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from message
+    where classId = #{classid,jdbcType=BIGINT}  ORDER BY id DESC
+  </select>
+  
+  
   <delete id="deleteById" parameterType="java.lang.Long" >
     delete from message
     where id = #{id,jdbcType=BIGINT}

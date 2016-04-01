@@ -69,11 +69,11 @@
   <div style="float:left"><img alt="" src="./images/register.jpg"></div>
   <div style="float:right">
    <div style="margin-bottom:20px">
-       <div>账号：</div>
+       <div>账   号：</div>
        <input id="username" name="username" class="easyui-textbox" data-options="prompt:'Enter a account...',iconCls:'icon-man',iconWidth:38" style="width:300px;height:32px">
    </div>
    <div style="margin-bottom:20px">
-       <div>密码：</div>
+       <div>密   码：</div>
        <input id="password" name="password" class="easyui-textbox" data-options="prompt:'Enter a password...',iconCls:'icon-lock',iconWidth:38" style="width:300px;height:32px">
    </div>
    <div style="margin-bottom:20px">
@@ -85,7 +85,7 @@
        <input id="email" name="email" class="easyui-textbox" data-options="prompt:'Enter a email address...',validType:'email',iconCls:'icon-man',iconWidth:38" style="width:300px;height:32px">
    </div>
    <div style="margin-bottom:20px">
-       <div>验证码：</div>
+       <div>验 证 码：</div>
        <input id="authCode" name="authCode" class="easyui-textbox" data-options="prompt:'Enter auth code...'" style="width:120px;height:32px">
        <img src="authImg.do" style="width:60px;height:20px"/>
        <a href="javascript:location.reload();">看不清？</a>
@@ -194,50 +194,50 @@
 			validate : function() {
 				var username = $("#username").val();
 				if (!username) {
-					$.messager.alert("警告", "账号必须输入！");
+					$.messager.alert('警告','账号必须输入!','warning');
 					return false;
 				}
 				if (username.length < 3) {
-					$.messager.alert("警告", "账号必须至少3位！");
+					$.messager.alert('警告','账号必须至少3位!','warning');
 					return false;
 				}
 
 				var password = $("#password").val();
 				if (!password) {
-					$.messager.alert("警告", "密码必须输入！");
+					$.messager.alert('警告','密码必须输入!','warning');
 					return false;
 				}
 
 				if (password.length < 6) {
-					$.messager.alert("警告", "密码必须至少6位！");
+					$.messager.alert('警告','密码必须至少6位!','warning');
 					return false;
 				}
 				
 				var repeatPassword = $("#repeatPassword").val();
 				if (!repeatPassword) {
-					$.messager.alert("警告", "确认密码必须输入！");
+					$.messager.alert('警告','确认密码必须输入!','warning');
 					return false;
 				}
 				if (repeatPassword != password) {
-					$.messager.alert("警告", "密码不一致！");
+					$.messager.alert('警告','密码不一致!','warning');
 					return false;
 				}
 
 				var email = $("#email").val();
 				if (!email) {
-					$.messager.alert("警告", "电子邮箱必须输入！");
+					$.messager.alert('警告','电子邮箱必须输入!','warning');
 					return false;
 				}
 				
 				var reg = /^\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/;
 			    if (!reg.test(email)) {
-				    $.messager.alert("警告", "邮箱格式错误！");
+			    	$.messager.alert('警告','邮箱格式错误!','warning');
 				    return false;
 			      }
 
 				var authCode = $("#authCode").val();
 				if (!authCode) {
-					$.messager.alert("警告", "验证码必须输入！");
+					$.messager.alert('警告','验证码必须输入!','warning');
 					return false;
 				}
 				return true;

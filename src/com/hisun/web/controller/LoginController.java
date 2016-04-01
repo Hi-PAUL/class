@@ -67,8 +67,8 @@ public class LoginController
 
         try
         {
-            // User user = userService.login(username, password);
-            User user = userService.login("paul", "123456");
+             User user = userService.login(username, password);
+           // User user = userService.login("paul", "123456");
             System.out.println("user : " + user);
             request.getSession().setAttribute("user", user);
         }

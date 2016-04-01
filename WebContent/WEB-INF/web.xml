@@ -52,6 +52,9 @@
 		<servlet-name>registServlet</servlet-name>
 		<servlet-class>com.hisun.web.servlet.AuthImg</servlet-class>
 	</servlet>
+	<listener>
+		<listener-class>com.hisun.web.listener.SessionListener</listener-class>
+	</listener>
 	<servlet-mapping>
 		<servlet-name>registServlet</servlet-name>
 		<url-pattern>/authImg.do</url-pattern>

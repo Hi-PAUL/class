@@ -2,12 +2,13 @@ package com.hisun.common.bean;
 
 import java.util.Date;
 
+import com.hisun.common.util.HisunUtil;
+
 /**
  * 
  * @类名： Admin.java
- * @描述：Admin
- * @作者： PAUL
- * @修改日期： 2016年3月20日
+ * 
+ * @描述：Admin @作者： PAUL @修改日期： 2016年3月20日
  *
  */
 public class Admin
@@ -119,9 +120,9 @@ public class Admin
     }
 
 
-    public Date getRegisterdate()
+    public String getRegisterdate()
     {
-        return registerdate;
+        return HisunUtil.formatDate(registerdate, "yyyy-MM-dd HH:mm:ss");
     }
 
 
@@ -131,9 +132,9 @@ public class Admin
     }
 
 
-    public Date getLaterdate()
+    public String getLaterdate()
     {
-        return laterdate;
+        return HisunUtil.formatDate(laterdate, "yyyy-MM-dd HH:mm:ss");
     }
 
 
