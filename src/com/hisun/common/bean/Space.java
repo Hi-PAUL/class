@@ -100,7 +100,7 @@ public class Space
 
     public String getAdmissiondate()
     {
-        return HisunUtil.formatDate(admissiondate, "yyyy-MM-dd HH:mm:ss");
+        return HisunUtil.formatDate(admissiondate, "yyyy-MM-dd");
     }
 
 
@@ -112,7 +112,7 @@ public class Space
 
     public String getBirthday()
     {
-        return HisunUtil.formatDate(birthday, "yyyy-MM-dd HH:mm:ss");
+        return HisunUtil.formatDate(birthday, "yyyy-MM-dd");
     }
 
 

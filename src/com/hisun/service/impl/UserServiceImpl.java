@@ -155,9 +155,9 @@ public class UserServiceImpl implements UserService
 
 
     @Override
-    public void updateUser(User User)
+    public void updateUser(User user)
     {
-        // TODO Auto-generated method stub
+        this.userDao.updateUser(user);
 
     }
 

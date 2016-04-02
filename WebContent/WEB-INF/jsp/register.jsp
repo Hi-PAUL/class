@@ -87,8 +87,7 @@
    <div style="margin-bottom:20px">
        <div>验 证 码：</div>
        <input id="authCode" name="authCode" class="easyui-textbox" data-options="prompt:'Enter auth code...'" style="width:120px;height:32px">
-       <img src="authImg.do" style="width:60px;height:20px"/>
-       <a href="javascript:location.reload();">看不清？</a>
+       <a href="javascript:location.reload()" class="easyui-linkbutton" style="width:80px;height:32px"><img src="authImg.do" style="width:60px;height:20px"/></a>
    </div>
    
    <div>

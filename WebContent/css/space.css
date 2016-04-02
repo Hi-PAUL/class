@@ -25,6 +25,11 @@
 	text-decoration: none;
 }
 
+.message_list  li a:hover, .message_list  li a:active {
+	color: #C00;
+	text-decoration: none;
+}
+
 .photo_frame {
 	float: left;
 	position: relative;

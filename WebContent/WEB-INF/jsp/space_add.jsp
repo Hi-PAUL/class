@@ -69,7 +69,7 @@
   </div>
   <!--nav结束-->
   
-  <div class="easyui-layout" style="margin-top:18px; width:1000px;height:850px;">
+  <div class="easyui-layout" style="margin-top:18px; width:1000px;height:1280px;">
        <div id="p" data-options="region:'west'" title="你现在的位置  : 唯空间 >> 创建空间" style="width:22%;padding:50px">
            <div style="margin-bottom:20px">
              <a href="space_icon.xhtml"><img alt="点击上传头像" src="./images/icons/${user.cdkey}.jpg" style="width: 100px;height: 100px"></a>
@@ -94,67 +94,69 @@
         
        <div data-options="region:'center'" title="填写资料" style="padding:50px 200px">
          <div style="margin-bottom:20px">
-            <div>Email:</div>
-            <input class="easyui-textbox" data-options="prompt:'Enter a email address...'" style="width:100%;height:32px">
+            <div>学  校 :</div>
+            <input id="spaceId" type="hidden" value="${space.id}">
+            <input id="school" class="easyui-textbox" data-options="prompt:'Enter a information...'" style="width:100%;height:32px">
          </div>
          <div style="margin-bottom:20px">
-            <div>Email:</div>
-            <select class="easyui-combobox" id="" name="" style="width:100%;height:32px">
-                <option value="AL">Alabama</option>
-                <option value="AK">Alaska</option>
-                <option value="AZ">Arizona</option>
-            </select>
+            <div>学  院 :</div>
+            <input id="college" class="easyui-textbox" data-options="prompt:'Enter a information...'" style="width:100%;height:32px">
          </div>
          <div style="margin-bottom:20px">
-            <div>Email:</div>
-            <select class="easyui-combobox" id="" name="" style="width:100%;height:32px">
-                <option value="AL">Alabama</option>
-                <option value="AK">Alaska</option>
-                <option value="AZ">Arizona</option>
-            </select>
+            <div>专  业 :</div>
+            <input id="major" class="easyui-textbox" data-options="prompt:'Enter a information...'" style="width:100%;height:32px">
          </div>
          <div style="margin-bottom:20px">
-            <div>Email:</div>
-            <select class="easyui-combobox" id="" name="" style="width:100%;height:32px">
-                <option value="AL">Alabama</option>
-                <option value="AK">Alaska</option>
-                <option value="AZ">Arizona</option>
-            </select>
+            <div>班  别 :</div>
+            <input id="banbie" class="easyui-textbox" data-options="prompt:'Enter a information...'" style="width:100%;height:32px">
          </div>
          <div style="margin-bottom:20px">
-            <div>Email:</div>
-            <input class="easyui-textbox" data-options="prompt:'Enter a email address...'" style="width:100%;height:32px">
+            <div>学  号 :</div>
+            <input id="studentId" class="easyui-textbox" data-options="prompt:'Enter a information...'" style="width:100%;height:32px">
+         </div>  
+         <div style="margin-bottom:20px">
+            <div>入学时间 :</div>
+            <input id="admissionDate" class="easyui-datebox" data-options="prompt:'Enter a information...'" style="width:100%;height:32px">
          </div>
          <div style="margin-bottom:20px">
-            <div>Email:</div>
-            <input class="easyui-textbox" data-options="prompt:'Enter a email address...'" style="width:100%;height:32px">
+            <div>出生日期 :</div>
+            <input id="birthday" class="easyui-datebox" data-options="prompt:'Enter a information...'" style="width:100%;height:32px">
          </div>
          <div style="margin-bottom:20px">
-            <div>Email:</div>
-            <input class="easyui-textbox" data-options="prompt:'Enter a email address...'" style="width:100%;height:32px">
+            <div>地 址:</div>
+            <input id="address" class="easyui-textbox" data-options="prompt:'Enter a information...'" style="width:100%;height:32px">
          </div>
          <div style="margin-bottom:20px">
-            <div>Email:</div>
-            <input class="easyui-textbox" data-options="prompt:'Enter a email address...'" style="width:100%;height:32px">
+            <div>姓  名 :</div>
+            <input id="name" class="easyui-textbox" data-options="prompt:'Enter a information...'" style="width:100%;height:32px">
          </div>
          <div style="margin-bottom:20px">
-            <div>Email:</div>
-            <input class="easyui-textbox" data-options="prompt:'Enter a email address...'" style="width:100%;height:32px">
+            <div>QQ :</div>
+            <input id="qq" class="easyui-textbox" data-options="prompt:'Enter a information...'" style="width:100%;height:32px">
          </div>
          <div style="margin-bottom:20px">
-            <div>Email:</div>
-            <input class="easyui-textbox" data-options="prompt:'Enter a email address...'" style="width:100%;height:32px">
+            <div>电  话 :</div>
+            <input id="phone" class="easyui-textbox" data-options="prompt:'Enter a information...'" style="width:100%;height:32px">
          </div>
          <div style="margin-bottom:20px">
-            <div>Email:</div>
-            <input class="easyui-textbox" data-options="prompt:'Enter a email address...'" style="width:100%;height:32px">
+            <div>性  别 :</div>
+             <select id="sex" class="easyui-combobox"  style="width:100%;height:32px">
+                <option value="1">男</option>
+                <option value="0">女</option>
+             </select>
          </div>
          <div style="margin-bottom:20px">
-            <div>Email:</div>
-            <input class="easyui-textbox" data-options="prompt:'Enter a email address...'" style="width:100%;height:32px">
+            <div>兴趣爱好 :</div>
+            <input id="hobbies" class="easyui-textbox" data-options="prompt:'Enter a information...',multiline:true" style="width:100%;height:64px">
          </div>
-        
-        
+         <div style="margin-bottom:20px">
+            <div>个人介绍 :</div>
+            <input id="inttroduction" class="easyui-textbox" data-options="prompt:'Enter a information...',multiline:true" style="width:100%;height:64px">
+         </div>
+         <div>
+            <a href="#" id="save" class="easyui-linkbutton" iconCls="icon-ok" style="width:49%;height:32px">保存</a>
+            <a href="javascript:history.go(-1);" id="quit" class="easyui-linkbutton" iconCls="icon-ok" style="width:49%;height:32px">取消</a>
+        </div>
       </div>
       <!--Center结束-->
     </div>
@@ -202,4 +204,66 @@
   <!--copyright_content结束--> 
 </div>
 </body>
+<script type="text/javascript">
+	$(document).ready(function(){
+		
+		var space="${space}";
+		if(space!=null){
+			alert(space);
+			
+		}
+		
+		
+	  $("#save").click(function(){
+		 if(!validateObj.validate()){
+			return false;
+		} 
+		
+	   $.ajax({
+			url : "save_space_info.json",
+			type : "POST",
+			data : {
+				id : $("#spaceId").val(),
+				school : $("#school").val(),
+				college: $("#college").val(),
+				major: $("#major").val(),
+				banbie: $("#banbie").val(),
+				studentId: $("#studentId").val(),
+				admissionDate: $("#admissionDate").datebox('getValue'),
+				birthday: $("#birthday").datebox('getValue'),
+				address: $("#address").val(),
+				name: $("#name").val(),
+				qq: $("#qq").val(),
+				phone: $("#phone").val(),
+				sex: $("#sex").combobox('getValue'),
+				hobbies: $("#hobbies").val(),
+				inttroduction: $("#inttroduction").val()
+				
+			},
+			dataType : "json",
+			success : function(result) {
+				if (!result.errorCode) {
+					//window.location.href = "activity.xhtml";
+				} else {
+					alert(result.errorMsg);
+				}
+			 }
+		 });
+	});
+
+		//数据校验模块
+		var validateObj = {};
+		$.extend(validateObj, {
+			validate : function() {
+				var shool = $("#shool").val();
+				if (shool) {
+					$.messager.alert('警告','学校必须输入','warning');
+					return false;
+				}
+				return true;
+			}
+		});
+
+	});
+</script>
 </html>

@@ -55,10 +55,10 @@
           <li><a href="#">我的班级</a></li>
           <li><a href="#">通讯录</a></li>
           <li><a href="chat_room.xhtml">聊天室</a></li>
-          <li><a href="space_add.xhtml">唯空间</a></li>
+          <li><a href="space_show.xhtml">唯空间</a></li>
           <li><a href="#">留言板</a></li>
           <li><a href="#">公告栏</a></li>
-          <li><a href="#">成绩表</a></li>
+          <li><a href="result.xhtml">成绩表</a></li>
         </ul>
       </div>
       <!--nav_mid_left结束-->

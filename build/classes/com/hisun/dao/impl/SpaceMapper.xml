@@ -31,6 +31,14 @@
   </select>
   
   
+  <select id="getSpaceByUserId" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from space
+    where userId = #{userid,jdbcType=BIGINT}
+  </select>
+  
+  
   <delete id="deleteById" parameterType="java.lang.Long">
     delete from space
     where id = #{id,jdbcType=BIGINT}
