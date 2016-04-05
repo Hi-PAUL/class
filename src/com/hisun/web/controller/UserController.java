@@ -1,5 +1,7 @@
 package com.hisun.web.controller;
 
+import java.util.Map;
+
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
@@ -44,6 +46,15 @@ public class UserController
         ModelAndView model = new ModelAndView("register");
         return model;
     }
+    
+    @RequestMapping(value = "address_book.xhtml", method = RequestMethod.GET)
+    public ModelAndView gotoAddressBook()
+    {
+        System.out.println("address_book");
+        ModelAndView model = new ModelAndView("address_book");
+        return model;
+    }
+    
 
 
     @RequestMapping(value = "save_user_info.json", method = RequestMethod.POST)
@@ -90,5 +101,28 @@ public class UserController
         return model;
 
     }
+    
+    
+    @RequestMapping(value = "get_address_book_list.json", method = RequestMethod.POST)
+    @ResponseBody
+    public ResultObject userLogin(HttpServletRequest request, @RequestParam(value = "pageNumber", required = false) Integer pageNumber,
+        @RequestParam(value = "pageSize", required = false) Integer pageSize)
+    {
+        User user = (User) request.getSession().getAttribute("user");
+        Map<String, Object> list = null;
+        try
+        {
+            list = this.userService.getUserList(pageNumber, pageSize, user.getClassid());
+        }
+        catch (UserServiceException e)
+        {
+            e.printStackTrace();
+        }
+        System.out.println(list);
+        return new ResultObject(list);
+    }
+    
+    
+    
 
 }

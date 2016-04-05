@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Repository;
+
 import com.hisun.common.bean.User;
 import com.hisun.common.exception.DataAccessException;
 import com.hisun.common.exception.UserServiceException;
@@ -210,6 +211,29 @@ public class UserServiceImpl implements UserService
             e.printStackTrace();
         }
         return list;
+    }
+
+
+    @Override
+    public Map<String, Object> getUserList(Integer pageNumber, Integer pageSize, Long classid) throws UserServiceException
+    {
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("classid", classid);
+        List<User> userList = null;
+        try
+        {
+            userList = this.userDao.getUserByParams(params);
+        }
+        catch (DataAccessException e)
+        {
+            e.printStackTrace();
+        }
+        Integer fromRecord = (pageNumber - 1) * pageSize;
+        Integer endRecord = userList.size() < fromRecord + pageSize ? userList.size() : fromRecord + pageSize;
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("rows", userList == null ? null : userList.subList(fromRecord, endRecord));
+        map.put("total", userList == null ? 0 : userList.size());
+        return map;
     }
 
 }

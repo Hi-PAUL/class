@@ -1,6 +1,8 @@
 package com.hisun.service;
 
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.stereotype.Service;
 
 import com.hisun.common.bean.User;
@@ -44,4 +46,7 @@ public interface UserService
 
 
     List<User> getUserByParams(int isonline, Long classid) throws UserServiceException;
+
+
+    Map<String, Object> getUserList(Integer pageNumber, Integer pageSize, Long classid) throws UserServiceException;
 }

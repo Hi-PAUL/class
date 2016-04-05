@@ -44,11 +44,11 @@
       <div class="nav_mid_left">
         <ul>
           <li><a href="index.xhtml">首页</a></li>
-          <li><a href="#">我的班级</a></li>
           <li><a href="#">新闻动态</a></li>
           <li><a href="#">活动中心</a></li>
           <li><a href="#">校园风景</a></li>
           <li><a href="#">人才招聘</a></li>
+          <li><a href="#">管理中心</a></li>
         </ul>
       </div>
       <!--nav_mid_left结束-->

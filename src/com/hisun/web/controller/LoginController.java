@@ -78,7 +78,8 @@ public class LoginController
         }
 
         // 如果用户选择自动登录
-        if (autoLogin.equals(autoLogin))
+        System.out.println(autoLogin);
+        if (autoLogin.equals("true"))
         {
             Cookie[] cookies = request.getCookies();
             if (cookies != null && cookies.length > 0)

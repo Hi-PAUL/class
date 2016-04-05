@@ -134,7 +134,7 @@ public class User
 
     public String getRegisterdate()
     {
-        return HisunUtil.formatDate(registerdate, "yyyy-MM-dd HH:mm:ss");
+        return HisunUtil.formatDate(registerdate, "yyyy-MM-dd");
     }
 
 

@@ -52,11 +52,11 @@
       <div class="nav_mid_left">
         <ul>
           <li><a href="#">首页</a></li>
-          <li><a href="#">我的班级</a></li>
           <li><a href="#">新闻动态</a></li>
           <li><a href="#">活动中心</a></li>
           <li><a href="#">校园风景</a></li>
           <li><a href="#">人才招聘</a></li>
+          <li><a href="#">管理中心</a></li>
         </ul>
       </div>
       <!--nav_mid_left结束-->
@@ -97,7 +97,7 @@
       <!--title结束-->
       
       <div class="pic_news"> <img src="images/news.jpg" alt="918 蓝桥杯喊你来助威" width="113" height="77" />
-        <h2><a href="news.html"> 930 蓝桥杯喊你来助威！</a></h2>
+        <h2><a href="#"> 930 蓝桥杯喊你来助威！</a></h2>
         <p>活动时间：9月01日—9月25日<br />
                               获奖公布时间：10月25日<br />
           <a href="#">Learn More>></a></p>
@@ -124,7 +124,7 @@
         <!--title结束-->
       
         <div class="pic_news"> <img src="images/css.jpg" alt="520 女神喊你来表白" width="113" height="77" />
-        <h2><a href="news.html">520 女神喊你来表白！</a></h2>
+        <h2><a href="#">520 女神喊你来表白！</a></h2>
         <p>活动时间：5月20日—5月25日<br />
                               获奖公布时间：5月26日<br />
           <a href="#">Learn More>></a></p>

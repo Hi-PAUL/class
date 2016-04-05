@@ -52,12 +52,11 @@
       <div class="nav_mida_left">
         <ul>
           <li><a href="activity.xhtml" style="color:#FF0">首页</a></li>
-          <li><a href="#">我的班级</a></li>
-          <li><a href="#">通讯录</a></li>
+          <li><a href="my_class.xhtml">我的班级</a></li>
+          <li><a href="#">相册墙</a></li>
+          <li><a href="address_book.xhtml">通讯录</a></li>
           <li><a href="chat_room.xhtml">聊天室</a></li>
           <li><a href="space_show.xhtml">唯空间</a></li>
-          <li><a href="#">留言板</a></li>
-          <li><a href="#">公告栏</a></li>
           <li><a href="result.xhtml">成绩表</a></li>
         </ul>
       </div>

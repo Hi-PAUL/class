@@ -6,7 +6,7 @@
 <html>
 <head>
      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-     <title>创建空间</title>
+     <title>通讯录</title>
      <link rel="shortcut icon" href="./images/faviconz.ico" />
      <link rel="bookmark" href="./images/faviconz.ico" />
      <link rel="stylesheet" type="text/css" href="./css/main.css" >
@@ -22,8 +22,8 @@
 <div class="top">
   <div class="top_content">
     <ul>
-      <li><a href="lang?langType=en&path=space_add">English</a></li>
-      <li><a href="lang?langType=zh&path=space_add">中文</a></li>
+      <li><a href="lang?langType=en&path=address_book">English</a></li>
+      <li><a href="lang?langType=zh&path=address_book">中文</a></li>
       <li><a href="#"><spring:message code="help"/></a></li>
       <li><a onclick="AddFavorite(window.location,document.title)" href="javascript:void(0)"><spring:message code="StoreUp"/></a></li>
       <li><a href="#"><spring:message code="logout"/></a></li>
@@ -67,69 +67,25 @@
     <div class="nav_right"></div>
   </div>
   <!--nav结束-->
-  
-  <div class="easyui-layout" style="margin-top:18px; width:1000px;height:700px;">
-       <div id="p" data-options="region:'west'" title="你现在的位置   >> 成绩表 " style="width:22%;padding:50px">
-           <div style="margin-bottom:20px">
-             <a href="space_icon.xhtml"><img alt="点击上传头像" src="./images/icons/${user.cdkey}.jpg" style="width: 100px;height: 100px"></a>
-           </div>
-           <div class="username" style="margin-bottom:10px">
-             <a href="#">Hi,${user.username}</a>
-           </div>
-            <div class="username" style="margin-bottom:10px">
-             <a href="#">积分 : ${user.username}</a>
-           </div>
-           <div style="margin-bottom:25px">
-             <ul class="message_list" >
-             <li style="background-image: url('./images/space_1.jpg');"></li>
-             <li><a href="#" class="session">第一学期</a></li>
-             <li><a href="#" class="session">第二学期</a></li>
-             <li><a href="#" class="session">第三学期</a></li>
-             <li><a href="#" class="session">第四学期</a></li>
-             <li><a href="#" class="session">第五学期</a></li>
-             <li><a href="#" class="session">第六学期</a></li>
-             </ul>
-           
-           </div>
-       </div>
-       <!--West结束-->
-        
-       <div data-options="region:'center'" title="查询" style="padding:0px 0px">
-         <div class="easyui-panel"  style="width:100%;height:50px;padding: 8px">
-            <input id="search" class="easyui-textbox" value="${user.studentid}" data-options="buttonText:'查询',prompt:'Search...'" style="width:350px;height:32px;">
-             <a id="print" class="easyui-linkbutton" data-options="iconCls:'icon-print'" style="height:30px; width:60px;float: right;">打印</a>
-             <a href="javascript:location.reload();" class="easyui-linkbutton" data-options="iconCls:'icon-reload'" style="height:30px;width:60px;float:right;margin-right:6px">刷新</a>
-         </div>
-         <!-- SearchBox结束 -->
          
-          
-	     <table id="resultList" class="easyui-datagrid" style="width:100%;" title="成绩列表" toolbar="#toolbar" pagination="true"  data-options="fitColumns:true,singleSelect:true,collapsible:false,rownumbers:true">
-			<thead>
-				<tr>
-					<th data-options="field:'studentid',align:'center',width:'10%'">学号</th>
-					<th data-options="field:'banbie',align:'center',width:'10%'">班别</th>
-					<th data-options="field:'name',align:'center',width:'10%'">姓名</th>
-					<th data-options="field:'session',align:'center',width:'10%'">学期</th>
-					<th data-options="field:'courseName',align:'center',width:'10%'">学科</th>
-					<th data-options="field:'courseCode',align:'center',width:'10%'">代号</th>
-					<th data-options="field:'period',align:'center',width:'10%'">课时</th>
-					<th data-options="field:'credit',align:'center',width:'9%'">学分</th>
-					<th data-options="field:'scores',align:'center',width:'9%'">分数</th>
-					<th data-options="field:'remark',align:'center',width:'10%'">备注</th>
-					
-					
-				</tr>
-			</thead>
-	    </table>
-        <!-- result_list结束 -->
-        
-      </div>
-      <!--Center结束-->
-    </div>
-  <!--ad结束-->
+<table id="resultList" class="easyui-datagrid" style="width:100%;" title="你现在的位置   >> 通讯录" toolbar="#toolbar" pagination="true"  data-options="fitColumns:true,singleSelect:true,collapsible:false,rownumbers:true">
+  <thead>
+	<tr>
+		<th data-options="field:'username',align:'center',width:'10%'">账号</th>
+		<th data-options="field:'name',align:'center',width:'10%'">姓名</th>
+		<th data-options="field:'sex',align:'center',width:'9%'">性别</th>
+		<th data-options="field:'qq',align:'center',width:'10%'">QQ</th>
+		<th data-options="field:'phone',align:'center',width:'10%'">电话</th>
+		<th data-options="field:'email',align:'center',width:'10%'">邮箱</th>
+		<th data-options="field:'point',align:'center',width:'9%'">用户积分</th>
+		<th data-options="field:'studentid',align:'center',width:'10%'">学号</th>
+		<th data-options="field:'registerdate',align:'center',width:'10%'">注册时间</th>
+		<th data-options="field:'laterdate',align:'center',width:'10%'">最后登陆时间</th>
+	</tr>
+  </thead>
+</table>
+<!-- result_list结束 -->
   
-</div>
-<!--最外层wrap结束  -->
 <div class="copyright">
   <div class="copyright_content">
     <ul>
@@ -172,37 +128,17 @@
 </body>
 <script type="text/javascript">
 
-	$(document).ready(function(){
+$(document).ready(function(){	
 		
-		var session=null;
-		
-		//init
-		setData(1, 15 ,session);
-	
-		//选择学期
-		var eachp=$(".session");
-		for(var i=0;i<eachp.length;i++)
-		{
-			eachp.eq(i).click(function(){
-			      var s=$(this).text();
-			      session=s;
-			      setData(1, 15 ,session);
-			});
-		}
-		
-		$("#search").textbox().next("span").click(function(){
-			setData(1, 15 ,session);
-		});
-		
+	 //init
+	 setData(1, 15);
 			
-	  function setData(pageNumber, pageSize ,session) {
+	  function setData(pageNumber, pageSize ) {
 			
 			$.ajax({
 				type : "POST",
-				url : "get_result_list.json",
+				url : "get_address_book_list.json",
 				data : {
-					studentId : $("#search").val(),
-					session : session,
 					pageNumber : pageNumber,
 					pageSize : pageSize
 				},
@@ -211,7 +147,6 @@
 					
 					if (!result.errorCode) {
 						if(result.data.total==0){
-							//window.alert("抱歉，没有搜到你要的结果！");
 							$.messager.show({
 				                title:'信息',
 				                msg:'抱歉，没有搜到你要的结果!',
@@ -234,7 +169,7 @@
 										afterPageText : '页，共{pages}页',
 										displayMsg : '',
 										onSelectPage : function(pageNumber,pageSize) {
-											          setData(pageNumber,pageSize,session);
+											          setData(pageNumber,pageSize);
 										}
 							});
 						}//end if(pg)
@@ -242,13 +177,7 @@
 				}//end success
 			})//end ajax
 		}//end setData	
-	
-	  //打印成绩
-	   $("#print").click(function(){
-		 window.location.href ="print_result.json?studentId="+$("#search").val()+"&session="+session;
-	   });
 		
-		
-	});
+	  });
 </script>
 </html>

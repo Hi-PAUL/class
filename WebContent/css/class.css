@@ -1,0 +1,20 @@
+@charset "UTF-8";
+/* CSS Document */
+/* my_class.jsp */
+#warm{
+	width:600px;
+	margin: 30px auto;
+}
+
+#warm td{
+	width: 100px;
+	height: 32px;
+}
+
+#class_logo{
+	width: 90%;
+	height:300px;
+	margin:38px;
+	overflow:hidden;
+	background-image: url("../images/ad2.jpg"); 
+}

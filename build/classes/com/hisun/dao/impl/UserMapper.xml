@@ -48,7 +48,14 @@
     select 
     <include refid="Base_Column_List" />
     from users
-    where isonline = #{isonline,jdbcType=INTEGER} and classId = #{classid,jdbcType=BIGINT}
+    <where>
+	    <if test="isonline != null">
+			isonline = #{isonline,jdbcType=INTEGER}
+		</if>
+		<if test="classid != null">
+			and classId = #{classid,jdbcType=BIGINT}
+		</if>
+	</where>
   </select>
   
   
