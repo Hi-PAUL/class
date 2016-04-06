@@ -49,7 +49,7 @@ public class ResultController
 
     @RequestMapping(value = "get_result_list", method = RequestMethod.POST)
     @ResponseBody
-    public ResultObject userLogin(HttpServletRequest request, @RequestParam(value = "pageNumber", required = false) Integer pageNumber,
+    public ResultObject getResultList(HttpServletRequest request, @RequestParam(value = "pageNumber", required = false) Integer pageNumber,
         @RequestParam(value = "pageSize", required = false) Integer pageSize, @RequestParam(value = "studentId", required = false) String studentId,
         @RequestParam(value = "session", required = false) String session)
     {

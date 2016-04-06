@@ -14,9 +14,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.hisun.common.bean.Admin;
 import com.hisun.common.bean.User;
+import com.hisun.common.exception.AdminServiceException;
 import com.hisun.common.exception.UserServiceException;
 import com.hisun.common.util.ResultObject;
+import com.hisun.service.AdminService;
 import com.hisun.service.UserService;
 
 /**
@@ -29,6 +32,9 @@ import com.hisun.service.UserService;
 @Controller
 public class LoginController
 {
+    @Resource
+    private AdminService adminService;
+
     @Resource
     private UserService userService;
 
@@ -51,6 +57,15 @@ public class LoginController
     }
 
 
+    @RequestMapping(value = "admin_login.xhtml", method = RequestMethod.GET)
+    public ModelAndView gotoAdminLogin()
+    {
+        System.out.println("admin_login");
+        ModelAndView model = new ModelAndView("admin/login");
+        return model;
+    }
+
+
     @RequestMapping(value = "user_login.json", method = RequestMethod.POST)
     @ResponseBody
     public ResultObject userLogin(HttpServletRequest request, HttpServletResponse response, @RequestParam(value = "username", required = false) String username,
@@ -67,8 +82,8 @@ public class LoginController
 
         try
         {
-             User user = userService.login(username, password);
-           // User user = userService.login("paul", "123456");
+            User user = userService.login(username, password);
+            // User user = userService.login("paul", "123456");
             System.out.println("user : " + user);
             request.getSession().setAttribute("user", user);
         }
@@ -100,6 +115,32 @@ public class LoginController
                 response.addCookie(namecookie);
             }
         }
+        return new ResultObject();
+    }
+
+
+    @RequestMapping(value = "admin_login.json", method = RequestMethod.POST)
+    @ResponseBody
+    public ResultObject adminLogin(HttpServletRequest request, HttpServletResponse response, @RequestParam(value = "adminname", required = false) String adminname,
+        @RequestParam(value = "password", required = false) String password, @RequestParam(value = "authCode", required = false) String authCode)
+    {
+        String code = (String) request.getSession().getAttribute("authCode");
+
+        if (!authCode.equals(code))
+        {
+            return new ResultObject(110, "验证码不准确!");
+        }
+        Admin admin = null;
+        try
+        {
+            admin = this.adminService.adminLogin(adminname, password);
+        }
+        catch (AdminServiceException e)
+        {
+            e.printStackTrace();
+            return new ResultObject(110, e.getMessage());
+        }
+        request.getSession().setAttribute("admin", admin);
         return new ResultObject();
     }
 

@@ -1,0 +1,18 @@
+@charset "UTF-8";
+/* CSS Document */
+/* album.jsp */
+#album_list li{
+	width: 180px;
+	height: 200px;
+	float:left;
+	overflow: hidden;
+	margin: 5px;
+}
+
+#album_list li img{
+	display: inline-block;
+}
+
+#album_list li span{
+	margin: 3px 10px;
+}

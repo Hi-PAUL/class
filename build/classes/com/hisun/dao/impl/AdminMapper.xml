@@ -30,6 +30,29 @@
   </select>
   
   
+  <select id="getAdminByAdminName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from admin
+    where adminName = #{adminname,jdbcType=VARCHAR}
+  </select>
+  
+  
+  <select id="getAdminByParams" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from admin
+     <where>
+	    <if test="adminname != null">
+			adminName = #{adminname,jdbcType=VARCHAR}
+		</if>
+		<if test="name != null">
+			and name = #{name,jdbcType=VARCHAR}
+		</if>
+	</where>
+  </select>
+  
+  
   <delete id="deleteById" parameterType="java.lang.Long" >
     delete from admin
     where id = #{id,jdbcType=BIGINT}

@@ -36,5 +36,5 @@ public interface ResultService
     List<Result> getResultByParams(String studentId, String session) throws ResultServiceException;
 
 
-    public Map<String, Object> getResultList(Integer pageNumber, Integer pageSize, String studentId, String session) throws ResultServiceException;
+    Map<String, Object> getResultList(Integer pageNumber, Integer pageSize, String studentId, String session) throws ResultServiceException;
 }

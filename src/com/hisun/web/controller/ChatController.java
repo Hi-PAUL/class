@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletContext;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -30,10 +29,8 @@ import com.hisun.service.UserService;
  *
  */
 @Controller
-public class ChatController extends HttpServlet
+public class ChatController
 {
-
-    private static final long serialVersionUID = 7941030153703195637L;
 
     @Resource
     private UserService userService;

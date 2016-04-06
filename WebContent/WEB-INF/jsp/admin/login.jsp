@@ -66,12 +66,12 @@
   <!--nav结束-->
   
   <div style="margin-top: 18px;">
-  <div class="easyui-panel" title="当前位置  >> 登陆" style="width:1000px;padding:30px 80px">
+  <div class="easyui-panel" title="当前位置  : 管理中心  >>  登陆 " style="width:1000px;padding:30px 80px">
   <div style="float: left"><img alt="" src="./images/login.jpg"></div>
   <div style="float: right">
    <div style="margin-bottom:20px">
        <div>账  号：</div>
-       <input id="username" name="username" class="easyui-textbox" data-options="prompt:'Enter a account...',iconCls:'icon-man',iconWidth:38" style="width:300px;height:32px">
+       <input id="adminname" name="adminname" class="easyui-textbox" data-options="prompt:'Enter a account...',iconCls:'icon-man',iconWidth:38" style="width:300px;height:32px">
    </div>
    <div style="margin-bottom:20px">
        <div>密  码：</div>
@@ -81,10 +81,6 @@
        <div>验 证 码：</div>
        <input id="authCode" name="authCode" class="easyui-textbox" data-options="prompt:'Enter auth code...'" style="width:140px;height:32px">
        <a href="javascript:location.reload()" class="easyui-linkbutton" style="width:80px;height:32px"><img src="authImg.do" style="width:60px;height:20px"/></a>
-   </div>
-   <div style="margin-bottom:20px">
-       <input id="autoLogin" class="easyui-switchbutton" >
-       <span style="width:30px;height:22px;margin-left:5px">自动登陆</span>
    </div>
    <div>
        <a  id="login" class="easyui-linkbutton" iconCls="icon-ok" style="width:300px;height:32px">登陆</a>
@@ -145,19 +141,18 @@
 		} 
 		
 	   $.ajax({
-			url : "user_login.json",
+			url : "admin_login.json",
 			type : "POST",
 			data : {
-				username : $("#username").val(),
+				adminname : $("#adminname").val(),
 				password : $("#password").val(),
-				authCode : $("#authCode").val(),
-				autoLogin : $("#autoLogin").switchbutton("options").checked
+				authCode : $("#authCode").val()
+				
 			},
 			dataType : "json",
 			success : function(result) {
 				if (!result.errorCode) {
-					window.location.href = "activity.xhtml";
-					//window.location.href = "space_add.xhtml";
+					window.location.href = "admin_home.xhtml";
 				} else {
 					alert(result.errorMsg);
 				}
@@ -170,12 +165,12 @@
 		var validateObj = {};
 		$.extend(validateObj, {
 			validate : function() {
-				var username = $("#username").val();
-				if (!username) {
+				var adminname = $("#adminname").val();
+				if (!adminname) {
 					$.messager.alert('警告','账号必须输入!','warning');
 					return false;
 				}
-				if (username.length < 3) {
+				if (adminname.length < 3) {
 					$.messager.alert('警告','账号必须至少3位!','warning');
 					return false;
 				}

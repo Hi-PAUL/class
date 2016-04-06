@@ -9,9 +9,11 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hisun.common.bean.User;
+import com.hisun.common.util.ResultObject;
 
 /**
  * 
@@ -54,6 +56,17 @@ public class LogoutController
         System.out.println("logout");
         ModelAndView model = new ModelAndView("index");
         return model;
+    }
+
+
+    @RequestMapping(value = "admin_logout.json", method = RequestMethod.POST)
+    @ResponseBody
+    public ResultObject adminLogout(HttpServletRequest request)
+    {
+
+        // Admin admin = (Admin) request.getSession().getAttribute("admin");
+        request.getSession().removeAttribute("admin");
+        return new ResultObject();
     }
 
 }

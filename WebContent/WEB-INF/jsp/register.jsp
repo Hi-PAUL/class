@@ -48,7 +48,7 @@
           <li><a href="#">活动中心</a></li>
           <li><a href="#">校园风景</a></li>
           <li><a href="#">人才招聘</a></li>
-          <li><a href="#">管理中心</a></li>
+          <li><a href="admin_login.xhtml">管理中心</a></li>
         </ul>
       </div>
       <!--nav_mid_left结束-->

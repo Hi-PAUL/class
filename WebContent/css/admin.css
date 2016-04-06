@@ -1,0 +1,17 @@
+@charset "UTF-8";
+/* CSS Document */
+/* home.jsp */
+#title{
+	width:340px;
+	height:40px;
+	margin: 20px auto;
+	font-size: 28pt;
+	font-family: "微软雅黑";	
+}
+
+#tree a{
+	color:#000;
+	font-size: 12px;
+	/* font-family: "微软雅黑";	 */
+	text-decoration: none;
+}
