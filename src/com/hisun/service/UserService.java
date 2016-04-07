@@ -30,7 +30,7 @@ public interface UserService
     void insertUser(User user);
 
 
-    void deleteUserById(Long id);
+    void deleteUserById(Long id) throws UserServiceException;
 
 
     void updateUser(User User);
@@ -48,5 +48,9 @@ public interface UserService
     List<User> getUserByParams(int isonline, Long classid) throws UserServiceException;
 
 
-    Map<String, Object> getUserList(Integer pageNumber, Integer pageSize, Long classid) throws UserServiceException;
+    Map<String, Object> getUserList(Integer pageNumber, Integer pageSize, String username, String name, Long classid) throws UserServiceException;
+
+
+    void saveUseInfo(Long id, String username, String sex, String qq, String phone, String email, Integer status, Long point, String name, String studentid) throws UserServiceException;
+
 }

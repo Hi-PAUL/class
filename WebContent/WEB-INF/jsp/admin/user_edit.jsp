@@ -17,23 +17,17 @@
 </style>
 <body>
 <div style="margin-left:20px;margin-top:20px;">
-      <a href="admin_list.xhtml?pageNumber=${pageNumber}">管理员列表</a><span>>></span>
-	      <c:if test="${operType=='add'}">增加管理员</c:if>
-	      <c:if test="${operType=='query'}">查看管理员</c:if>
-	      <c:if test="${operType=='edit'}">修改管理员</c:if>
+      <a href="user_list.xhtml?pageNumber=${pageNumber}">用户列表</a><span>>></span>
+	      <c:if test="${operType=='add'}">增加用户</c:if>
+	      <c:if test="${operType=='query'}">查看用户</c:if>
+	      <c:if test="${operType=='edit'}">修改用户</c:if>
 </div>
 <div style="margin-left:20px;margin-top:20px;">
 	<form>
 	   <table>
 	   		 <tr>
-				<td> <label>管理员名称:</label></td>
-	       		<td><input id="adminname" class="easyui-textbox" data-options="prompt:'Enter a information...'" style="width:200px" <c:if test="${operType == 'query'||operType == 'edit'}">readonly</c:if> />
-	       		</td>
-	   	     </tr>
-	   	     
-	   	     <tr>
-				<td> <label>管理员密码:</label></td>
-	       		<td><input id="password" class="easyui-textbox" data-options="prompt:'Enter a information...'" style="width:200px" <c:if test="${operType == 'query'}">readonly</c:if> />
+				<td> <label>用户名称:</label></td>
+	       		<td><input id="username" class="easyui-textbox" data-options="prompt:'Enter a information...'" style="width:200px" <c:if test="${operType == 'query'||operType == 'edit'}">readonly</c:if> />
 	       		</td>
 	   	     </tr>
 	   	     
@@ -45,6 +39,12 @@
 	        		</select>
 	        	</td>
 		     </tr>
+		     
+		      <tr>
+				<td> <label>QQ:</label></td>
+	       		<td><input id="qq" class="easyui-textbox" data-options="prompt:'Enter a information...'" style="width:200px" <c:if test="${operType == 'query'}">readonly</c:if> />
+	       		</td>
+	   	     </tr>
 	         
 	         <tr>
 				<td> <label>电话号码:</label></td>
@@ -57,29 +57,32 @@
 	       		<td><input id="email" class="easyui-textbox" data-options="prompt:'Enter a information...'" style="width:200px" <c:if test="${operType == 'query'}">readonly</c:if> />
 	       		</td>
 	   	     </tr>
-	   	     
-	   	     <tr>
-	        	<td><label>级别:</label></td>
-	       		<td><select id="level" class="easyui-combobox" panelHeight="auto" style="width:200px" <c:if test="${operType == 'query'}">disabled</c:if>>
-	          			<option value="1">一般管理员</option>
-	          			<option value="2">普通管理员</option>
-	          			<option value="3">超级管理员</option>
-	        		</select>
-	        	</td>
-		     </tr>
-		     
+	   	     	     
 		     <tr>
 	        	<td><label>账号状态:</label></td>
 	       		<td><select id="status" class="easyui-combobox" panelHeight="auto" style="width:200px" <c:if test="${operType == 'query'}">disabled</c:if>>
-	       		        <option value="1">正常</option>
-	          			<option value="0">冻结</option>
+	       		        <option value="0">未激活</option>
+	          			<option value="1">在线</option>
+	          			<option value="2">离线</option>
 	        		</select>
 	        	</td>
 		     </tr>
 		     
 		     <tr>
+				<td> <label>用户积分:</label></td>
+	       		<td><input id="point" class="easyui-textbox" data-options="prompt:'Enter a information...'" style="width:200px" <c:if test="${operType == 'query'}">readonly</c:if> />
+	       		</td>
+	   	     </tr>
+	   	     
+		     <tr>
 				<td> <label>姓名:</label></td>
 	       		<td><input id="name" class="easyui-textbox" data-options="prompt:'Enter a information...'" style="width:200px" <c:if test="${operType == 'query'}">readonly</c:if> />
+	       		</td>
+	   	     </tr>
+	   	     
+	   	     <tr>
+				<td> <label>学号:</label></td>
+	       		<td><input id="studentid" class="easyui-textbox" data-options="prompt:'Enter a information...'" style="width:200px" <c:if test="${operType == 'query'}">readonly</c:if> />
 	       		</td>
 	   	     </tr>
 	   	     
@@ -123,24 +126,25 @@
 						return false;
 					} */
 					$.ajax({
-						url : "save_admin_info.json",
+						url : "insert_user_info.json",
 						type : "POST",
 						data : {
 							id : "${id}",
-							adminname : $("#adminname").val(),
-							password : $("#password").val(),
+							username : $("#username").val(),
 							sex : $("#sex").combobox("getValue"),
+							qq : $("#qq").val(),
 							phone : $("#phone").val(),
 							email : $("#email").val(),
-							level : $("#level").combobox("getValue"),
 							status : $("#status").combobox("getValue"),
-							name : $("#name").val()
+							point : $("#point").val(),
+							name : $("#name").val(),
+							studentid : $("#studentid").val()
 						},
 						dataType : "json",
 						success : function(result) {
 							if (!result.errorCode) {
-								alert("管理员"+operName+"成功！");
-								window.location = "admin_list.xhtml?pageNumber=${pageNumber}";
+								alert("用户"+operName+"成功！");
+								window.location = "user_list.xhtml?pageNumber=${pageNumber}";
 							}else{
 								alert(result.errorMsg);
 							}
@@ -148,7 +152,7 @@
 					});
 				});
 				$("#return").click(function(){
-				   window.location = "admin_list.xhtml?pageNumber=${pageNumber}";
+				   window.location = "user_list.xhtml?pageNumber=${pageNumber}";
 				});
 			}
 		});
@@ -160,7 +164,7 @@
 				var operType="${operType}";
 				$.ajax({
 					type : "POST",
-					url : "get_admin_by_id.json",
+					url : "get_user_by_id.json",
 					data : {
 						id :id
 					},
@@ -168,14 +172,15 @@
 					success : function(result) {
 						if (!result.errorCode) {
 							var data = result.data;
-							$("#adminname").textbox("setValue",data.adminname);
-							$("#password").textbox("setValue",data.password);
+							$("#username").textbox("setValue",data.username);
 							$("#sex").combobox("setValue",data.sex);
+							$("#qq").textbox("setValue",data.qq);
 							$("#phone").textbox("setValue",data.phone);
 							$("#email").textbox("setValue",data.email);
-						    $("#level").combobox("setValue",data.level);
 							$("#status").combobox("setValue",data.status);
+							$("#point").textbox("setValue",data.point);
 							$("#name").textbox("setValue",data.name);
+							$("#studentid").textbox("setValue",data.studentid);
 						}
 					}
 

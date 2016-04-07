@@ -15,35 +15,36 @@
 <div>
    <table>
 		<tr>
-     		<td>管理员名称:</td>
-     		<td><input class="easyui-textbox" id="adminname" style="width:146px"></td>
-			<td>管理员姓名:</td>
+     		<td>用户名称:</td>
+     		<td><input class="easyui-textbox" id="username" style="width:146px"></td>
+			<td>用户姓名:</td>
 			<td><input class="easyui-textbox" id="name" style="width:146px"></td>
 			  <td><a href="#" id="search" class="easyui-linkbutton" iconCls="icon-search">查询</a></td>
 		 </tr>
 	 </table>
 </div>
 <div>
-    <table id="adminList" class="easyui-datagrid" title="管理员列表" style="width:100%" toolbar="#toolbar" pagination="true"  data-options="fitColumns:true,singleSelect:true,collapsible:false,rownumbers:true">
+    <table id="userList" class="easyui-datagrid" title="用户列表" style="width:100%" toolbar="#toolbar" pagination="true"  data-options="fitColumns:true,singleSelect:true,collapsible:false,rownumbers:true">
 		
-		   <div id="toolbar" style="height:auto">
+		   <!-- <div id="toolbar" style="height:auto">
 				<div style="margin-bottom:5px">
-					<a id="add" href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true">增加管理员</a>
+					<a id="add" href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true">增加用户</a>
 				</div>
-		   </div> 
+		   </div>  -->
 		
 		<thead>
 			<tr>
-				<th data-options="field:'adminname',align:'center',width:'10%'">管理员名称</th>
-				<th data-options="field:'sex',align:'center',width:'8%'">性别</th>
-				<th data-options="field:'phone',align:'center',width:'10%'">电话号码</th>
-				<th data-options="field:'email',align:'center',width:'10%'">电子邮件</th>
-				<th data-options="field:'level',align:'center',width:'8%'">级别</th>
-				<th data-options="field:'registerdate',align:'center',width:'10%'">注册时间</th>
-				<th data-options="field:'laterdate',align:'center',width:'10%'">最后登录时间</th>
-				<th data-options="field:'status',align:'center',width:'8%'">账号状态</th>
-				<th data-options="field:'name',align:'center',width:'10%'">姓名</th>
-				<th data-options="field:'operate',width:80,align:'center',formatter:formatOper,width:'15%'">操作</th>  
+				<th data-options="field:'username',align:'center',width:'9%'">用户名称</th>
+				<th data-options="field:'sex',align:'center',width:'7%'">性别</th>
+				<th data-options="field:'qq',align:'center',width:'9%'">QQ</th>
+				<th data-options="field:'phone',align:'center',width:'9%'">电话</th>
+				<th data-options="field:'email',align:'center',width:'8%'">电子邮箱</th>
+				<th data-options="field:'registerdate',align:'center',width:'9%'">注册时间</th>
+				<th data-options="field:'status',align:'center',width:'9%'">账号状态</th>
+				<th data-options="field:'point',align:'center',width:'8%'">用户积分</th>
+				<th data-options="field:'name',align:'center',width:'9%'">姓名</th>
+				<th data-options="field:'studentid',align:'center',width:'9%'">学号</th>
+				<th data-options="field:'operate',width:80,align:'center',formatter:formatOper,width:'13%'">操作</th>  
 			</tr>
 		</thead>
     </table>
@@ -54,36 +55,36 @@
 
 //操作列
 function formatOper(val, row, index) {
-		return '<a href="#" onclick="editAdmin(\''
+		return '<a href="#" onclick="editUser(\''
 				+ index
-				+ '\',\'query\')">查看</a>&nbsp;&nbsp;<a href="#" onclick="editAdmin(\''
+				+ '\',\'query\')">查看</a>&nbsp;&nbsp;<a href="#" onclick="editUser(\''
 				+ index
-				+ '\',\'edit\')">修改</a>&nbsp;&nbsp;<a href="#" onclick="editAdmin(\''
+				+ '\',\'edit\')">修改</a>&nbsp;&nbsp;<a href="#" onclick="editUser(\''
 				+ index + '\',\'del\')" >删除</a>';
 }
 
 
 //编辑用户（包括查询、修改、删除）
-function editAdmin(index, operType) {
-		$('#adminList').datagrid('selectRow', index);
-		var row = $('#adminList').datagrid('getSelected');
+function editUser(index, operType) {
+		$('#userList').datagrid('selectRow', index);
+		var row = $('#userList').datagrid('getSelected');
 		if (row) {
 			if (operType == 'query' || operType == 'edit') {
 				var pageNumber = $('.pagination-num').val();
-				window.location.href = "admin_edit.xhtml?operType="+ operType + "&id=" + row.id+"&pageNumber="+pageNumber;
+				window.location.href = "user_edit.xhtml?operType="+ operType + "&id=" + row.id+"&pageNumber="+pageNumber;
 			} else if (operType == 'del') {
 				if (window.confirm('你确定要删除吗？')) {
 					$.ajax({
 						type : "POST",
-						url : "delete_admin_by_id.json",
+						url : "delete_user_by_id.json",
 						data : {
 							id :row.id
 						},
 						dataType : "json",
 						success : function(result) {
 							if (!result.errorCode) {
-								window.alert("管理员删除成功！");
-								window.location = "admin_list.xhtml";
+								window.alert("用户删除成功！");
+								window.location = "user_list.xhtml";
 							}
 						}
 					})
@@ -102,9 +103,9 @@ $.extend(dataObj, {
 		
 		$.ajax({
 			type : "POST",
-			url : "get_admin_list.json",
+			url : "get_user_list.json",
 			data : {
-				adminname : $("#adminname").val(),
+				username : $("#username").val(),
 				name : $("#name").val(),
 				pageNumber : pageNumber,
 				pageSize : pageSize
@@ -116,11 +117,11 @@ $.extend(dataObj, {
 					if(result.data.total==0){
 						window.alert("抱歉，没有搜到你要的结果！");
 					}
-					$("#adminList").datagrid("loadData", {
+					$("#userList").datagrid("loadData", {
 						"total" : result.data.total,
 						"rows" : result.data.rows
 					});
-					var pg = $("#adminList").datagrid("getPager");
+					var pg = $("#userList").datagrid("getPager");
 					if (pg) {
 						$(pg).pagination({
 									pageNumber : pageNumber,
@@ -150,7 +151,7 @@ var eventObj = {};
       			dataObj.setData(1, 15);
             });
              $("#add").click(function(){
-               window.location.href = "admin_edit.xhtml?operType=add";
+               window.location.href = "user_edit.xhtml?operType=add";
             }); 
     }
 });

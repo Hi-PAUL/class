@@ -46,7 +46,8 @@ public class UserController
         ModelAndView model = new ModelAndView("register");
         return model;
     }
-    
+
+
     @RequestMapping(value = "address_book.xhtml", method = RequestMethod.GET)
     public ModelAndView gotoAddressBook()
     {
@@ -54,7 +55,6 @@ public class UserController
         ModelAndView model = new ModelAndView("address_book");
         return model;
     }
-    
 
 
     @RequestMapping(value = "save_user_info.json", method = RequestMethod.POST)
@@ -101,8 +101,8 @@ public class UserController
         return model;
 
     }
-    
-    
+
+
     @RequestMapping(value = "get_address_book_list.json", method = RequestMethod.POST)
     @ResponseBody
     public ResultObject userLogin(HttpServletRequest request, @RequestParam(value = "pageNumber", required = false) Integer pageNumber,
@@ -112,7 +112,7 @@ public class UserController
         Map<String, Object> list = null;
         try
         {
-            list = this.userService.getUserList(pageNumber, pageSize, user.getClassid());
+            list = this.userService.getUserList(pageNumber, pageSize, null, null, user.getClassid());
         }
         catch (UserServiceException e)
         {
@@ -121,8 +121,91 @@ public class UserController
         System.out.println(list);
         return new ResultObject(list);
     }
-    
-    
-    
+
+
+    @RequestMapping(value = "user_list.xhtml", method = RequestMethod.GET)
+    public ModelAndView gotoUserList(HttpServletRequest request)
+    {
+
+        System.out.println("user_list");
+        ModelAndView model = new ModelAndView("admin/user_list");
+        return model;
+    }
+
+
+    @RequestMapping(value = "get_user_list", method = RequestMethod.POST)
+    @ResponseBody
+    public ResultObject getUserList(HttpServletRequest request, @RequestParam(value = "pageNumber", required = false) Integer pageNumber,
+        @RequestParam(value = "pageSize", required = false) Integer pageSize, @RequestParam(value = "username", required = false) String username,
+        @RequestParam(value = "name", required = false) String name)
+    {
+        Map<String, Object> list = null;
+
+        try
+        {
+            list = this.userService.getUserList(pageNumber, pageSize, username, name, null);
+        }
+        catch (UserServiceException e)
+        {
+            e.printStackTrace();
+        }
+        System.out.println(list);
+        return new ResultObject(list);
+    }
+
+
+    @RequestMapping(value = "user_edit.xhtml", method = RequestMethod.GET)
+    public ModelAndView gotoApplicationEdit(HttpServletRequest request, @RequestParam(value = "operType") String operType, @RequestParam(value = "id", required = false) String id,
+        @RequestParam(value = "pageNumber", required = false) String pageNumber)
+    {
+        return new ModelAndView("admin/user_edit").addObject("operType", operType).addObject("id", id).addObject("pageNumber", pageNumber);
+    }
+
+
+    @RequestMapping(value = "get_user_by_id.json", method = RequestMethod.POST)
+    @ResponseBody
+    public ResultObject getUserById(@RequestParam(value = "id") Long id)
+    {
+        User user = this.userService.getUserById(id);
+        return new ResultObject(user);
+
+    }
+
+
+    @RequestMapping(value = "insert_user_info.json", method = RequestMethod.POST)
+
+    @ResponseBody
+    public ResultObject saveUserInfo(@RequestParam(value = "id", required = false) Long id, @RequestParam(value = "username", required = false) String username,
+        @RequestParam(value = "sex", required = false) String sex, @RequestParam(value = "qq", required = false) String qq, @RequestParam(value = "phone", required = false) String phone,
+        @RequestParam(value = "email", required = false) String email, @RequestParam(value = "status", required = false) Integer status, @RequestParam(value = "point", required = false) Long point,
+        @RequestParam(value = "name", required = false) String name, @RequestParam(value = "studentid", required = false) String studentid)
+    {
+        try
+        {
+            this.userService.saveUseInfo(id, username, sex, qq, phone, email, status, point, name, studentid);
+            return new ResultObject();
+        }
+        catch (Exception e)
+        {
+            return new ResultObject(110, e.getMessage());
+        }
+
+    }
+
+
+    @RequestMapping(value = "delete_user_by_id.json", method = RequestMethod.POST)
+    @ResponseBody
+    public ResultObject deleteUserById(@RequestParam(value = "id") Long id)
+    {
+        try
+        {
+            this.userService.deleteUserById(id);
+        }
+        catch (UserServiceException e)
+        {
+            e.printStackTrace();
+        }
+        return new ResultObject();
+    }
 
 }

@@ -29,16 +29,13 @@
                         <span>人员管理</span>
                         <ul>
                             <li><a href="admin_list.xhtml" target="mainframe">人员列表</a></li>
-                            <li><a href="admin_edit.xhtml?operType=add" target="mainframe">增加人员</a></li>
                         </ul>
                     </li>
                     
                     <li data-options="state:'closed'">
                         <span>用户管理</span>
                         <ul>
-                            <li><a href="#" target="mainframe">Friend</a></li>
-                            <li><a href="#" target="mainframe">Friend</a></li>
-                            <li><a href="#" target="mainframe">Friend</a></li>
+                            <li><a href="user_list.xhtml" target="mainframe">用户列表</a></li>
                         </ul>
                     </li>
                     

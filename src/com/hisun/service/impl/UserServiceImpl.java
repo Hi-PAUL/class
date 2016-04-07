@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Repository;
 
 import com.hisun.common.bean.User;
@@ -148,9 +149,16 @@ public class UserServiceImpl implements UserService
 
 
     @Override
-    public void deleteUserById(Long id)
+    public void deleteUserById(Long id) throws UserServiceException
     {
-        // TODO Auto-generated method stub
+        try
+        {
+            this.userDao.deleteUserById(id);
+        }
+        catch (DataAccessException e)
+        {
+            e.printStackTrace();
+        }
 
     }
 
@@ -215,10 +223,21 @@ public class UserServiceImpl implements UserService
 
 
     @Override
-    public Map<String, Object> getUserList(Integer pageNumber, Integer pageSize, Long classid) throws UserServiceException
+    public Map<String, Object> getUserList(Integer pageNumber, Integer pageSize, String username, String name, Long classid) throws UserServiceException
     {
         Map<String, Object> params = new HashMap<String, Object>();
-        params.put("classid", classid);
+        if (classid != null)
+        {
+            params.put("classid", classid);
+        }
+        if (StringUtils.isNotEmpty(username))
+        {
+            params.put("username", username);
+        }
+        if (StringUtils.isNotEmpty(name))
+        {
+            params.put("name", name);
+        }
         List<User> userList = null;
         try
         {
@@ -234,6 +253,43 @@ public class UserServiceImpl implements UserService
         map.put("rows", userList == null ? null : userList.subList(fromRecord, endRecord));
         map.put("total", userList == null ? 0 : userList.size());
         return map;
+    }
+
+
+    @Override
+    public void saveUseInfo(Long id, String username, String sex, String qq, String phone, String email, Integer status, Long point, String name, String studentid) throws UserServiceException
+    {
+        User user = null;
+        try
+        {
+            user = (id == null ? new User() : this.userDao.getUserById(id));
+            user.setUsername(username);
+            user.setSex(sex);
+            user.setQq(qq);
+            user.setPhone(phone);
+            user.setEmail(email);
+            user.setStatus(status);
+            user.setPoint(point);
+            user.setName(name);
+            user.setStudentid(studentid);
+            if (id == null)
+            {
+                if (this.userDao.getUserByUsername(username) != null)
+                {
+                    throw new UserServiceException("该账号已经存在！");
+                }
+                this.userDao.insertUser(user);
+            }
+            else
+            {
+                this.userDao.updateUser(user);
+            }
+        }
+        catch (DataAccessException e)
+        {
+            e.printStackTrace();
+        }
+
     }
 
 }

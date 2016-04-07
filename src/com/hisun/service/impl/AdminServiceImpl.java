@@ -69,7 +69,14 @@ public class AdminServiceImpl implements AdminService
     @Override
     public void deleteAdminById(Long id) throws AdminServiceException
     {
-        // TODO Auto-generated method stub
+        try
+        {
+            this.adminDao.deleteAdminById(id);
+        }
+        catch (DataAccessException e)
+        {
+            e.printStackTrace();
+        }
 
     }
 
@@ -85,8 +92,16 @@ public class AdminServiceImpl implements AdminService
     @Override
     public Admin getAdminById(Long id) throws AdminServiceException
     {
-        // TODO Auto-generated method stub
-        return null;
+        Admin admin = null;
+        try
+        {
+            admin = this.adminDao.getAdminById(id);
+        }
+        catch (DataAccessException e)
+        {
+            e.printStackTrace();
+        }
+        return admin;
     }
 
 

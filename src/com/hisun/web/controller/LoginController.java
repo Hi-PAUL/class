@@ -76,9 +76,10 @@ public class LoginController
         System.out.println(code);
         System.out.println(autoLogin);
 
-        /*
-         * if (!authCode.equals(code)) { return new ResultObject(110, "验证码不准确!"); }
-         */
+        if (!authCode.equals(code))
+        {
+            return new ResultObject(110, "验证码不准确!");
+        }
 
         try
         {

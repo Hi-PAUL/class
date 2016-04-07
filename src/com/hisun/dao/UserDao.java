@@ -22,7 +22,7 @@ public interface UserDao
     void insertUser(User user);
 
 
-    void deleteUserById(Long id);
+    void deleteUserById(Long id)throws DataAccessException;
 
 
     void updateUser(User User);

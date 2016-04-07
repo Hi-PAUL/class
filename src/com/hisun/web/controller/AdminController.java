@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.hisun.common.bean.Admin;
 import com.hisun.common.exception.AdminServiceException;
 import com.hisun.common.util.ResultObject;
 import com.hisun.service.AdminService;
@@ -85,36 +86,34 @@ public class AdminController
     }
 
 
-    /**
-     * 
-     * 功能描述：根据id主键返回单条应用记录
-     * 
-     * @param id
-     * @return
-     */
-    /*
-     * @RequestMapping(value = "get_application_by_id.json", method = RequestMethod.POST)
-     * 
-     * @ResponseBody public ResultObject getapplicationById(@RequestParam(value = "id") Long id) { Application application = this.applicationService.getApplicationById(id); return new
-     * ResultObject(application); }
-     */
+    @RequestMapping(value = "get_admin_by_id.json", method = RequestMethod.POST)
+    @ResponseBody
+    public ResultObject getAdminById(@RequestParam(value = "id") Long id)
+    {
+        Admin admin = null;
+        try
+        {
+            admin = this.adminService.getAdminById(id);
+        }
+        catch (AdminServiceException e)
+        {
+            e.printStackTrace();
+        }
+        System.out.println("json :"+admin);
+        return new ResultObject(admin);
+    }
 
-    
+
     @RequestMapping(value = "save_admin_info.json", method = RequestMethod.POST)
     @ResponseBody
-    public ResultObject saveAdminInfo(@RequestParam(value = "id", required = false) Long id, 
-        @RequestParam(value = "adminname", required = false) String adminname,
-        @RequestParam(value = "password", required = false) String password,
-        @RequestParam(value = "sex", required = false) String sex, 
-        @RequestParam(value = "phone", required = false) String phone,
-        @RequestParam(value = "email", required = false) String email,
-        @RequestParam(value = "level", required = false) Integer level, 
-        @RequestParam(value = "status", required = false) Integer status ,
-        @RequestParam(value = "name", required = false) String name )
+    public ResultObject saveAdminInfo(@RequestParam(value = "id", required = false) Long id, @RequestParam(value = "adminname", required = false) String adminname,
+        @RequestParam(value = "password", required = false) String password, @RequestParam(value = "sex", required = false) String sex, @RequestParam(value = "phone", required = false) String phone,
+        @RequestParam(value = "email", required = false) String email, @RequestParam(value = "level", required = false) Integer level, @RequestParam(value = "status", required = false) Integer status,
+        @RequestParam(value = "name", required = false) String name)
     {
         try
         {
-            this.adminService.saveAdminInfo(id, adminname,password, sex, phone, email,level,status,name);
+            this.adminService.saveAdminInfo(id, adminname, password, sex, phone, email, level, status, name);
             return new ResultObject();
         }
         catch (Exception e)
@@ -124,17 +123,21 @@ public class AdminController
 
     }
 
-    /**
-     * 
-     * 功能描述：根据id主键删除记录
-     * 
-     * @param id
-     * @return
-     */
-    /*
-     * @RequestMapping(value = "delete_application_by_id.json", method = RequestMethod.POST)
-     * 
-     * @ResponseBody public ResultObject deleteApplicationById(@RequestParam(value = "id") Long id) { this.applicationService.deleteApplicationById(id); return new ResultObject(); }
-     */
+
+    @RequestMapping(value = "delete_admin_by_id.json", method = RequestMethod.POST)
+    @ResponseBody
+    public ResultObject deleteAdminById(@RequestParam(value = "id") Long id)
+    {
+        System.out.println(id);
+        try
+        {
+            this.adminService.deleteAdminById(id);
+        }
+        catch (AdminServiceException e)
+        {
+            e.printStackTrace();
+        }
+        return new ResultObject();
+    }
 
 }

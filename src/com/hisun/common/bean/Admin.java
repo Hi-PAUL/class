@@ -122,7 +122,7 @@ public class Admin
 
     public String getRegisterdate()
     {
-        return HisunUtil.formatDate(registerdate, "yyyy-MM-dd HH:mm:ss");
+        return HisunUtil.formatDate(registerdate, "yyyy-MM-dd");
     }
 
 
@@ -134,7 +134,7 @@ public class Admin
 
     public String getLaterdate()
     {
-        return HisunUtil.formatDate(laterdate, "yyyy-MM-dd HH:mm:ss");
+        return HisunUtil.formatDate(laterdate, "yyyy-MM-dd");
     }
 
 
