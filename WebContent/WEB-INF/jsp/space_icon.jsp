@@ -48,7 +48,7 @@
         <ul>
           <li><a href="activity.xhtml">首页</a></li>
           <li><a href="my_class.xhtml">我的班级</a></li>
-          <li><a href="#">相册墙</a></li>
+          <li><a href="album.xhtml">相册墙</a></li>
           <li><a href="address_book.xhtml">通讯录</a></li>
           <li><a href="chat_room.xhtml">聊天室</a></li>
           <li><a href="space_show.xhtml">唯空间</a></li>

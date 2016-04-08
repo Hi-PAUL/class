@@ -1,18 +1,43 @@
 @charset "UTF-8";
 /* CSS Document */
 /* album.jsp */
-#album_list li{
-	width: 180px;
+img {
+	border: 0px;
+}
+
+#picList {
+	width: 100%;
+}
+
+#picList li {
+	width: 300px;
 	height: 200px;
-	float:left;
+	position: relative;
 	overflow: hidden;
-	margin: 5px;
+	float: left;
+	margin: 24px 0 0 20px;
 }
 
-#album_list li img{
-	display: inline-block;
+#picList li img, #picList li a {
+	position: absolute;
+	top: 0px;
+	left: 0px;
 }
 
-#album_list li span{
-	margin: 3px 10px;
+#picList li img {
+	width: 100%;
+}
+
+#picList li a {
+	display: block;
+	width: 280px;
+	height: 180px;
+	top: 160px;
+	background: #000;
+	color: white;
+	font-style: normal;
+	line-height: 25px;
+	padding: 10px;
+	opacity: 0.8;
+	text-decoration: none;
 }

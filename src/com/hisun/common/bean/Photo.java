@@ -144,7 +144,7 @@ public class Photo
 
     public String getPubdate()
     {
-        return HisunUtil.formatDate(pubdate, "yyyy-MM-dd HH:mm:ss");
+        return HisunUtil.formatDate(pubdate, "yyyy-MM-dd");
     }
 
 

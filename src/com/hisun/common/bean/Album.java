@@ -88,7 +88,7 @@ public class Album
 
     public String getCreatedate()
     {
-        return HisunUtil.formatDate(createdate, "yyyy-MM-dd HH:mm:ss");
+        return HisunUtil.formatDate(createdate, "yyyy-MM-dd");
     }
 
 

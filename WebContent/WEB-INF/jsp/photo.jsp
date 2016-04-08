@@ -6,7 +6,7 @@
 <html>
 <head>
      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-     <title>相册墙</title>
+     <title>班级相片</title>
      <link rel="shortcut icon" href="./images/faviconz.ico" />
      <link rel="bookmark" href="./images/faviconz.ico" />
      <link rel="stylesheet" type="text/css" href="./css/main.css" >
@@ -47,7 +47,7 @@
         <ul>
           <li><a href="activity.xhtml">首页</a></li>
           <li><a href="my_class.xhtml">我的班级</a></li>
-          <li><a href="album.xhtml">相册墙</a></li>
+          <li><a href="#">相册墙</a></li>
           <li><a href="address_book.xhtml">通讯录</a></li>
           <li><a href="chat_room.xhtml">聊天室</a></li>
           <li><a href="space_show.xhtml">唯空间</a></li>
@@ -69,35 +69,45 @@
   <!--nav结束-->
  
 <div  style="margin-top:18px;">    
-  <div id="my_class" class="easyui-panel" title="你现在的位置   >> 相片墙" style="width:100%;height:750px;">
+  <div id="my_class" class="easyui-panel" title="你现在的位置  : 相片墙 >> 班级相片" style="width:100%;height:750px;">
     <div id="toolbar" style="background:#F4F4F4">
-        <a id="add_album" href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="$('#w').window('open')">增加相册</a>
-        <div id="w" class="easyui-window" title="创建相册" closed="true" data-options="iconCls:'icon-save'" style="width:420px;height:250px;padding:5px 50px;">
+        <a id="add_album" href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="$('#w').window('open')">增加相片</a>
+        <a href="javascript:history.go(-1);" class="easyui-linkbutton" iconCls="icon-undo" plain="true" >返回</a>
+        
+        <form id="from" action="save_photo.action" method="post" enctype="multipart/form-data" onsubmit="return check()"> 
+           <div id="w" class="easyui-window" title="创建相册" closed="true" data-options="iconCls:'icon-save'" style="width:420px;height:310px;padding:5px 50px;">
 	        <div class="easyui-layout" data-options="fit:true">
-	            <div style="margin-bottom:20px">
-			       <div>标 题：</div>
-			       <input id="albumName"  class="easyui-textbox" data-options="prompt:'Enter a title...'" style="width:300px;height:32px">
+	            <div style="margin-bottom:15px"> <!--  class="easyui-filebox" -->
+			       <div>相 片：</div>
+			       <input id="photofile"  class="easyui-filebox"  data-options="prompt:'Choose a file...'" style="width:300px;height:32px">
 			    </div>
-			    <div style="margin-bottom:20px">
-			       <div>介绍：</div>
-			       <input id="albumDesc" class="easyui-textbox" data-options="prompt:'Enter the content...',multiline:true"  style="width:300px;height:70px">
+	            <div style="margin-bottom:15px">
+			       <div>标 题：</div>
+			       <input id="title" name="title" class="easyui-textbox" data-options="prompt:'Enter a title...'" style="width:300px;height:32px">
+			    </div>
+			    <div style="margin-bottom:15px">
+			       <div>介 绍：</div>
+			       <input id="contents" name="contents" class="easyui-textbox" data-options="prompt:'Enter the content...',multiline:true"  style="width:300px;height:70px">
 			    </div>
 	            <div data-options="region:'south',border:false" style="text-align:right;padding:5px 0 0;">
-	                <a id="create_album" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" href="javascript:void(0)" style="width:80px">发表</a>
+	                <input type="hidden" name="albumid" value="${albumid}"/>
+	                <a id="save_photo" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" style="width:80px">确定</a>
 	                <a class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" href="javascript:void(0)" onclick="$('#w').window('close')" style="width:80px">取消</a>
 	            </div>
 	        </div>
-		</div>
+		  </div>
+	   </form>
 	   <!-- window结束-->
     </div>
    
     <ul class="picList" id="picList">
-        <c:forEach items="${albumList}" var="list">
+        <c:forEach items="${photoList}" var="list">
             <li>
-              <img src="./images/icons/${list.imagefm}.jpg" />
-              <a href='photo.xhtml?albumid=${list.id}'>${list.albumname}<br/>
-                                     介绍 : ${list.albumdesc}<br/>
-                                     时间 : ${list.createdate}                              
+              <img src="./images/icons/${list.path}.jpg" />
+              <a href='#'>${list.title}<br/>
+                                     介绍 : ${list.contents}<br/>
+                                     相册: ${list.albumname}<br/>                      
+                                     时间 : ${list.pubdate}                              
             </a>  
             </li>
         </c:forEach>
@@ -150,60 +160,48 @@
 </body>
 <script type="text/javascript">
  $(document).ready(function(){
-	
-	  //创建相册
-	   $("#create_album").click(function(){
-		   if(!validateObj.validate()){
-			 return false;
-		   } 
-			
-		   $.ajax({
-				url : "save_album.json",
-				type : "POST",
-				data : {
-					albumname: $("#albumName").val(),
-					albumdesc : $("#albumDesc").val()
-				},
-				dataType : "json",
-				success : function(result) {
-					if (!result.errorCode) {
-						$('#w').window('close');
-						$("#albumName").val("");
-						$("#albumDesc").val("");
-						$.messager.show({
-			                title:'信息',
-			                msg:'相册创建成功.',
-			                timeout:5000,
-			                showType:'slide'
-			            });
-					} else {
-						alert(result.errorMsg);
-					}
-				 }
-			 });
-	    });
-	  
-	 //数据校验模块
-		var validateObj = {};
-		$.extend(validateObj, {
-			validate : function() {
-				var albumName = $("#albumName").val();
-				if (!albumName) {
-					$.messager.alert("警告", "标题必须输入！");
-					return false;
-				}
-				
-				var albumDesc = $("#albumDesc").val();
-				if (!albumDesc) {
-					$.messager.alert("警告", "介绍必须输入！");
-					return false;
-				}
-				
-				return true;
-			}
-		});
 	 
- });
+	 /* $('#photofile').change(function() { 
+		 alert();
+		 var formdata = new FormData(); 
+		 var v_this = $(this); 
+		 var fileObj = v_this.get(0).files; 
+		 formdata.append("imgFile", fileObj[0]); 
+	 }); */
+	
+	 $("#save_photo").click(function(){
+		// alert();
+		$("#from").submit();
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	 });
+	 
+ });	  
+	   //数据校验模块
+	   function check() {
+			var title = $("#title").val();
+			if (!title) {
+				$.messager.alert("警告", "标题必须输入！");
+				return false;
+			}
+			
+			var contents = $("#contents").val();
+			if (!contents) {
+				$.messager.alert("警告", "介绍必须输入！");
+				return false;
+			}
+			return true;
+		 } 
+
  	
  function imgDisplay(){
 	var Div = document.getElementById('picList').getElementsByTagName('li');
