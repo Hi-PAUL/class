@@ -42,18 +42,14 @@
                     <li data-options="state:'closed'">
                         <span>成绩管理</span>
                         <ul>
-                            <li><a href="#" target="mainframe">Friend</a></li>
-                            <li><a href="#" target="mainframe">Friend</a></li>
-                            <li><a href="#">Friend</a></li>
+                            <li><a href="result_list.xhtml" target="mainframe">成绩列表</a></li>
                         </ul>
                     </li>
                     
                     <li data-options="state:'closed'">
                         <span>班级管理</span>
                         <ul>
-                            <li><a href="#" target="mainframe">Friend</a></li>
-                            <li><a href="#" target="mainframe">Friend</a></li>
-                            <li><a href="#">Friend</a></li>
+                            <li><a href="class_list.xhtml" target="mainframe">班级列表</a></li>
                         </ul>
                     </li>
                     

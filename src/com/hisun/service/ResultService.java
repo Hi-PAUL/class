@@ -36,5 +36,9 @@ public interface ResultService
     List<Result> getResultByParams(String studentId, String session) throws ResultServiceException;
 
 
-    Map<String, Object> getResultList(Integer pageNumber, Integer pageSize, String studentId, String session) throws ResultServiceException;
+    Map<String, Object> getResultList(Integer pageNumber, Integer pageSize, String studentId, String banbie, String session, String coursename) throws ResultServiceException;
+
+
+    void saveResultInfo(Long id, String studentid, String banbie, String name, String session, String coursename, String coursecode, Integer period, Integer credit, Double scores, String remark)
+        throws ResultServiceException;
 }

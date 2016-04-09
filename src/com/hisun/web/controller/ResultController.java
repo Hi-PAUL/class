@@ -47,6 +47,15 @@ public class ResultController
     }
 
 
+    @RequestMapping(value = "result_list.xhtml", method = RequestMethod.GET)
+    public ModelAndView gotoResultList()
+    {
+        System.out.println("result_list.xhtml");
+        ModelAndView model = new ModelAndView("admin/result_list");
+        return model;
+    }
+
+
     @RequestMapping(value = "get_result_list", method = RequestMethod.POST)
     @ResponseBody
     public ResultObject getResultList(HttpServletRequest request, @RequestParam(value = "pageNumber", required = false) Integer pageNumber,
@@ -56,7 +65,7 @@ public class ResultController
         Map<String, Object> list = null;
         try
         {
-            list = this.resultService.getResultList(pageNumber, pageSize, studentId, session);
+            list = this.resultService.getResultList(pageNumber, pageSize, studentId, "", session, "");
         }
         catch (ResultServiceException e)
         {
@@ -90,6 +99,88 @@ public class ResultController
         headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
         headers.setContentDispositionFormData("attachment", "result.xls");
         return new ResponseEntity<byte[]>(out, headers, HttpStatus.CREATED);
+    }
+
+
+    @RequestMapping(value = "find_result_list.json", method = RequestMethod.POST)
+    @ResponseBody
+    public ResultObject findResultList(HttpServletRequest request, @RequestParam(value = "pageNumber", required = false) Integer pageNumber,
+        @RequestParam(value = "pageSize", required = false) Integer pageSize, @RequestParam(value = "studentId", required = false) String studentId,
+        @RequestParam(value = "banbie", required = false) String banbie, @RequestParam(value = "coursename", required = false) String coursename)
+    {
+        Map<String, Object> list = null;
+        try
+        {
+            list = this.resultService.getResultList(pageNumber, pageSize, studentId, banbie, "", coursename);
+        }
+        catch (ResultServiceException e)
+        {
+            e.printStackTrace();
+        }
+        System.out.println(list);
+        return new ResultObject(list);
+    }
+
+
+    @RequestMapping(value = "result_edit.xhtml", method = RequestMethod.GET)
+    public ModelAndView gotoResultEdit(HttpServletRequest request, @RequestParam(value = "operType") String operType, @RequestParam(value = "id", required = false) String id,
+        @RequestParam(value = "pageNumber", required = false) String pageNumber)
+    {
+        return new ModelAndView("admin/result_edit").addObject("operType", operType).addObject("id", id).addObject("pageNumber", pageNumber);
+    }
+
+
+    @RequestMapping(value = "get_result_by_id.json", method = RequestMethod.POST)
+    @ResponseBody
+    public ResultObject getResultById(@RequestParam(value = "id") Long id)
+    {
+        Result result = null;
+        try
+        {
+            result = this.resultService.getResultById(id);
+        }
+        catch (ResultServiceException e)
+        {
+            e.printStackTrace();
+        }
+        return new ResultObject(result);
+    }
+
+
+    @RequestMapping(value = "save_result_info.json", method = RequestMethod.POST)
+    @ResponseBody
+    public ResultObject saveResultInfo(@RequestParam(value = "id", required = false) Long id, @RequestParam(value = "studentid", required = false) String studentid,
+        @RequestParam(value = "banbie", required = false) String banbie, @RequestParam(value = "name", required = false) String name, @RequestParam(value = "session", required = false) String session,
+        @RequestParam(value = "coursename", required = false) String coursename, @RequestParam(value = "coursecode", required = false) String coursecode,
+        @RequestParam(value = "period", required = false) Integer period, @RequestParam(value = "credit", required = false) Integer credit,
+        @RequestParam(value = "scores", required = false) Double scores, @RequestParam(value = "remark", required = false) String remark)
+    {
+        try
+        {
+            this.resultService.saveResultInfo(id, studentid, banbie, name, session, coursename, coursecode, period, credit, scores, remark);
+        }
+        catch (ResultServiceException e)
+        {
+            e.printStackTrace();
+            return new ResultObject(110, e.getMessage());
+        }
+        return new ResultObject();
+    }
+
+
+    @RequestMapping(value = "delete_result_by_id.json", method = RequestMethod.POST)
+    @ResponseBody
+    public ResultObject deleteResultById(@RequestParam(value = "id") Long id)
+    {
+        try
+        {
+            this.resultService.deleteResultById(id);
+        }
+        catch (ResultServiceException e)
+        {
+            e.printStackTrace();
+        }
+        return new ResultObject();
     }
 
 }

@@ -38,14 +38,20 @@
 	    <if test="studentid != null">
 			studentId = #{studentid,jdbcType=VARCHAR}
 		</if>
+		<if test="banbie != null">
+			and  banBie = #{banbie,jdbcType=VARCHAR}
+		</if>
 		<if test="session != null">
 			and session = #{session,jdbcType=VARCHAR}
+		</if>
+		<if test="coursename != null">
+			and courseName = #{coursename,jdbcType=VARCHAR}
 		</if>
 	</where>
   </select>
   
   
-  <delete id="deleteById" parameterType="java.lang.Long" >
+  <delete id="deleteResultById" parameterType="java.lang.Long" >
     delete from result
     where id = #{id,jdbcType=BIGINT}
   </delete>
