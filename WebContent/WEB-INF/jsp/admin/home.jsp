@@ -56,9 +56,7 @@
                     <li data-options="state:'closed'">
                         <span>相片管理</span>
                         <ul>
-                            <li><a href="#" target="mainframe">Friend</a></li>
-                            <li><a href="#" target="mainframe">Friend</a></li>
-                            <li><a href="#">Friend</a></li>
+                             <li><a href="photo_list.xhtml" target="mainframe">相片列表</a></li>
                         </ul>
                     </li>
                     

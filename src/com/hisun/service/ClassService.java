@@ -34,4 +34,11 @@ public interface ClassService
 
 
     List<Class> getClassByParams(Map<String, Object> params) throws ClassServiceException;
+
+
+    Map<String, Object> getClassList(Integer pageNumber, Integer pageSize, String college, String major, String classname) throws ClassServiceException;
+
+
+    void saveClassInfo(Long id, String college, String major, String classname, String classadviser, Integer number, String slogan, String introduce, String honour, String feature)
+        throws ClassServiceException;
 }

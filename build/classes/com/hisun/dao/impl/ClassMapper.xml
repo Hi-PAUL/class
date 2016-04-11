@@ -30,7 +30,25 @@
   </select>
   
   
-  <delete id="deleteById" parameterType="java.lang.Long" >
+  <select id="getClassByParams" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from class
+    <where>
+	    <if test="college != null">
+			college = #{college,jdbcType=VARCHAR}
+		</if>
+		<if test="major != null">
+			and  major = #{major,jdbcType=VARCHAR}
+		</if>
+		<if test="classname != null">
+			and className = #{classname,jdbcType=VARCHAR}
+		</if>
+	</where>
+  </select>
+  
+  
+  <delete id="deleteClassById" parameterType="java.lang.Long" >
     delete from class
     where id = #{id,jdbcType=BIGINT}
   </delete>
