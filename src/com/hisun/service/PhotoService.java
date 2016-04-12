@@ -41,4 +41,10 @@ public interface PhotoService
 
 
     void savePhoto(User user, String saveName, String title, String contents, Long albumid) throws PhotoServiceException;
+
+
+    Map<String, Object> getPhotoList(Integer pageNumber, Integer pageSize, String author, String title) throws PhotoServiceException;
+
+
+    void savePhotoInfo(Long id, String author, String path, String title, String contents, String albumname) throws PhotoServiceException;
 }

@@ -158,7 +158,7 @@ public class Message
 
     public String getDateline()
     {
-        return HisunUtil.formatDate(dateline, "yyyy-MM-dd HH:mm:ss");
+        return HisunUtil.formatDate(dateline, "yyyy-MM-dd");
     }
 
 

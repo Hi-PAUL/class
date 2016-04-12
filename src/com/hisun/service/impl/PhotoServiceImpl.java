@@ -1,11 +1,13 @@
 package com.hisun.service.impl;
 
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Repository;
 
 import com.hisun.common.bean.Photo;
@@ -40,8 +42,14 @@ public class PhotoServiceImpl implements PhotoService
     @Override
     public void deletePhotoById(Long id) throws PhotoServiceException
     {
-        // TODO Auto-generated method stub
-
+        try
+        {
+            this.photoDao.deletePhotoById(id);
+        }
+        catch (DataAccessException e)
+        {
+            e.printStackTrace();
+        }
     }
 
 
@@ -56,8 +64,16 @@ public class PhotoServiceImpl implements PhotoService
     @Override
     public Photo getPhotoById(Long id) throws PhotoServiceException
     {
-        // TODO Auto-generated method stub
-        return null;
+        Photo photo = null;
+        try
+        {
+            photo = this.photoDao.getPhotoById(id);
+        }
+        catch (DataAccessException e)
+        {
+            e.printStackTrace();
+        }
+        return photo;
     }
 
 
@@ -111,6 +127,69 @@ public class PhotoServiceImpl implements PhotoService
         {
             e.printStackTrace();
         }
+    }
+
+
+    @Override
+    public Map<String, Object> getPhotoList(Integer pageNumber, Integer pageSize, String author, String title) throws PhotoServiceException
+    {
+        Map<String, Object> params = new HashMap<String, Object>();
+        if (StringUtils.isNotEmpty(author))
+        {
+            params.put("author", author);
+        }
+        if (StringUtils.isNotEmpty(title))
+        {
+            params.put("title", title);
+        }
+        List<Photo> photoList = null;
+        try
+        {
+            photoList = this.photoDao.getPhotoByParams(params);
+        }
+        catch (DataAccessException e)
+        {
+            e.printStackTrace();
+        }
+        Integer fromRecord = (pageNumber - 1) * pageSize;
+        Integer endRecord = photoList.size() < fromRecord + pageSize ? photoList.size() : fromRecord + pageSize;
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("rows", photoList == null ? null : photoList.subList(fromRecord, endRecord));
+        map.put("total", photoList == null ? 0 : photoList.size());
+        return map;
+    }
+
+
+    @Override
+    public void savePhotoInfo(Long id, String author, String path, String title, String contents, String albumname) throws PhotoServiceException
+    {
+
+        Photo photo = null;
+        try
+        {
+            photo = (id == null ? new Photo() : this.photoDao.getPhotoById(id));
+            photo.setAuthor(author);
+            photo.setPath(path);
+            photo.setTitle(title);
+            photo.setContents(contents);
+            photo.setAlbumname(albumname);
+            photo.setAlbumid(1L);
+            if (id == null)
+            {
+                photo.setPubdate(new Date());
+                this.photoDao.insertPhoto(photo);
+            }
+            else
+            {
+                this.photoDao.updatePhoto(photo);
+            }
+        }
+        catch (DataAccessException e)
+        {
+            e.printStackTrace();
+        }
+        
+        
     }
 
 }

@@ -37,7 +37,22 @@
   </select>
   
   
-  <delete id="deleteById" parameterType="java.lang.Long" >
+    <select id="getMessageByParams" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from message
+    <where>
+	    <if test="username != null">
+			userName = #{username,jdbcType=VARCHAR}
+		</if>
+		<if test="major != null">
+			and  title = #{title,jdbcType=VARCHAR}
+		</if>
+	</where>
+  </select>
+  
+  
+  <delete id="deleteMessageById" parameterType="java.lang.Long" >
     delete from message
     where id = #{id,jdbcType=BIGINT}
   </delete>

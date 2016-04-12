@@ -63,9 +63,7 @@
                      <li data-options="state:'closed'">
                         <span>留言管理</span>
                         <ul>
-                            <li><a href="#" target="mainframe">Friend</a></li>
-                            <li><a href="#" target="mainframe">Friend</a></li>
-                            <li><a href="#">Friend</a></li>
+                              <li><a href="message_list.xhtml" target="mainframe">留言列表</a></li>
                         </ul>
                     </li>
                     

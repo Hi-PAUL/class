@@ -43,4 +43,10 @@ public interface MessageService
 
 
     List<Message> getMessageByParams(Map<String, Object> params) throws MessageServiceException;
+
+
+    Map<String, Object> getMessageList(Integer pageNumber, Integer pageSize, String username, String title) throws MessageServiceException;
+
+
+    void saveMessageInfo(Long id, String username, String sex, String title, String content) throws MessageServiceException;
 }

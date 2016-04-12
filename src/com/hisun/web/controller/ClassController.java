@@ -53,8 +53,8 @@ public class ClassController
         ModelAndView model = new ModelAndView("my_class").addObject("classes", c);
         return model;
     }
-    
-    
+
+
     @RequestMapping(value = "class_list.xhtml", method = RequestMethod.GET)
     public ModelAndView gotoResultList()
     {
@@ -62,15 +62,13 @@ public class ClassController
         ModelAndView model = new ModelAndView("admin/class_list");
         return model;
     }
-    
-    
+
+
     @RequestMapping(value = "get_class_list.json", method = RequestMethod.POST)
     @ResponseBody
     public ResultObject getResultList(HttpServletRequest request, @RequestParam(value = "pageNumber", required = false) Integer pageNumber,
-        @RequestParam(value = "pageSize", required = false) Integer pageSize, 
-        @RequestParam(value = "college", required = false) String college,
-        @RequestParam(value = "major", required = false) String major, 
-        @RequestParam(value = "classname", required = false) String classname)
+        @RequestParam(value = "pageSize", required = false) Integer pageSize, @RequestParam(value = "college", required = false) String college,
+        @RequestParam(value = "major", required = false) String major, @RequestParam(value = "classname", required = false) String classname)
     {
         Map<String, Object> list = null;
         try
@@ -98,10 +96,10 @@ public class ClassController
     @ResponseBody
     public ResultObject getResultById(@RequestParam(value = "id") Long id)
     {
-        Class c= null;
+        Class c = null;
         try
         {
-            c= this.classService.getClassById(id);
+            c = this.classService.getClassById(id);
         }
         catch (ClassServiceException e)
         {
@@ -113,17 +111,11 @@ public class ClassController
 
     @RequestMapping(value = "save_class_info.json", method = RequestMethod.POST)
     @ResponseBody
-    public ResultObject saveClassInfo(@RequestParam(value = "id", required = false) Long id, 
-        @RequestParam(value = "college", required = false) String college,
-        @RequestParam(value = "major", required = false) String major, 
-        @RequestParam(value = "classname", required = false) String classname, 
-        @RequestParam(value = "classadviser", required = false) String classadviser,
-        @RequestParam(value = "number", required = false) Integer number, 
-        @RequestParam(value = "slogan", required = false) String slogan,
-        @RequestParam(value = "introduce", required = false) String introduce, 
-        @RequestParam(value = "honour", required = false) String honour,
-        @RequestParam(value = "feature", required = false) String feature
-       )
+    public ResultObject saveClassInfo(@RequestParam(value = "id", required = false) Long id, @RequestParam(value = "college", required = false) String college,
+        @RequestParam(value = "major", required = false) String major, @RequestParam(value = "classname", required = false) String classname,
+        @RequestParam(value = "classadviser", required = false) String classadviser, @RequestParam(value = "number", required = false) Integer number,
+        @RequestParam(value = "slogan", required = false) String slogan, @RequestParam(value = "introduce", required = false) String introduce,
+        @RequestParam(value = "honour", required = false) String honour, @RequestParam(value = "feature", required = false) String feature)
     {
         try
         {
@@ -152,9 +144,5 @@ public class ClassController
         }
         return new ResultObject();
     }
-    
-    
-    
-    
 
 }
