@@ -6,15 +6,15 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.hisun.common.exception.DataAccessException;
 import com.hisun.common.test.AbstractJUnitTest;
 import com.hisun.dao.PointActionDao;
 
 /**
  * 
  * @类名： Album.java
- * @描述：Album
- * @作者： PAUL
- * @修改日期： 2016年3月20日
+ * 
+ * @描述：Album @作者： PAUL @修改日期： 2016年3月20日
  *
  */
 public class PointActionDaoTest extends AbstractJUnitTest
@@ -35,7 +35,14 @@ public class PointActionDaoTest extends AbstractJUnitTest
     public void testPointActionDao()
     {
         System.out.println("hello world test...");
-        System.out.println(pointActionDao.getPointActionById(1L));
+        try
+        {
+            System.out.println(pointActionDao.getPointActionById(1L));
+        }
+        catch (DataAccessException e)
+        {
+            e.printStackTrace();
+        }
     }
 
 

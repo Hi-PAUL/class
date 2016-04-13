@@ -45,6 +45,16 @@ public class AdminController
     }
 
 
+    @RequestMapping(value = "change_adminPassword.xhtml", method = RequestMethod.GET)
+    public ModelAndView gotoChangePassword(HttpServletRequest request)
+    {
+
+        System.out.println("change_password");
+        ModelAndView model = new ModelAndView("admin/change_password");
+        return model;
+    }
+
+
     @RequestMapping(value = "admin_list.xhtml", method = RequestMethod.GET)
     public ModelAndView gotoAdminList(HttpServletRequest request)
     {
@@ -99,7 +109,7 @@ public class AdminController
         {
             e.printStackTrace();
         }
-        System.out.println("json :"+admin);
+        System.out.println("json :" + admin);
         return new ResultObject(admin);
     }
 
@@ -138,6 +148,26 @@ public class AdminController
             e.printStackTrace();
         }
         return new ResultObject();
+    }
+
+
+    @RequestMapping(value = "save_admin_password.json", method = RequestMethod.POST)
+    @ResponseBody
+    public ResultObject saveAdminPassword(HttpServletRequest request, @RequestParam(value = "oldpassword", required = false) String oldpassword,
+        @RequestParam(value = "newpassword", required = false) String newpassword)
+    {
+        Admin admin = (Admin) request.getSession().getAttribute("admin");
+        try
+        {
+            this.adminService.saveAdminPassword(admin, oldpassword, newpassword);
+            admin.setPassword(newpassword);
+            request.getSession().setAttribute("admin", admin);
+            return new ResultObject();
+        }
+        catch (Exception e)
+        {
+            return new ResultObject(110, e.getMessage());
+        }
     }
 
 }

@@ -22,7 +22,20 @@
   </select>
   
   
-  <delete id="deleteById" parameterType="java.lang.Long" >
+  <select id="getPointActionByParams" resultMap="BaseResultMap" parameterType="java.util.Map" >
+    select 
+    <include refid="Base_Column_List" />
+    from pointaction
+    <where>
+	    <if test="actionname != null">
+			actionname = #{actionname,jdbcType=VARCHAR}
+		</if>
+	</where>
+  </select>
+  
+  
+  
+  <delete id="deletePointActionById" parameterType="java.lang.Long" >
     delete from pointaction
     where id = #{id,jdbcType=BIGINT}
   </delete>

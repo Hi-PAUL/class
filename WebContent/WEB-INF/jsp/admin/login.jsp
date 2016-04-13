@@ -67,7 +67,7 @@
   
   <div style="margin-top: 18px;">
   <div class="easyui-panel" title="当前位置  : 管理中心  >>  登陆 " style="width:1000px;padding:30px 80px">
-  <div style="float: left"><img alt="" src="./images/login.jpg"></div>
+  <div style="float: left"><img alt="" src="./images/admin.logo.jpg"></div>
   <div style="float: right">
    <div style="margin-bottom:20px">
        <div>账  号：</div>

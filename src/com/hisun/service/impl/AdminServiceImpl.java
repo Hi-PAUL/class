@@ -190,4 +190,23 @@ public class AdminServiceImpl implements AdminService
         }
     }
 
+
+    @Override
+    public void saveAdminPassword(Admin admin, String oldpassword, String newpassword) throws AdminServiceException
+    {
+        if (!oldpassword.equals(admin.getPassword()))
+        {
+            throw new AdminServiceException("抱歉，原密码不正确!");
+        }
+        admin.setPassword(newpassword);
+        try
+        {
+            this.adminDao.updateAdmin(admin);
+        }
+        catch (DataAccessException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
 }

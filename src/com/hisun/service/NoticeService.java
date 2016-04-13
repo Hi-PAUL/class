@@ -37,4 +37,10 @@ public interface NoticeService
 
 
     List<Notice> getNoticeByParams(Map<String, Object> params) throws NoticeServiceException;
+
+
+    Map<String, Object> getNoticeList(Integer pageNumber, Integer pageSize, String publisher, String title) throws NoticeServiceException;
+
+
+    void saveNoticeInfo(Long id, String publisher, String sex, String title, String content) throws NoticeServiceException;
 }

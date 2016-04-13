@@ -70,18 +70,14 @@
                     <li data-options="state:'closed'">
                         <span>公告管理</span>
                         <ul>
-                            <li><a href="#" target="mainframe">Friend</a></li>
-                            <li><a href="#" target="mainframe">Friend</a></li>
-                            <li><a href="#">Friend</a></li>
+                            <li><a href="notice_list.xhtml" target="mainframe">留言列表</a></li>
                         </ul>
                     </li>
                     
                     <li data-options="state:'closed'">
                         <span>积分管理</span>
                         <ul>
-                            <li><a href="#" target="mainframe">Friend</a></li>
-                            <li><a href="#" target="mainframe">Friend</a></li>
-                            <li><a href="#">Friend</a></li>
+                           <li><a href="pointaction_list.xhtml" target="mainframe">积分列表</a></li>
                         </ul>
                     </li>
                    
@@ -89,6 +85,7 @@
                         <span>登陆管理</span>
                         <ul>
                             <li><a href="#" id="logout" >退出系统</a></li>
+                            <li><a href="change_adminPassword.xhtml" target="mainframe" >修改密码</a></li>
                             <li><a href="javascript:window.location.reload()" >重新登陆</a></li>
                         </ul>
                     </li>

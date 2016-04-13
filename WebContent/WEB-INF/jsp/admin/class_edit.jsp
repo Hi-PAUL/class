@@ -17,7 +17,7 @@
 </style>
 <body>
 <div style="margin-left:20px;margin-top:20px;">
-      <a href="user_list.xhtml?pageNumber=${pageNumber}">班级列表</a><span>>></span>
+      <a href="class_list.xhtml?pageNumber=${pageNumber}">班级列表</a><span>>></span>
 	      <c:if test="${operType=='add'}">增加班级</c:if>
 	      <c:if test="${operType=='query'}">查看班级</c:if>
 	      <c:if test="${operType=='edit'}">修改班级</c:if>

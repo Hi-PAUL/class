@@ -44,4 +44,7 @@ public interface AdminService
 
 
     void saveAdminInfo(Long id, String adminname, String password, String sex, String phone, String email, Integer level, Integer status, String name) throws AdminServiceException;
+
+
+    void saveAdminPassword(Admin admin, String oldpassword, String newpassword) throws AdminServiceException;
 }
