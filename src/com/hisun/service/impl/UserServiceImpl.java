@@ -16,6 +16,7 @@ import com.hisun.common.exception.UserServiceException;
 import com.hisun.common.util.EmailUtil;
 import com.hisun.common.util.MD5;
 import com.hisun.common.util.RandomChar;
+import com.hisun.dao.PointActionDao;
 import com.hisun.dao.UserDao;
 import com.hisun.service.UserService;
 
@@ -32,6 +33,9 @@ public class UserServiceImpl implements UserService
 
     @Resource
     private UserDao userDao;
+
+    @Resource
+    private PointActionDao pointActionDao;
 
 
     @Override
@@ -62,7 +66,21 @@ public class UserServiceImpl implements UserService
         {
             throw new UserServiceException("账号已被冻结,请与管理员联系!");
         }
-
+        Date lastDate = user.getLaterdate();
+        Date newDate = new Date();
+        long nd = 1000 * 24 * 60 * 60;// 一天的毫秒数
+        if (newDate.getTime() - lastDate.getTime() > nd)
+        {
+            try
+            {   // 超过一天登陆送积分
+                Integer point = this.pointActionDao.getPointActionByActionname("LOGIN");
+                user.setPoint(user.getPoint() + point);
+            }
+            catch (DataAccessException e)
+            {
+                e.printStackTrace();
+            }
+        }
         user.setIsonline(1);
         user.setLaterdate(new Date());
         userDao.updateUser(user);
@@ -74,7 +92,6 @@ public class UserServiceImpl implements UserService
     @Override
     public void register(String username, String password, String email) throws UserServiceException
     {
-
         User user = null;
         try
         {
@@ -97,12 +114,18 @@ public class UserServiceImpl implements UserService
         user.setStatus(0);
         String cdKey = RandomChar.getChars(4, 32);
         user.setCdkey(cdKey);
-        System.out.println(username);
-        System.out.println(email);
-        System.out.println(cdKey);
         try
         {
-            EmailUtil.sendEmail(username, email, cdKey);
+            Integer point = this.pointActionDao.getPointActionByActionname("REGISTER");
+            user.setPoint(Long.valueOf(point));
+        }
+        catch (DataAccessException e)
+        {
+            e.printStackTrace();
+        }
+        try
+        {
+            EmailUtil.sendEmail(username, email, cdKey);//发送邮箱激活码
         }
         catch (Exception e)
         {

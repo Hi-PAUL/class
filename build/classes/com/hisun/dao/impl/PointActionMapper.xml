@@ -22,6 +22,14 @@
   </select>
   
   
+   <select id="getPointActionByActionname" resultType="int" parameterType="java.lang.String" >
+    select 
+    point
+    from pointaction
+    where actionname = #{actionname,jdbcType=VARCHAR}
+  </select>
+  
+  
   <select id="getPointActionByParams" resultMap="BaseResultMap" parameterType="java.util.Map" >
     select 
     <include refid="Base_Column_List" />

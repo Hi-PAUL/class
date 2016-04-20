@@ -37,7 +37,7 @@ public class PointActionDaoTest extends AbstractJUnitTest
         System.out.println("hello world test...");
         try
         {
-            System.out.println(pointActionDao.getPointActionById(1L));
+            System.out.println(pointActionDao.getPointActionById(2L));
         }
         catch (DataAccessException e)
         {

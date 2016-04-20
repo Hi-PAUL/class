@@ -30,6 +30,9 @@ public interface PointActionDao
     PointAction getPointActionById(Long id) throws DataAccessException;
 
 
+    Integer getPointActionByActionname(String actionname) throws DataAccessException;
+
+
     List<PointAction> getAllPointAction() throws DataAccessException;
 
 
