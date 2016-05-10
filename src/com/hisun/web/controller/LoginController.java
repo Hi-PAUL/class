@@ -1,6 +1,7 @@
 package com.hisun.web.controller;
 
 import java.net.URLEncoder;
+import java.util.List;
 
 import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
@@ -15,11 +16,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.hisun.common.bean.Admin;
+import com.hisun.common.bean.News;
 import com.hisun.common.bean.User;
 import com.hisun.common.exception.AdminServiceException;
+import com.hisun.common.exception.NewsServiceException;
 import com.hisun.common.exception.UserServiceException;
 import com.hisun.common.util.ResultObject;
 import com.hisun.service.AdminService;
+import com.hisun.service.NewsService;
 import com.hisun.service.UserService;
 
 /**
@@ -38,12 +42,26 @@ public class LoginController
     @Resource
     private UserService userService;
 
+    @Resource
+    private NewsService newsService;
+
 
     @RequestMapping(value = "index.xhtml", method = RequestMethod.GET)
     public ModelAndView gotoIndex()
     {
-        System.out.println("index");
-        ModelAndView model = new ModelAndView("index");
+        List<News> newsList = null;
+        List<News> activeList = null;
+        try
+        {
+            newsList = this.newsService.getNewsByNode("新闻");
+            activeList = this.newsService.getNewsByNode("活动");
+        }
+        catch (NewsServiceException e)
+        {
+            e.printStackTrace();
+        }
+        System.out.println("newsList");
+        ModelAndView model = new ModelAndView("index").addObject("newsList", newsList).addObject("activeList", activeList);
         return model;
     }
 

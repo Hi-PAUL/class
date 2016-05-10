@@ -110,6 +110,7 @@ public class UserServiceImpl implements UserService
         user.setPassword(MD5.jdkMD5(password));
         user.setEmail(email);
         user.setRegisterdate(new Date());
+        user.setLaterdate(new Date());
         user.setIsonline(0);
         user.setStatus(0);
         String cdKey = RandomChar.getChars(4, 32);
@@ -136,7 +137,7 @@ public class UserServiceImpl implements UserService
 
 
     @Override
-    public User activate(String username, String cdKey) throws UserServiceException
+    public void activate(String username, String cdKey) throws UserServiceException
     {
         User user = null;
         try
@@ -155,11 +156,8 @@ public class UserServiceImpl implements UserService
         {
             throw new UserServiceException("激活码不正确!");
         }
-        user.setIsonline(1);
         user.setStatus(1);
-        user.setRegisterdate(new Date());
         userDao.updateUser(user);
-        return user;
     }
 
 

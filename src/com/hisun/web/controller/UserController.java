@@ -87,19 +87,20 @@ public class UserController
     @RequestMapping(value = "activate.xhtml", method = RequestMethod.GET)
     public ModelAndView activate(HttpServletRequest request, @RequestParam(value = "name", required = false) String username, @RequestParam(value = "cdKey", required = false) String cdKey)
     {
-        User user = null;
+        String message;
         try
         {
-            user = userService.activate(username, cdKey);
+            userService.activate(username, cdKey);
+            ModelAndView model = new ModelAndView("login").addObject("username", username);
+            return model;
         }
         catch (UserServiceException e)
         {
             e.printStackTrace();
+            message = e.getMessage();
         }
-        request.getSession().setAttribute("user", user);
-        ModelAndView model = new ModelAndView("activity");
+        ModelAndView model = new ModelAndView("login").addObject("message", message);
         return model;
-
     }
 
 

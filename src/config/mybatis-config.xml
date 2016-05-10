@@ -15,5 +15,6 @@
 		<mapper resource="com/hisun/dao/impl/ResultMapper.xml" />
 		<mapper resource="com/hisun/dao/impl/SpaceMapper.xml" />
 		<mapper resource="com/hisun/dao/impl/UserMapper.xml" />
+		<mapper resource="com/hisun/dao/impl/NewsMapper.xml" />
 	</mappers>
 </configuration> 

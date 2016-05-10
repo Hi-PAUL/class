@@ -25,7 +25,7 @@
             <li>
                 <span>菜单导航</span>
                 <ul>
-                    <li data-options="state:'closed'">
+                   <!--  <li data-options="state:'closed'">
                         <span>人员管理</span>
                         <ul>
                             <li><a href="admin_list.xhtml" target="mainframe">人员列表</a></li>
@@ -37,7 +37,7 @@
                         <ul>
                             <li><a href="user_list.xhtml" target="mainframe">用户列表</a></li>
                         </ul>
-                    </li>
+                    </li> -->
                     
                     <li data-options="state:'closed'">
                         <span>成绩管理</span>

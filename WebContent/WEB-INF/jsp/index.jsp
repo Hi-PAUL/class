@@ -10,9 +10,21 @@
      <link rel="shortcut icon" href="./images/faviconz.ico" />
      <link rel="bookmark" href="./images/faviconz.ico" />
      <link rel="stylesheet" type="text/css" href="./css/main.css" >
+     <script type="text/javascript" src="./js/jquery.js"></script>
      <script type="text/javascript" src="./js/setHomeSetFav.js"></script>
      <script type="text/javascript" src="./js/myfocus-2.0.1.min.js"></script>
+     <script type="text/javascript" src="./js/up-top.js"></script>
+     <script type="text/javascript" src="./js/jquery.jcarousellite.js"></script>
      <script type="text/javascript">
+     
+	   //作品展示滚动图片
+		  $(".scrollpanel").jCarouselLite({     
+		      auto: 2000,
+		      speed: 300,
+		      scroll: 1,
+		      visible: 3
+	     });
+     
 	    myFocus.set({
 	    id:'boxID',//焦点图盒子ID type="image/x-icon" 
 	    pattern:'mF_fancy',//风格应用的名称
@@ -30,7 +42,7 @@
     <ul>
       <li><a href="lang?langType=en&path=index">English</a></li>
       <li><a href="lang?langType=zh&path=index">中文</a></li>
-      <li><a href="#"><spring:message code="help"/></a></li>
+      <li><a href="help.xhtml"><spring:message code="help"/></a></li>
       <li><a onclick="AddFavorite(window.location,document.title)" href="javascript:void(0)"><spring:message code="StoreUp"/></a></li>
       <li><a href="register.xhtml"><spring:message code="register"/></a></li>
       <li><a href="login.xhtml"><spring:message code="login"/></a></li>
@@ -55,7 +67,7 @@
           <li><a href="#">新闻动态</a></li>
           <li><a href="#">活动中心</a></li>
           <li><a href="#">校园风景</a></li>
-          <li><a href="#">人才招聘</a></li>
+          <li><a href="join.xhtml">人才招聘</a></li>
           <li><a href="admin_login.xhtml">管理中心</a></li>
         </ul>
       </div>
@@ -79,22 +91,24 @@
       <!--载入画面(可删除)-->
       <div class="pic"><!--内容列表(li数目可随意增减)-->
         <ul>
+          <li><a href="#"><img src="images/ad.jpg" alt="" /></a></li>
+          <li><a href="#"><img src="images/ad1.jpg" alt="" /></a></li>
           <li><a href="#"><img src="images/ad2.jpg" alt="" /></a></li>
           <li><a href="#"><img src="images/ad3.jpg" alt="" /></a></li>
           <li><a href="#"><img src="images/ad4.jpg" alt="" /></a></li>
-          <li><a href="#"><img src="images/ad3.jpg" alt="" /></a></li>
         </ul>
       </div>
     </div>
   </div>
   <!--ad结束-->
-  
+  <br>
   <div class="main">
     <div class="news">
       <div class="title">
         <h2 class="titile_left">新闻中心</h2>
-        <span class="title_right"><a href="#">More&gt;&gt;</a></span> </div>
-      <!--title结束-->
+        <span class="title_right"><a href="#">More&gt;&gt;</a></span>         
+       </div>
+       <!--title结束-->
       
       <div class="pic_news"> <img src="images/news.jpg" alt="918 蓝桥杯喊你来助威" width="113" height="77" />
         <h2><a href="#"> 930 蓝桥杯喊你来助威！</a></h2>
@@ -146,46 +160,61 @@
    
   </div>
   <!--main结束--> 
+  
+  <br>
+  <!-- main2 -->
+  <div class="main">
+    <div class="news2">
+      <div class="message">
+         <a href="#"><img alt="人才招聘" src="images/index08.jpg" style="width:260px;height:100px;"></a>    
+      </div>
+      <!--title结束-->
+            
+      <div class="message">
+          <a href="admin_login.xhtml"><img alt="管理中心" src="images/index09.jpg" style="width:260px;height:100px;"></a>   
+      </div>
+      <!--news_list结束--> 
+      
+    </div>
+    <!--news结束-->
+    
+    <div class="school">
+      <div class="title">
+        <h2 class="titile_left">校园风景</h2>
+        <span class="title_right"><a href="#">More&gt;&gt;</a></span> 
+       </div>
+        <!--title结束-->
+          
+      <div class="img_list">
+         <div class="artlist scrollpanel" style="margin:18px;height:200px;">
+		   <ul class="artlist" >														
+          	  <li>
+	          	  <a href="#" target="_blank" title="">
+	          	    <img border=0 src="images/index08.jpg" width="210px" height="170px" alt="" >
+	          	  </a>
+          	  </li>
+          	  <li>
+	          	  <a href="#" target="_blank" title="">
+	          	    <img border=0 src="images/index09.jpg" width="210px" height="170px" alt="" >
+	          	  </a>
+          	  </li>
+          	  <li>
+	          	  <a href="#" target="_blank" title="">
+	          	    <img border=0 src="images/index08.jpg" width="210px" height="170px" alt="" >
+	          	  </a>
+          	  </li>
+		  </ul>
+		</div>
+      </div>
+      <!--img_list结束-->   
+    </div>
+    <!--school结束-->
+   
+  </div>
+  <!--main2结束-->   
+      
 </div>
 <!--最外层wrap结束  -->
-<div class="copyright">
-  <div class="copyright_content">
-    <ul>
-      <li>关于
-        <ul>
-          <li>品牌故事</li>
-          <li>联系我们</li>
-          <li>加入我们</li>
-          <li>版权声明</li>
-        </ul>
-      </li>
-      <li>活动
-        <ul>
-          <li>十大歌手</li>
-          <li>最美班花</li>
-          <li>百里徒步</li>
-          <li>青年志愿者</li>
-        </ul>
-      </li>
-      <li>关注
-        <ul>
-          <li>新浪微博</li>
-          <li>腾讯微博</li>
-          <li>企业微信</li>
-          <li>QQ空间</li>
-        </ul>
-      </li>
-      <li>留言
-        <ul>
-          <li>意见反馈</li>
-          <li>问题留言</li>
-          <li>媒体联络</li>
-          <li>在线客服</li>
-        </ul>
-      </li>     
-    </ul>
-  </div>
-  <!--copyright_content结束--> 
-</div>
+<jsp:include page="include/inc_footer.jsp"/>
 </body>
 </html>
