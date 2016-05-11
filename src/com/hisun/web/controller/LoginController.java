@@ -99,9 +99,10 @@ public class LoginController
             return new ResultObject(110, "验证码不准确!");
         }
 
+        User user=null;
         try
         {
-            User user = userService.login(username, password);
+            user = userService.login(username, password);
             // User user = userService.login("paul", "123456");
             System.out.println("user : " + user);
             request.getSession().setAttribute("user", user);
@@ -134,8 +135,17 @@ public class LoginController
                 response.addCookie(namecookie);
             }
         }
+        if (user.getClassid()==null)
+        {
+            return new ResultObject(120, "你还没有加入班级，请先加入班级!");
+        }
         return new ResultObject();
     }
+    
+    
+
+    
+    
 
 
     @RequestMapping(value = "admin_login.json", method = RequestMethod.POST)

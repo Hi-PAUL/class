@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -25,7 +26,8 @@
             <li>
                 <span>菜单导航</span>
                 <ul>
-                   <!--  <li data-options="state:'closed'">
+                    <c:if test="${admin.level>2}">
+                    <li data-options="state:'closed'">
                         <span>人员管理</span>
                         <ul>
                             <li><a href="admin_list.xhtml" target="mainframe">人员列表</a></li>
@@ -37,8 +39,10 @@
                         <ul>
                             <li><a href="user_list.xhtml" target="mainframe">用户列表</a></li>
                         </ul>
-                    </li> -->
+                    </li> 
+                    </c:if>
                     
+                    <c:if test="${admin.level>1}">
                     <li data-options="state:'closed'">
                         <span>成绩管理</span>
                         <ul>
@@ -70,14 +74,24 @@
                     <li data-options="state:'closed'">
                         <span>公告管理</span>
                         <ul>
-                            <li><a href="notice_list.xhtml" target="mainframe">留言列表</a></li>
+                            <li><a href="notice_list.xhtml" target="mainframe">公告列表</a></li>
                         </ul>
                     </li>
+                    </c:if>
                     
+                    <c:if test="${admin.level>2}">
                     <li data-options="state:'closed'">
                         <span>积分管理</span>
                         <ul>
                            <li><a href="pointaction_list.xhtml" target="mainframe">积分列表</a></li>
+                        </ul>
+                    </li>
+                    </c:if>
+                    
+                     <li data-options="state:'closed'">
+                        <span>资讯管理</span>
+                        <ul>
+                           <li><a href="news_list.xhtml" target="mainframe">资讯列表</a></li>
                         </ul>
                     </li>
                    

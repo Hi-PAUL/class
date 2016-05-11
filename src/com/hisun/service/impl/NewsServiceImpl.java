@@ -1,9 +1,13 @@
 package com.hisun.service.impl;
 
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Repository;
 
 import com.hisun.common.bean.News;
@@ -36,7 +40,14 @@ public class NewsServiceImpl implements NewsService
     @Override
     public void deleteNewsById(Long id) throws NewsServiceException
     {
-
+        try
+        {
+            this.newsDao.deleteNewsById(id);
+        }
+        catch (DataAccessException e)
+        {
+            e.printStackTrace();
+        }
     }
 
 
@@ -50,7 +61,16 @@ public class NewsServiceImpl implements NewsService
     @Override
     public News getNewsById(Long id) throws NewsServiceException
     {
-        return null;
+        News news = null;
+        try
+        {
+            news = this.newsDao.getNewsById(id);
+        }
+        catch (DataAccessException e)
+        {
+            e.printStackTrace();
+        }
+        return news;
     }
 
 
@@ -74,6 +94,70 @@ public class NewsServiceImpl implements NewsService
     public List<News> getAllNews() throws NewsServiceException
     {
         return null;
+    }
+
+
+    @Override
+    public Map<String, Object> getNewsList(Integer pageNumber, Integer pageSize, String publisher, String title, String node) throws NewsServiceException
+    {
+
+        Map<String, Object> params = new HashMap<String, Object>();
+        if (StringUtils.isNotEmpty(publisher))
+        {
+            params.put("publisher", publisher);
+        }
+        if (StringUtils.isNotEmpty(title))
+        {
+            params.put("title", title);
+        }
+        if (StringUtils.isNotEmpty(node))
+        {
+            params.put("node", node);
+        }
+
+        List<News> messageList = null;
+        try
+        {
+            messageList = this.newsDao.getNewsByParams(params);
+        }
+        catch (DataAccessException e)
+        {
+            e.printStackTrace();
+        }
+        Integer fromRecord = (pageNumber - 1) * pageSize;
+        Integer endRecord = messageList.size() < fromRecord + pageSize ? messageList.size() : fromRecord + pageSize;
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("rows", messageList == null ? null : messageList.subList(fromRecord, endRecord));
+        map.put("total", messageList == null ? 0 : messageList.size());
+        return map;
+    }
+
+
+    @Override
+    public void saveNewsInfo(Long id, String publisher, String node, String title, String content) throws NewsServiceException
+    {
+        News news = null;
+        try
+        {
+            news = (id == null ? new News() : this.newsDao.getNewsById(id));
+            news.setPublisher(publisher);
+            news.setTitle(title);
+            news.setNode(node);
+            news.setContent(content);
+            if (id == null)
+            {
+                news.setDateline(new Date());
+                this.newsDao.insertNews(news);
+            }
+            else
+            {
+                this.newsDao.updateNews(news);
+            }
+        }
+        catch (DataAccessException e)
+        {
+            e.printStackTrace();
+        }
     }
 
 }

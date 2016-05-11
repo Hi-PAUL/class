@@ -65,15 +65,12 @@
   <!--nav结束-->
   
 <div  style="margin-top:10px;">    
-  <div id="my_class" class="easyui-panel" title="你现在的位置   >> 帮助" style="width:100%;height:700px;">
-  <p>fhfhf</p>
-  
-  
+  <div id="my_class" class="easyui-panel" title="你现在的位置   >> 正文" style="width:100%;height:700px;">
+    <div style="width:300px; margin:30px auto"><h1>${news.title}</h1></div>
+    <div style="margin:0 30px">${news.content}</div>
   </div>
 </div>
-  
-  
-    
+   
 </div>
 <!--最外层wrap结束  -->
 <jsp:include page="../include/inc_footer.jsp"/>

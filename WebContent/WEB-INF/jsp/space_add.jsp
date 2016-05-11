@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ page language="java" import="com.hisun.common.bean.Space"%>
 
 <html>
 <head>
@@ -28,16 +29,15 @@
              <a href="#">Hi,${user.username}</a>
            </div>
             <div class="username" style="margin-bottom:10px">
-             <a href="#">积分 : ${user.username}</a>
+             <a href="#">积分 : ${user.point}</a>
            </div>
            <div style="margin-bottom:25px">
              <ul class="message_list" >
              <li style="background-image: url('./images/space_1.jpg');"></li>
+             <!-- <li><a href="#">上传头像</a></li>
              <li><a href="#">上传头像</a></li>
-             <li><a href="#">上传头像</a></li>
-             <li><a href="#">上传头像</a></li>
+             <li><a href="#">上传头像</a></li> -->
              </ul>
-           
            </div>
        </div>
        <!--West结束-->
@@ -45,7 +45,7 @@
        <div data-options="region:'center'" title="填写资料" style="padding:50px 200px">
          <div style="margin-bottom:20px">
             <div>学  校 :</div>
-            <input id="spaceId" type="hidden" value="${space.id}">
+            <input id="spaceId" type="hidden" class="easyui-textbox"  value="${space.id}" style="width:0;height:0">
             <input id="school" class="easyui-textbox" data-options="prompt:'Enter a information...'" style="width:100%;height:32px">
          </div>
          <div style="margin-bottom:20px">
@@ -119,11 +119,32 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		
-		var space="${space}";
-		if(space!=null){
-			alert(space);
-			
-		}
+		$.ajax({
+			url : "get_space_info.json",
+			type : "POST",
+		    success : function(result) {
+			if (!result.errorCode) {
+				var data = result.data;
+				$("#spaceId").textbox("setValue",data.id);
+				$("#school").textbox("setValue",data.school);
+				$("#college").textbox("setValue",data.college);
+				$("#major").textbox("setValue",data.major);
+				$("#banbie").textbox("setValue",data.banbie);
+				$("#studentId").textbox("setValue",'${user.studentid}');
+				$("#admissionDate").datebox("setValue",data.admissiondate);
+				$("#birthday").datebox("setValue",data.birthday);
+				$("#address").textbox("setValue",data.address);
+				$("#name").textbox("setValue",'${user.name}');
+				$("#qq").textbox("setValue",'${user.qq}');
+				$("#phone").textbox("setValue",'${user.phone}');
+				$("#sex").combobox('setValue','${user.sex}');
+				$("#hobbies").textbox("setValue",data.hobbies);
+				$("#inttroduction").textbox("setValue",data.inttroduction);
+			} else {
+				alert(result.errorMsg);
+			}
+		  }
+		});
 		
 		
 	  $("#save").click(function(){
@@ -150,12 +171,11 @@
 				sex: $("#sex").combobox('getValue'),
 				hobbies: $("#hobbies").val(),
 				inttroduction: $("#inttroduction").val()
-				
 			},
 			dataType : "json",
 			success : function(result) {
 				if (!result.errorCode) {
-					//window.location.href = "activity.xhtml";
+					window.location.href = "space_show.xhtml";
 				} else {
 					alert(result.errorMsg);
 				}

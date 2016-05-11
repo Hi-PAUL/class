@@ -114,7 +114,7 @@ $.extend(dataObj, {
 			type : "POST",
 			url : "find_news_list.json",
 			data : {
-				node : "新闻",
+				node : "活动",
 				pageNumber : pageNumber,
 				pageSize : pageSize
 			},

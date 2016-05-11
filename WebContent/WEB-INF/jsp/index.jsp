@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c"%>
 <html>
 <head>
      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -64,8 +64,8 @@
       <div class="nav_mid_left">
         <ul>
           <li><a href="#">首页</a></li>
-          <li><a href="#">新闻动态</a></li>
-          <li><a href="#">活动中心</a></li>
+          <li><a href="list_news.xhtml">新闻动态</a></li>
+          <li><a href="list_active.xhtml">活动中心</a></li>
           <li><a href="#">校园风景</a></li>
           <li><a href="join.xhtml">人才招聘</a></li>
           <li><a href="admin_login.xhtml">管理中心</a></li>
@@ -106,7 +106,7 @@
     <div class="news">
       <div class="title">
         <h2 class="titile_left">新闻中心</h2>
-        <span class="title_right"><a href="#">More&gt;&gt;</a></span>         
+        <span class="title_right"><a href="list_news.xhtml">More&gt;&gt;</a></span>         
        </div>
        <!--title结束-->
       
@@ -114,16 +114,15 @@
         <h2><a href="#"> 930 蓝桥杯喊你来助威！</a></h2>
         <p>活动时间：9月01日—9月25日<br />
                               获奖公布时间：10月25日<br />
-          <a href="#">Learn More>></a></p>
-      </div>
+          <a href="list_news.xhtml">Learn More>></a></p>
+      </div> 
       <!--pic_news结束-->
       
       <div class="news_list">
         <ul>
-          <li><span>2014-06-01</span> <a href="#">【开学季】欢迎学校2万新成员</a></li>
-          <li><span>2014-06-01</span><a href="#">【领导风】校长看望退休教师</a></li>
-          <li><span>2014-05-30</span><a href="#">【教师美】汗流湿润他们的衣襟</a></li>
-          <li><span>2014-05-28</span><a href="#" title="aa">【新气象】我校综合教学楼下月将投入使用</a></li>
+          <c:forEach items="${newsList}" var="list" begin="0" end="3">
+               <li><span>${list.dateline}</span> <a href="info_news.xhtml?id=${list.id}">${list.title}</a></li>
+          </c:forEach>
         </ul>
       </div>
       <!--news_list结束--> 
@@ -134,23 +133,22 @@
     <div class="products">
       <div class="title">
         <h2 class="titile_left">活动中心</h2>
-        <span class="title_right"><a href="#">More&gt;&gt;</a></span> </div>
+        <span class="title_right"><a href="list_active.xhtml">More&gt;&gt;</a></span> </div>
         <!--title结束-->
       
         <div class="pic_news"> <img src="images/css.jpg" alt="520 女神喊你来表白" width="113" height="77" />
         <h2><a href="#">520 女神喊你来表白！</a></h2>
         <p>活动时间：5月20日—5月25日<br />
                               获奖公布时间：5月26日<br />
-          <a href="#">Learn More>></a></p>
-      </div>
+          <a href="list_active.xhtml">Learn More>></a></p>
+      </div> 
       <!--pic_news结束-->
       
       <div class="news_list">
         <ul>
-          <li><span>2016-04-08</span> <a href="#">【校园事件】“校园十大歌手”报名马上开始</a></li>
-          <li><span>2016-05-01</span><a href="#">【公益活动】“下乡支教”有你同行</a></li>
-          <li><span>2016-06-25</span><a href="#">【户外活动】“万里徒步”要你来参赛</a></li>
-          <li><span>2016-07-06</span><a href="#" title="aa">【社区关怀】“社区家电维修”让你一展身手</a></li>
+          <c:forEach items="${activeList}" var="list" begin="0" end="3">
+               <li><span>${list.dateline}</span> <a href="info_news.xhtml?id=${list.id}">${list.title}</a></li>
+          </c:forEach>
         </ul>
       </div>
       <!--news_list结束--> 

@@ -88,7 +88,7 @@
             </div> 
             <div class="chat_easy_name" style="width:100px;height:100px;float:left;margin-top:20px">
              <p><a href="#">Hi,${user.username}</a></p>  
-             <p><a href="#">积分 : ${user.username}</a></p>        
+             <p><a href="#">积分 : ${user.point}</a></p>        
             </div> 
          </div>
         

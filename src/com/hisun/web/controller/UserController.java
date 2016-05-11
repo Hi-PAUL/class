@@ -30,6 +30,26 @@ public class UserController
     private UserService userService;
 
 
+    @RequestMapping(value = "select_class.xhtml", method = RequestMethod.GET)
+    public ModelAndView gotoClassList()
+    {
+        ModelAndView model = new ModelAndView("select_class");
+        return model;
+    }
+
+
+    @RequestMapping(value = "join_class.xhtml", method = RequestMethod.GET)
+    public ModelAndView joinClass(HttpServletRequest request, @RequestParam(value = "classId", required = false) Long classId)
+    {
+        User user = (User) request.getSession().getAttribute("user");
+        user.setClassid(classId);
+        userService.updateUser(user);
+        request.getSession().setAttribute("user", user);
+        ModelAndView model = new ModelAndView("activity");
+        return model;
+    }
+
+
     @RequestMapping(value = "activity.xhtml", method = RequestMethod.GET)
     public ModelAndView gotoActivity()
     {

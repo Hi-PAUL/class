@@ -121,7 +121,11 @@
 					window.location.href = "activity.xhtml";
 					//window.location.href = "space_add.xhtml";
 				} else {
+					if(result.errorCode=120){
+						window.location.href = "select_class.xhtml";
+					}else{
 					$.messager.alert('警告',result.errorMsg,'warning');
+					}
 				}
 			 }
 		 });

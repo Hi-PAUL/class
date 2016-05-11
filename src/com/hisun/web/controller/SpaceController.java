@@ -58,6 +58,7 @@ public class SpaceController
         if (space == null)
         {
             model = new ModelAndView("space_add");
+            return model;
         }
         model = new ModelAndView("space_show").addObject("space", space);
         return model;
@@ -68,7 +69,19 @@ public class SpaceController
     @RequestMapping(value = "space_add.xhtml", method = RequestMethod.GET)
     public ModelAndView gotoSpaceAdd(HttpServletRequest request)
     {
-        System.out.println("space_edit.xhtml");
+        /*
+         * System.out.println("space_edit.xhtml"); User user = (User) request.getSession().getAttribute("user"); Space space = null; try { space = this.spaceService.getSpaceByUserId(user.getId()); }
+         * catch (SpaceServiceException e) { e.printStackTrace(); }
+         */
+        ModelAndView model = new ModelAndView("space_add");// .addObject("space", space);
+        return model;
+    }
+
+
+    @RequestMapping(value = "get_space_info.json", method = RequestMethod.POST)
+    @ResponseBody
+    public ResultObject getSpaceInfo(HttpServletRequest request)
+    {
         User user = (User) request.getSession().getAttribute("user");
         Space space = null;
         try
@@ -79,8 +92,7 @@ public class SpaceController
         {
             e.printStackTrace();
         }
-        ModelAndView model = new ModelAndView("space_add").addObject("space", space);
-        return model;
+        return new ResultObject(space);
     }
 
 

@@ -28,7 +28,7 @@
              <a href="#">Hi,${user.username}</a>
            </div>
             <div class="username" style="margin-bottom:10px">
-             <a href="#">积分 : ${user.username}</a>
+             <a href="#">积分 : ${user.point}</a>
            </div>
            <div style="margin-bottom:25px">
              <ul class="message_list" >

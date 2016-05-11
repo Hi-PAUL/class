@@ -22,16 +22,15 @@
 	<table id="resultList" class="easyui-datagrid" style="width:100%;" title="你现在的位置   >> 通讯录" toolbar="#toolbar" pagination="true"  data-options="fitColumns:true,singleSelect:true,collapsible:false,rownumbers:true">
 	  <thead>
 		<tr>
-	      <th data-options="field:'username',align:'center',width:'10%'">账号</th>
-		  <th data-options="field:'name',align:'center',width:'10%'">姓名</th>
-		  <th data-options="field:'sex',align:'center',width:'9%'">性别</th>
-		  <th data-options="field:'qq',align:'center',width:'10%'">QQ</th>
-		  <th data-options="field:'phone',align:'center',width:'10%'">电话</th>
-		  <th data-options="field:'email',align:'center',width:'10%'">邮箱</th>
-		  <th data-options="field:'point',align:'center',width:'9%'">用户积分</th>
-		  <th data-options="field:'studentid',align:'center',width:'10%'">学号</th>
-		  <th data-options="field:'registerdate',align:'center',width:'10%'">注册时间</th>
-		  <th data-options="field:'laterdate',align:'center',width:'10%'">最后登陆时间</th>
+	      <th data-options="field:'username',align:'center',width:'11%'">账号</th>
+		  <th data-options="field:'name',align:'center',width:'11%'">姓名</th>
+		  <th data-options="field:'sex',align:'center',width:'10%'">性别</th>
+		  <th data-options="field:'qq',align:'center',width:'11%'">QQ</th>
+		  <th data-options="field:'phone',align:'center',width:'11%'">电话</th>
+		  <th data-options="field:'email',align:'center',width:'11%'">邮箱</th>
+		  <th data-options="field:'point',align:'center',width:'11%'">用户积分</th>
+		  <th data-options="field:'studentid',align:'center',width:'11%'">学号</th>
+		  <th data-options="field:'registerdate',align:'center',width:'11%'">注册时间</th>
 		</tr>
 	  </thead>
 	</table>

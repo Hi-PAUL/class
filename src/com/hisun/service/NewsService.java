@@ -1,6 +1,7 @@
 package com.hisun.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 
@@ -35,4 +36,9 @@ public interface NewsService
 
     List<News> getAllNews() throws NewsServiceException;
 
+
+    Map<String, Object> getNewsList(Integer pageNumber, Integer pageSize, String publisher, String title, String node) throws NewsServiceException;
+
+
+    void saveNewsInfo(Long id, String publisher, String node, String title, String content) throws NewsServiceException;
 }

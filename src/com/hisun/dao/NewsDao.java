@@ -1,6 +1,7 @@
 package com.hisun.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
@@ -34,4 +35,6 @@ public interface NewsDao
 
 
     List<News> getAllNews() throws DataAccessException;
+    
+    List<News> getNewsByParams(Map<String, Object> params) throws DataAccessException;
 }
