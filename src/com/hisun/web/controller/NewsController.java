@@ -50,11 +50,20 @@ public class NewsController
         ModelAndView model = new ModelAndView("common/list_news");
         return model;
     }
-    
+
+
     @RequestMapping(value = "list_active.xhtml", method = RequestMethod.GET)
     public ModelAndView gotoListActive()
     {
         ModelAndView model = new ModelAndView("common/list_active");
+        return model;
+    }
+
+
+    @RequestMapping(value = "list_school.xhtml", method = RequestMethod.GET)
+    public ModelAndView gotoListSchool()
+    {
+        ModelAndView model = new ModelAndView("common/list_school");
         return model;
     }
 

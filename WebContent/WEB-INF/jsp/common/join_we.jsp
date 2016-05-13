@@ -42,10 +42,10 @@
     <div class="nav_mid">
       <div class="nav_mid_left">
         <ul>
-          <li><a href="index.xhtml">首页</a></li>
-          <li><a href="#">新闻动态</a></li>
-          <li><a href="#">活动中心</a></li>
-          <li><a href="#">校园风景</a></li>
+         <li><a href="index.xhtml">首页</a></li>
+          <li><a href="list_news.xhtml">新闻动态</a></li>
+          <li><a href="list_active.xhtml">活动中心</a></li>
+          <li><a href="list_school.xhtml">校园风景</a></li>
           <li><a href="join.xhtml">人才招聘</a></li>
           <li><a href="admin_login.xhtml">管理中心</a></li>
         </ul>
@@ -66,7 +66,21 @@
   
 <div  style="margin-top:10px;">    
   <div id="my_class" class="easyui-panel" title="你现在的位置   >> 人才招聘" style="width:100%;height:700px;">
-  <p>fhfhf</p>
+   <div style="width:100px;margin:10px auto;"><h1>加入我们吧</h1></div>
+   <div style="width:800px;margin:10px auto;"><h3>我们的网站刚刚上线，急需热血青年进入到我们的队伙中来。</h3></div>
+    <div style="margin:20px">
+      <p>一. 进入条件<br>
+            1.年满18岁的有志青年<br>
+            2.热爱计算机行业<br>
+            3.兴趣多样，善于交谈<br><br>
+                       二. 联系方式<br>
+              1.电话：0755-4838798<br>  
+              2.Email: 3475428346@163.com<br>
+              3.地址：广东省深圳市福田区<br><br>
+                     三. 截至日期<br>
+            1.报名截至日期：2016.08.08<br>
+      </p>
+    </div>
   
   
   </div>

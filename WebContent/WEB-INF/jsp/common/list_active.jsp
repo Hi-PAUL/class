@@ -42,11 +42,11 @@
     <div class="nav_mid">
       <div class="nav_mid_left">
         <ul>
-          <li><a href="index.xhtml">首页</a></li>
-          <li><a href="#">新闻动态</a></li>
-          <li><a href="#">活动中心</a></li>
-          <li><a href="#">校园风景</a></li>
-          <li><a href="#">人才招聘</a></li>
+         <li><a href="index.xhtml">首页</a></li>
+          <li><a href="list_news.xhtml">新闻动态</a></li>
+          <li><a href="list_active.xhtml">活动中心</a></li>
+          <li><a href="list_school.xhtml">校园风景</a></li>
+          <li><a href="join.xhtml">人才招聘</a></li>
           <li><a href="admin_login.xhtml">管理中心</a></li>
         </ul>
       </div>

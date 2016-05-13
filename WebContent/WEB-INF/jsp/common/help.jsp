@@ -43,10 +43,10 @@
       <div class="nav_mid_left">
         <ul>
           <li><a href="index.xhtml">首页</a></li>
-          <li><a href="#">新闻动态</a></li>
-          <li><a href="#">活动中心</a></li>
-          <li><a href="#">校园风景</a></li>
-          <li><a href="#">人才招聘</a></li>
+          <li><a href="list_news.xhtml">新闻动态</a></li>
+          <li><a href="list_active.xhtml">活动中心</a></li>
+          <li><a href="list_school.xhtml">校园风景</a></li>
+          <li><a href="join.xhtml">人才招聘</a></li>
           <li><a href="admin_login.xhtml">管理中心</a></li>
         </ul>
       </div>
@@ -65,10 +65,22 @@
   <!--nav结束-->
   
 <div  style="margin-top:10px;">    
-  <div id="my_class" class="easyui-panel" title="你现在的位置   >> 帮助" style="width:100%;height:700px;">
-  <p>fhfhf</p>
-  
-  
+  <div id="my_class" class="easyui-panel" title="你现在的位置   >> 帮助" style="width:100%;height:500px;">
+    <div style="width:100px;margin:10px auto;"><h1>帮助</h1></div>
+    <div style="margin:20px">
+      <p>一. 游客注册操作<br>
+            1.点击页面上角注册按钮<br>
+            2.填写正确的注册信息<br>
+            3.提交成功后，前往邮箱进行账号激活<br><br>
+                       二. 用户登陆操作<br>
+              1.点击页面上角登陆按钮<br>  
+              2.输入正确的账号信息<br>
+              3.如果你的账号已被冻结请于管理员联系<br><br>
+                     三. 新用户请注意<br>
+            1.请前往邮箱激活账号，账号才可以使用<br>
+            2.请及时绑定你的班级         
+      </p>
+    </div>
   </div>
 </div>
   

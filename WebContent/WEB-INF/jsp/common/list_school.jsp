@@ -42,7 +42,7 @@
     <div class="nav_mid">
       <div class="nav_mid_left">
         <ul>
-         <li><a href="index.xhtml">首页</a></li>
+          <li><a href="index.xhtml">首页</a></li>
           <li><a href="list_news.xhtml">新闻动态</a></li>
           <li><a href="list_active.xhtml">活动中心</a></li>
           <li><a href="list_school.xhtml">校园风景</a></li>
@@ -113,7 +113,7 @@ $.extend(dataObj, {
 			type : "POST",
 			url : "find_news_list.json",
 			data : {
-				node : "新闻",
+				node : "校园风景",
 				pageNumber : pageNumber,
 				pageSize : pageSize
 			},

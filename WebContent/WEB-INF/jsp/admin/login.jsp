@@ -44,10 +44,10 @@
       <div class="nav_mid_left">
         <ul>
           <li><a href="index.xhtml">首页</a></li>
-          <li><a href="#">新闻动态</a></li>
-          <li><a href="#">活动中心</a></li>
-          <li><a href="#">校园风景</a></li>
-          <li><a href="#">人才招聘</a></li>
+          <li><a href="list_news.xhtml">新闻动态</a></li>
+          <li><a href="list_active.xhtml">活动中心</a></li>
+          <li><a href="list_school.xhtml">校园风景</a></li>
+          <li><a href="join.xhtml">人才招聘</a></li>
           <li><a href="admin_login.xhtml">管理中心</a></li>
         </ul>
       </div>
@@ -65,7 +65,6 @@
   </div>
   <!--nav结束-->
   
-  <div style="margin-top: 18px;">
   <div class="easyui-panel" title="当前位置  : 管理中心  >>  登陆 " style="width:1000px;padding:30px 80px">
   <div style="float: left"><img alt="" src="./images/admin.logo.jpg"></div>
   <div style="float: right">
@@ -86,7 +85,6 @@
        <a  id="login" class="easyui-linkbutton" iconCls="icon-ok" style="width:300px;height:32px">登陆</a>
     </div>
   </div> 
- </div>
  </div>
   <!--ad结束--> 
 </div>

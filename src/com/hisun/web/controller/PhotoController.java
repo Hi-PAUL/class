@@ -54,6 +54,15 @@ public class PhotoController
     }
 
 
+    @RequestMapping(value = "photo_update.xhtml", method = RequestMethod.GET)
+    public ModelAndView gotoPhotoUpdate(HttpServletRequest request, @RequestParam(value = "albumid", required = false) Long albumid)
+    {
+        System.out.println("photo_list");
+        ModelAndView model = new ModelAndView("photo_update").addObject("albumid", albumid);
+        return model;
+    }
+
+
     @RequestMapping(value = "photo_list.xhtml", method = RequestMethod.GET)
     public ModelAndView gotoPhotoList(HttpServletRequest request)
     {
@@ -64,12 +73,9 @@ public class PhotoController
 
 
     @RequestMapping(value = "save_photo.action", method = RequestMethod.POST)
-    public ModelAndView savePhoto(HttpServletRequest request, @RequestParam(value = "photofile", required = false) MultipartFile photofile,
-        @RequestParam(value = "title", required = false) String title, @RequestParam(value = "contents", required = false) String contents,
-        @RequestParam(value = "albumid", required = false) Long albumid) throws Exception
+    public ModelAndView savePhoto(HttpServletRequest request, MultipartFile photofile, @RequestParam(value = "title", required = false) String title,
+        @RequestParam(value = "contents", required = false) String contents, @RequestParam(value = "albumid", required = false) Long albumid) throws Exception
     {
-        System.out.println(title);
-        System.out.println(albumid);
         String realPath = request.getSession().getServletContext().getRealPath("/");
         String resourcePath = "images/icons/";
         String path = realPath + resourcePath;
@@ -92,7 +98,16 @@ public class PhotoController
         {
             e.printStackTrace();
         }
-        ModelAndView model = new ModelAndView("photo");
+        List<Photo> list = null;
+        try
+        {
+            list = this.photoService.getPhotoByAlbumId(albumid);
+        }
+        catch (PhotoServiceException e)
+        {
+            e.printStackTrace();
+        }
+        ModelAndView model = new ModelAndView("photo").addObject("albumid", albumid).addObject("photoList", list);
         return model;
     }
 

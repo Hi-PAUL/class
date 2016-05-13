@@ -124,7 +124,7 @@ public class SpaceController
         User user = (User) request.getSession().getAttribute("user");
         if (!imageFile.isEmpty())
         {
-            String saveName = user.getCdkey();
+            String saveName = user.getUsername();
             File dir = new File(path, saveName + "_src.jpg");
             if (!dir.exists())
             {

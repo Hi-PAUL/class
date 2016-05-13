@@ -43,11 +43,11 @@
     <div class="nav_mid">
       <div class="nav_mid_left">
         <ul>
-          <li><a href="index.xhtml">首页</a></li>
-          <li><a href="#">新闻动态</a></li>
-          <li><a href="#">活动中心</a></li>
-          <li><a href="#">校园风景</a></li>
-          <li><a href="#">人才招聘</a></li>
+           <li><a href="index.xhtml">首页</a></li>
+          <li><a href="list_news.xhtml">新闻动态</a></li>
+          <li><a href="list_active.xhtml">活动中心</a></li>
+          <li><a href="list_school.xhtml">校园风景</a></li>
+          <li><a href="join.xhtml">人才招聘</a></li>
           <li><a href="admin_login.xhtml">管理中心</a></li>
         </ul>
       </div>
@@ -74,11 +74,11 @@
    </div>
    <div style="margin-bottom:20px">
        <div>密   码：</div>
-       <input id="password" name="password" class="easyui-textbox" data-options="prompt:'Enter a password...',iconCls:'icon-lock',iconWidth:38" style="width:300px;height:32px">
+       <input id="password" name="password" type="password" class="easyui-textbox" data-options="prompt:'Enter a password...',iconCls:'icon-lock',iconWidth:38" style="width:300px;height:32px">
    </div>
    <div style="margin-bottom:20px">
        <div>确认密码：</div>
-       <input id="repeatPassword" name="repeatPassword" class="easyui-textbox" data-options="prompt:'Repeat enter a password...',iconCls:'icon-lock',iconWidth:38" style="width:300px;height:32px">
+       <input id="repeatPassword" name="repeatPassword" type="password" class="easyui-textbox" data-options="prompt:'Repeat enter a password...',iconCls:'icon-lock',iconWidth:38" style="width:300px;height:32px">
    </div>
    <div style="margin-bottom:20px">
        <div>电子邮箱：</div>

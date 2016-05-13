@@ -48,7 +48,7 @@
 				<th data-options="field:'honour',align:'center',width:'9%'">荣誉</th>
 				<th data-options="field:'feature',align:'center',width:'9%'">特色</th>
 				<th data-options="field:'createdate',align:'center',width:'9%'">创建时间</th>
-				<th data-options="field:'operate',width:80,align:'center',formatter:formatOper,width:'13%'">操作</th>  
+				<th data-options="field:'operate',width:80,align:'center',formatter:formatOper,width:'12%'">操作</th>  
 			</tr>
 		</thead>
     </table>

@@ -38,7 +38,7 @@
              <div id="chat_main" style="width:100%;height:385px">
                <div style="width:100%;height:380px;overflow-y:auto">
                   <ul id="Message_list">
-                     <li><img alt="" src="./images/icons/${user.cdkey}.jpg" style="width: 30px;height: 30px;"></li>
+                     <li><img alt="" src="./images/icons/${user.username}.jpg" style="width: 30px;height: 30px;"></li>
                   </ul>
                  </div>
                  <div>
@@ -84,7 +84,7 @@
      <div id="p" data-options="region:'east'" title="个人信息" style="width:30%;padding:10px">
          <div style="width:100%;height:140px;">
             <div style="float:left">
-             <a href="space_icon.xhtml"><img alt="点击上传头像" src="./images/icons/${user.cdkey}.jpg" style="width:100px;height:100px;margin:20px;border: 3px solid #E8E8E8"></a>
+             <a href="space_icon.xhtml"><img alt="点击上传头像" src="./images/icons/${user.username}.jpg" style="width:100px;height:100px;margin:20px;border: 3px solid #E8E8E8"></a>
             </div> 
             <div class="chat_easy_name" style="width:100px;height:100px;float:left;margin-top:20px">
              <p><a href="#">Hi,${user.username}</a></p>  

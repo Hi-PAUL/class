@@ -42,6 +42,7 @@
 	       		<td><select id="node" class="easyui-combobox" panelHeight="auto" style="width:200px" <c:if test="${operType == 'query'}">disabled</c:if>>
 	          			<option >新闻</option>
 	          			<option >活动</option>
+	          			<option >校园风景</option>
 	        		</select>
 	        	</td>
 		     </tr>

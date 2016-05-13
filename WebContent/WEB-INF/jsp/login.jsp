@@ -43,11 +43,11 @@
     <div class="nav_mid">
       <div class="nav_mid_left">
         <ul>
-          <li><a href="index.xhtml">首页</a></li>
-          <li><a href="#">新闻动态</a></li>
-          <li><a href="#">活动中心</a></li>
-          <li><a href="#">校园风景</a></li>
-          <li><a href="#">人才招聘</a></li>
+         <li><a href="index.xhtml">首页</a></li>
+          <li><a href="list_news.xhtml">新闻动态</a></li>
+          <li><a href="list_active.xhtml">活动中心</a></li>
+          <li><a href="list_school.xhtml">校园风景</a></li>
+          <li><a href="join.xhtml">人才招聘</a></li>
           <li><a href="admin_login.xhtml">管理中心</a></li>
         </ul>
       </div>
@@ -65,13 +65,12 @@
   </div>
   <!--nav结束-->
   
-  <div style="margin-top: 18px;">
   <div class="easyui-panel" title="当前位置  >> 登陆" style="width:1000px;padding:30px 80px">
   <div style="float: left"><img alt="" src="./images/login.jpg"></div>
   <div style="float: right">
    <div style="margin-bottom:20px">
        <div>账  号：</div>
-       <input id="username" name="username" class="easyui-textbox" data-options="prompt:'Enter a account...',iconCls:'icon-man',iconWidth:38" style="width:300px;height:32px">
+       <input id="username" name="username" value="${username}" class="easyui-textbox" data-options="prompt:'Enter a account...',iconCls:'icon-man',iconWidth:38" style="width:300px;height:32px">
    </div>
    <div style="margin-bottom:20px">
        <div>密  码：</div>
@@ -90,7 +89,6 @@
        <a  id="login" class="easyui-linkbutton" iconCls="icon-ok" style="width:300px;height:32px">登陆</a>
     </div>
   </div> 
- </div>
  </div>
   <!--ad结束--> 
 </div>
@@ -119,15 +117,15 @@
 			success : function(result) {
 				if (!result.errorCode) {
 					window.location.href = "activity.xhtml";
-					//window.location.href = "space_add.xhtml";
 				} else {
-					if(result.errorCode=120){
+					if(result.errorCode)
+					 $.messager.alert('警告',result.errorMsg,'warning');
+					
+					   if(result.errorCode!=110){
 						window.location.href = "select_class.xhtml";
-					}else{
-					$.messager.alert('警告',result.errorMsg,'warning');
-					}
+					  } 
+				   }
 				}
-			 }
 		 });
 
 		});

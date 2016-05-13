@@ -14,7 +14,8 @@
      <link rel="stylesheet" type="text/css" href="./easyui/themes/default/easyui.css">
      <link rel="stylesheet" type="text/css" href="./easyui/themes/icon.css">
      <script type="text/javascript" src="./easyui/jquery.min.js"></script>
-     <script type="text/javascript" src="./easyui/jquery.easyui.min.js"></script>     
+     <script type="text/javascript" src="./easyui/jquery.easyui.min.js"></script>
+     <script type="text/javascript" src="./js/jquery-form.js"></script>     
 </head>
 <body>
 <jsp:include page="include/inc_header.jsp"/>
@@ -22,7 +23,7 @@
 <div  style="margin-top:10px;">    
   <div id="my_class" class="easyui-panel" title="你现在的位置  : 相片墙 >> 班级相片" style="width:100%;height:750px;">
     <div id="toolbar" style="background:#F4F4F4">
-        <a id="add_album" href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="$('#w').window('open')">增加相片</a>
+        <a id="add_album" href="photo_update.xhtml?albumid=${albumid}" class="easyui-linkbutton" iconCls="icon-add" plain="true" >增加相片</a>
         <a href="javascript:history.go(-1);" class="easyui-linkbutton" iconCls="icon-undo" plain="true" >返回</a>
         
         <form id="from" action="save_photo.action" method="post" enctype="multipart/form-data" onsubmit="return check()"> 
@@ -30,18 +31,18 @@
 	        <div class="easyui-layout" data-options="fit:true">
 	            <div style="margin-bottom:15px"> <!--  class="easyui-filebox" -->
 			       <div>相 片：</div>
-			       <input id="photofile"  class="easyui-filebox"  data-options="prompt:'Choose a file...'" style="width:300px;height:32px">
+			       <input id="photofile" name="photofile" value="" type="file"  data-options="prompt:'Choose a file...'" style="width:300px;height:32px">
 			    </div>
 	            <div style="margin-bottom:15px">
 			       <div>标 题：</div>
-			       <input id="title" name="title" class="easyui-textbox" data-options="prompt:'Enter a title...'" style="width:300px;height:32px">
+			       <input id="title" name="title" value="" class="easyui-textbox" data-options="prompt:'Enter a title...'" style="width:300px;height:32px">
 			    </div>
 			    <div style="margin-bottom:15px">
 			       <div>介 绍：</div>
-			       <input id="contents" name="contents" class="easyui-textbox" data-options="prompt:'Enter the content...',multiline:true"  style="width:300px;height:70px">
+			       <input id="contents" name="contents" value="" class="easyui-textbox" data-options="prompt:'Enter the content...',multiline:true"  style="width:300px;height:70px">
 			    </div>
 	            <div data-options="region:'south',border:false" style="text-align:right;padding:5px 0 0;">
-	                <input type="hidden" name="albumid" value="${albumid}"/>
+	                <input type="hidden" id="albumid" name="albumid" value="${albumid}"/>
 	                <a id="save_photo" class="easyui-linkbutton" data-options="iconCls:'icon-ok'" style="width:80px">确定</a>
 	                <a class="easyui-linkbutton" data-options="iconCls:'icon-cancel'" href="javascript:void(0)" onclick="$('#w').window('close')" style="width:80px">取消</a>
 	            </div>
@@ -54,7 +55,7 @@
     <ul class="picList" id="picList">
         <c:forEach items="${photoList}" var="list">
             <li>
-              <img src="./images/icons/${list.path}.jpg" />
+              <img src="./images/icons/${list.path}" />
               <a href='#'>${list.title}<br/>
                                      介绍 : ${list.contents}<br/>
                                      相册: ${list.albumname}<br/>                      
@@ -84,17 +85,27 @@
 	
 	 $("#save_photo").click(function(){
 		// alert();
-		$("#from").submit();
+		$("#from").ajaxSubmit();
+		//alert($("#photofile").val());
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		 /* $("#from").submit({
+			 url: "save_photo.action",
+           // data: $('#from').formSerialize(),
+           // data : $("#from").serialize(),   
+             data: {
+            	 photofile : $("#photofile").val(),
+            	 title : $("#title").val(),
+            	 contents : $("#contents").val(),
+            	 albumid : $("#albumid").val(),
+             }, 
+            
+             type: 'POST',
+             dataType: 'json', 
+			 success: function () {
+                 alert("表单提交成功");
+             },
+		 }); */
+				
 		
 	 });
 	 
