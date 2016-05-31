@@ -1,11 +1,60 @@
-CREATE TABLE
-    t_user
-    (
-        id bigint NOT NULL AUTO_INCREMENT,
-        password VARCHAR(50),
-        username VARCHAR(50),
-        address VARCHAR(50),
-        phone VARCHAR(50),
-        email VARCHAR(20),
-        PRIMARY KEY (id)
-    );
+DROP TABLE admin;
+CREATE TABLE admin (id bigint NOT NULL AUTO_INCREMENT, adminName varchar(50), password varchar(50), sex varchar(1), phone varchar(50), email varchar(50), level int, registerDate date, laterDate date, status int, name varchar(50), PRIMARY KEY (id)) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+INSERT INTO admin (id, adminName, password, sex, phone, email, level, registerDate, laterDate, status, name) VALUES (1, 'admin', '123456', '1', '13266559639', '575968325@qq.com', 3, '2016-05-14', '2016-05-14', 1, 'paul');
+INSERT INTO admin (id, adminName, password, sex, phone, email, level, registerDate, laterDate, status, name) VALUES (3, 'paul', '123456', '1', '123', '123', 3, '2016-04-07', '2016-04-13', 1, 'paul');
+INSERT INTO admin (id, adminName, password, sex, phone, email, level, registerDate, laterDate, status, name) VALUES (5, 'admin1', '123456', '1', '123456', '13333', 1, '2016-05-11', '2016-05-11', 1, 'admin1');
+INSERT INTO admin (id, adminName, password, sex, phone, email, level, registerDate, laterDate, status, name) VALUES (6, 'admin2', '123456', '1', '123456', '123456', 2, '2016-05-11', '2016-05-11', 1, 'admin2');
+DROP TABLE album;
+CREATE TABLE album (id bigint NOT NULL AUTO_INCREMENT, albumName varchar(50), albumDesc varchar(200), imageFM varchar(50), classId bigint NOT NULL, createDate date, PRIMARY KEY (id)) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+INSERT INTO album (id, albumName, albumDesc, imageFM, classId, createDate) VALUES (1, 'hhhh', 'cool', 'paul', 1, null);
+INSERT INTO album (id, albumName, albumDesc, imageFM, classId, createDate) VALUES (2, 'paul', 'dfdsfs', 'paul', 1, '2016-04-08');
+INSERT INTO album (id, albumName, albumDesc, imageFM, classId, createDate) VALUES (3, 'cool', 'dshg;ldsghsd;hgsd', 'paul', 1, '2016-04-08');
+INSERT INTO album (id, albumName, albumDesc, imageFM, classId, createDate) VALUES (4, '周帅', '就问你，帅不帅！', 'paul', 1, '2016-04-08');
+INSERT INTO album (id, albumName, albumDesc, imageFM, classId, createDate) VALUES (5, '星空', '星空下最美的', 'text11', 2, '2016-05-13');
+INSERT INTO album (id, albumName, albumDesc, imageFM, classId, createDate) VALUES (6, '班级相册一', '班级相册一', 'paul', 7, '2016-05-14');
+DROP TABLE class;
+CREATE TABLE class (id bigint NOT NULL AUTO_INCREMENT, college varchar(50), major varchar(50), className varchar(50), classAdviser varchar(50), number int, slogan varchar(50), introduce varchar(200), honour varchar(200), feature varchar(50), createDate date, PRIMARY KEY (id)) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+INSERT INTO class (id, college, major, className, classAdviser, number, slogan, introduce, honour, feature, createDate) VALUES (4, '计通学院', '计算机科学与技术', '计Y121班', '张三', 30, '团结就是力量', '我们是相亲相爱的一家人', '勇争第一', '21世纪有志青年', '2016-05-14');
+INSERT INTO class (id, college, major, className, classAdviser, number, slogan, introduce, honour, feature, createDate) VALUES (5, '计通学院', '计算机科学与技术', '计Y122班', '李四', 32, '相信自己', '团结就是力量', '勇争第一', '21世纪有志青年', '2016-05-14');
+INSERT INTO class (id, college, major, className, classAdviser, number, slogan, introduce, honour, feature, createDate) VALUES (6, '计通学院', '计算机科学与技术', '计Y123班', '张三', 33, '团结就是力量', '相亲相爱的一家人', '勇争第一', '21世纪有志青年', '2016-05-14');
+INSERT INTO class (id, college, major, className, classAdviser, number, slogan, introduce, honour, feature, createDate) VALUES (7, '计通学院', '计算机科学与技术', '计Y124班', '赵五', 27, '团结就是力量', '相亲相爱的一家人', '勇争第一', '21世纪的有志青年', '2016-05-14');
+INSERT INTO class (id, college, major, className, classAdviser, number, slogan, introduce, honour, feature, createDate) VALUES (8, '计通学院', '计算机科学与技术', '计Y125班', '李四', 35, '团结就是力量', '相亲相爱的一家人', '勇争第一', '21世纪有志青年', '2016-05-14');
+INSERT INTO class (id, college, major, className, classAdviser, number, slogan, introduce, honour, feature, createDate) VALUES (9, '计通学院', '计算机科学与技术', '计Y126班', '张三', 33, '团结就是力量', '相亲相爱的一家人', '勇争第一', '21世纪有志青年', '2016-05-14');
+DROP TABLE message;
+CREATE TABLE message (id bigint NOT NULL AUTO_INCREMENT, userName varchar(50), title varchar(50), sex varchar(1), url varchar(50), qq varchar(50), content varchar(200), reply varchar(1000), faceUrl varchar(50), classId bigint NOT NULL, dateline date, PRIMARY KEY (id)) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+DROP TABLE news;
+CREATE TABLE news (id bigint NOT NULL AUTO_INCREMENT, publisher varchar(50), title varchar(50), content varchar(2000), dateline date, node varchar(50), PRIMARY KEY (id)) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+INSERT INTO news (id, publisher, title, content, dateline, node) VALUES (6, 'paul', '【开学季】欢迎学校2万新成员', '【开学季】欢迎学校2万新成员', '2016-05-11', '新闻');
+INSERT INTO news (id, publisher, title, content, dateline, node) VALUES (7, 'paul', '【领导风】校长看望退休教师', '【领导风】校长看望退休教师', '2016-05-11', '新闻');
+INSERT INTO news (id, publisher, title, content, dateline, node) VALUES (8, 'paul', '【教师美】汗流湿润他们的衣襟', '【教师美】汗流湿润他们的衣襟', '2016-05-11', '新闻');
+INSERT INTO news (id, publisher, title, content, dateline, node) VALUES (9, 'paul', '【新气象】我校综合教学楼下月将投入使用', '【新气象】我校综合教学楼下月将投入使用', '2016-05-11', '新闻');
+INSERT INTO news (id, publisher, title, content, dateline, node) VALUES (10, 'paul', '【校园事件】“校园十大歌手”报名马上开始', '【校园事件】“校园十大歌手”报名马上开始', '2016-05-11', '活动');
+INSERT INTO news (id, publisher, title, content, dateline, node) VALUES (11, 'paul', '【公益活动】“下乡支教”有你同行', '【公益活动】“下乡支教”有你同行', '2016-05-11', '活动');
+INSERT INTO news (id, publisher, title, content, dateline, node) VALUES (12, 'paul', '【户外活动】“万里徒步”要你来参赛', '【户外活动】“万里徒步”要你来参赛', '2016-05-11', '活动');
+INSERT INTO news (id, publisher, title, content, dateline, node) VALUES (13, 'paul', '【社区关怀】“社区家电维修”让你一展身手', '【社区关怀】“社区家电维修”让你一展身手', '2016-05-11', '活动');
+INSERT INTO news (id, publisher, title, content, dateline, node) VALUES (14, 'paul', '校园风景', '校园风景', '2016-05-14', '校园风景');
+DROP TABLE notice;
+CREATE TABLE notice (id bigint NOT NULL AUTO_INCREMENT, publisher varchar(50), title varchar(50), sex varchar(1), content varchar(200), classId bigint NOT NULL, dateline date, PRIMARY KEY (id)) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+INSERT INTO notice (id, publisher, title, sex, content, classId, dateline) VALUES (1, 'paul', '公告', '1', '活动公告', 1, '2016-05-14');
+DROP TABLE photo;
+CREATE TABLE photo (id bigint NOT NULL AUTO_INCREMENT, author varchar(50), path varchar(50), title varchar(50), contents varchar(200), albumName varchar(50), albumId bigint NOT NULL, hits bigint, praise bigint, pubDate date, PRIMARY KEY (id)) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+INSERT INTO photo (id, author, path, title, contents, albumName, albumId, hits, praise, pubDate) VALUES (1, 'paul', 'swBt8udrU8SBSr7FaxInkq5en0okskSI.jpg', '班级相册一', '班级相册一', null, 6, null, null, '2016-05-14');
+DROP TABLE pointaction;
+CREATE TABLE pointaction (id bigint NOT NULL AUTO_INCREMENT, actionname varchar(50), point int NOT NULL, description varchar(200), PRIMARY KEY (id)) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+INSERT INTO pointaction (id, actionname, point, description) VALUES (1, 'REGISTER', 50, '注册会员');
+INSERT INTO pointaction (id, actionname, point, description) VALUES (3, 'LOGIN', 3, '登录');
+DROP TABLE result;
+CREATE TABLE result (id bigint NOT NULL AUTO_INCREMENT, studentId varchar(50), banBie varchar(50), name varchar(50), session varchar(50), courseName varchar(50), courseCode varchar(50), period int, credit int, scores double, remark varchar(50), PRIMARY KEY (id)) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+INSERT INTO result (id, studentId, banBie, name, session, courseName, courseCode, period, credit, scores, remark) VALUES (1, '201200403130', '124', 'paul', '第一学期', 'dsf', 'dfssd', 5, 5, 5.0, '456754');
+INSERT INTO result (id, studentId, banBie, name, session, courseName, courseCode, period, credit, scores, remark) VALUES (2, '201200403130', '计Y124班', '梁立映', '第二学期', '英语', 'fdgd', 33, 5, 77.0, '');
+DROP TABLE space;
+CREATE TABLE space (id bigint NOT NULL AUTO_INCREMENT, school varchar(50), college varchar(50), major varchar(50), banBie varchar(50), admissionDate date, birthday date, address varchar(50), hobbies varchar(50), inttroduction varchar(200), userId bigint NOT NULL, createDate date, PRIMARY KEY (id)) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+INSERT INTO space (id, school, college, major, banBie, admissionDate, birthday, address, hobbies, inttroduction, userId, createDate) VALUES (1, '1hfgjgf', '2', '3', '4', '2016-05-11', '2016-05-11', '7', '12', '13', 6, '2016-04-02');
+INSERT INTO space (id, school, college, major, banBie, admissionDate, birthday, address, hobbies, inttroduction, userId, createDate) VALUES (2, 'bbvmggg', 'bvvcj', 'vbmvcb', 'mcm', '2016-05-01', '2016-05-11', 'vbmcm', 'egrdh', 'gfjgfjgf', 9, '2016-05-11');
+INSERT INTO space (id, school, college, major, banBie, admissionDate, birthday, address, hobbies, inttroduction, userId, createDate) VALUES (3, '广西科技大学', '计通学院', '计算机科学与技术', '计Y124班', '2016-05-01', '2016-05-02', '广西贵港市', '篮球，足球', '爱好户外活动', 12, '2016-05-14');
+DROP TABLE t_user;
+CREATE TABLE t_user (id bigint NOT NULL AUTO_INCREMENT, password varchar(50), username varchar(50), address varchar(50), phone varchar(50), email varchar(20), PRIMARY KEY (id)) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+INSERT INTO t_user (id, password, username, address, phone, email) VALUES (1, '123456', 'username', '北京', '12345678912', '123456@qq.com');
+DROP TABLE users;
+CREATE TABLE users (id bigint NOT NULL AUTO_INCREMENT, userName varchar(50), password varchar(50), sex varchar(1), qq varchar(50), phone varchar(50), email varchar(50), registerDate date, laterDate date, status int DEFAULT '0', isonline int DEFAULT '0', point bigint DEFAULT '0', isagree int DEFAULT '0', name varchar(50), studentId varchar(50), classId bigint, cdKey varchar(50), PRIMARY KEY (id)) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+INSERT INTO users (id, userName, password, sex, qq, phone, email, registerDate, laterDate, status, isonline, point, isagree, name, studentId, classId, cdKey) VALUES (12, 'paul', 'e10adc3949ba59abbe56e057f20f883e', '1', '575968325', '13266559639', '575968325@qq.com', '2016-05-14', '2016-05-14', 1, 0, 50, null, '梁立映', '201200403130', 7, 'SaGDUIHmaBxbKO5lGfrIst2xkGWwmGjY');
